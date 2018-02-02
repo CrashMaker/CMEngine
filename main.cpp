@@ -7,8 +7,11 @@ int main()
 {
     using namespace cmengine;
 
-    SkillManager::loadSkills(loadSkillListForCMEngine());
-    SkillManager::showSkills();
+    SkillManager::LoadSkills(LoadSkillListForCMEngine());
+    SkillManager::ShowSkills();
+
+    Skill sk = SkillManager::GetSkillWithKey(0);
+    sk.action();
     
     return 0;
 }

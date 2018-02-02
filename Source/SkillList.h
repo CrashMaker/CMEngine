@@ -14,12 +14,12 @@
 #include <vector>
 #include "../CMEngine/Skill.h"
 
-std::vector<cmengine::Skill> loadSkillListForCMEngine();
+std::vector<cmengine::Skill> LoadSkillListForCMEngine();
 
 namespace game
 {
     // 技能列表
-    cmengine::Skill cut();
+    cmengine::Skill Cut();
 }
 
 #endif /* SKILLLIST_H */

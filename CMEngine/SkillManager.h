@@ -23,8 +23,9 @@ namespace cmengine
     private:
         static std::map<int, Skill> skillMap;
     public:
-        static void loadSkills(const std::vector<Skill> &v);
-        static void showSkills();
+        static void LoadSkills(const std::vector<Skill> &v);
+        static void ShowSkills();
+        static Skill GetSkillWithKey(int key);
     };
 }
 

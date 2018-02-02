@@ -28,6 +28,7 @@ namespace cmengine
         const std::string name;
         const SkillActionFunc action;
 
+        Skill() : name(""), action([](){std::cout << "This is invalid skill!" << std::endl;}) {}
         Skill(std::string name_, SkillActionFunc action_) : name(name_), action(action_) {}
     };
 

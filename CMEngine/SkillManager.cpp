@@ -15,7 +15,7 @@ namespace cmengine
 {
     std::map<int, Skill> SkillManager::skillMap;
     
-    void SkillManager::loadSkills(const std::vector<Skill> &v)
+    void SkillManager::LoadSkills(const std::vector<Skill> &v)
     {
         skillMap.erase(skillMap.begin(), skillMap.end());
 
@@ -24,7 +24,7 @@ namespace cmengine
         }
     }
 
-    void SkillManager::showSkills()
+    void SkillManager::ShowSkills()
     {
         if (skillMap.size() <= 0) {
             std::cout << "No skill!" << std::endl;
@@ -35,5 +35,16 @@ namespace cmengine
             Skill sk = it->second;
             std::cout << it->first <<" " << sk.name << std::endl;
         }
+    }
+
+    Skill SkillManager::GetSkillWithKey(int key)
+    {
+        std::map<int, Skill>::iterator it = skillMap.find(key);
+
+        if (it != skillMap.end()) {
+            return it->second;
+        }
+
+        return Skill();
     }
 }

@@ -12,11 +12,10 @@
 #include <iostream>
 
 // 加载技能列表
-std::vector<cmengine::Skill> loadSkillListForCMEngine()
+std::vector<cmengine::Skill> LoadSkillListForCMEngine()
 {
     std::vector<cmengine::Skill> v = {
-        game::cut(), 
-        game::cut()
+        game::Cut()
     };
 
     return v;
@@ -25,7 +24,7 @@ std::vector<cmengine::Skill> loadSkillListForCMEngine()
 namespace game
 {
     // 技能列表
-    cmengine::Skill cut()
+    cmengine::Skill Cut()
     {
         cmengine::SkillActionFunc f = [](){
             std::cout << "f_cut" << std::endl;
