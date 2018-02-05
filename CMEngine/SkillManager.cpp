@@ -13,38 +13,40 @@
 
 namespace cmengine
 {
-    std::map<int, Skill> SkillManager::skillMap;
+    SkillMap SkillManager::skMap;
     
-    void SkillManager::LoadSkills(const std::vector<Skill> &v)
+    void SkillManager::LoadSkills(const SkillMap &m)
     {
-        skillMap.erase(skillMap.begin(), skillMap.end());
-
-        for (int i = 0; i < (int)v.size(); ++i) {
-            skillMap.insert(std::make_pair(i, v[i]));
-        }
+        skMap.erase(skMap.begin(), skMap.end());
+        skMap = m;
     }
 
     void SkillManager::ShowSkills()
     {
-        if (skillMap.size() <= 0) {
+        if (skMap.size() <= 0) {
             std::cout << "No skill!" << std::endl;
         }
 
-        std::map<int, Skill>::iterator it;
-        for (it = skillMap.begin(); it != skillMap.end(); ++it) {
-            Skill sk = it->second;
-            std::cout << it->first <<" " << sk.name << std::endl;
+        for (SkillMap::iterator it = skMap.begin(); it != skMap.end(); ++it) {
+            SkillPtr sk = it->second;
+            std::cout << it->first << " " << sk->name << std::endl;
         }
     }
 
-    Skill SkillManager::GetSkillWithKey(int key)
+    SkillPtr SkillManager::GetSkillWithKey(string key)
     {
-        std::map<int, Skill>::iterator it = skillMap.find(key);
-
-        if (it != skillMap.end()) {
-            return it->second;
+        if (key.empty()) {
+            std::cout << "Please enter a valid key!" << std::endl;
+            return nullptr;
         }
 
-        return Skill();
+        SkillMap::iterator it = skMap.find(key);
+        
+        if (it != skMap.end()) {
+            return it->second;
+        } else {
+            std::cout << "No skill with this key: " << key << std::endl;
+            return nullptr;
+        }
     }
 }

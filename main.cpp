@@ -9,9 +9,9 @@ int main()
 
     SkillManager::LoadSkills(LoadSkillListForCMEngine());
     SkillManager::ShowSkills();
-
-    Skill sk = SkillManager::GetSkillWithKey(0);
-    sk.action();
+    
+    SkillPtr sk = SkillManager::GetSkillWithKey("");
+    sk->action();
     
     return 0;
 }

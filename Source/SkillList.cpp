@@ -9,26 +9,36 @@
 ================================================================*/
 
 #include "SkillList.h"
-#include <iostream>
 
 // 加载技能列表
-std::vector<cmengine::Skill> LoadSkillListForCMEngine()
+SkillMap LoadSkillListForCMEngine()
 {
-    std::vector<cmengine::Skill> v = {
-        game::Cut()
-    };
+    using namespace game;
 
-    return v;
+    SkillMap m;
+
+    m.insert(SkillMap::value_type("Cut", Cut()));
+    m.insert(SkillMap::value_type("Shot", Shot()));
+    
+    return m;
 }
 
 namespace game
 {
     // 技能列表
-    cmengine::Skill Cut()
+    SkillPtr Cut()
     {
-        cmengine::SkillActionFunc f = [](){
+        SkillActionFunc f = [](){
             std::cout << "f_cut" << std::endl;
         };
-        return cmengine::Skill("cut", f);
+        return SkillPtr(new Skill("Cut", f));
+    }
+
+    SkillPtr Shot()
+    {
+        SkillActionFunc f = [](){
+            std::cout << "f_shot" << std::endl;
+        };
+        return SkillPtr(new Skill("Shot", f));
     }
 }

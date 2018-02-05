@@ -11,21 +11,28 @@
 #ifndef SKILLMANAGER_H
 #define SKILLMANAGER_H
 
-#include <vector>
 #include <map>
+#include <string>
+#include <memory>
 #include "Skill.h"
-#include "../Source/SkillList.h"
 
 namespace cmengine
 {
+    using std::map;
+    using std::shared_ptr;
+    using std::string;
+
+    typedef shared_ptr<Skill> SkillPtr;
+    typedef map<string, SkillPtr> SkillMap;
+
     class SkillManager
     {
     private:
-        static std::map<int, Skill> skillMap;
+        static SkillMap skMap;
     public:
-        static void LoadSkills(const std::vector<Skill> &v);
+        static void LoadSkills(const SkillMap &m);
         static void ShowSkills();
-        static Skill GetSkillWithKey(int key);
+        static SkillPtr GetSkillWithKey(string key);
     };
 }
 

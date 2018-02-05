@@ -11,15 +11,27 @@
 #ifndef SKILLLIST_H
 #define SKILLLIST_H
 
-#include <vector>
+#include <map>
+#include <memory>
+#include <string>
 #include "../CMEngine/Skill.h"
 
-std::vector<cmengine::Skill> LoadSkillListForCMEngine();
+using namespace cmengine;
+
+using std::map;
+using std::shared_ptr;
+using std::string;
+
+typedef shared_ptr<Skill> SkillPtr;
+typedef map<string, SkillPtr> SkillMap;
+
+SkillMap LoadSkillListForCMEngine();
 
 namespace game
 {
     // 技能列表
-    cmengine::Skill Cut();
+    SkillPtr Cut();
+    SkillPtr Shot();
 }
 
 #endif /* SKILLLIST_H */
