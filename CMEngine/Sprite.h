@@ -12,22 +12,27 @@
 #define SPRITE_H
 
 #include <string>
+#include "SkillWave.h"
 
 namespace cmengine
 {
+    class SkillWave;
+
+    using std::string;
+
     class Sprite
     {
     private:
-        std::string name;
+
+    public:
+        string name;
         int attack;
         int defence;   
         int health;
 
-    public:
-        Sprite(std::string name_, int attack_, int defence_, int health_);
-        // virtual ~Sprite();
+        Sprite(string name_, int attack_, int defence_, int health_);
 
-        void operator()(long skillID);
+        SkillWave operator()(string skillKey);
     };
 }
 

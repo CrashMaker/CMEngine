@@ -9,6 +9,7 @@
 ================================================================*/
 
 #include "SkillList.h"
+#include "../CMEngine/SkillWave.h"
 
 // 加载技能列表
 SkillMap LoadSkillListForCMEngine()
@@ -28,16 +29,24 @@ namespace game
     // 技能列表
     SkillPtr Cut()
     {
-        SkillActionFunc f = [](){
-            std::cout << "f_cut" << std::endl;
+        SkillActionFunc f = [](const Sprite &sp){
+            int hurtPoint = sp.attack;
+
+            SkillWave wave = SkillWave(hurtPoint);
+
+            return wave;
         };
         return SkillPtr(new Skill("Cut", f));
     }
 
     SkillPtr Shot()
     {
-        SkillActionFunc f = [](){
-            std::cout << "f_shot" << std::endl;
+        SkillActionFunc f = [](const Sprite &sp){
+            int hurtPoint = sp.attack * 2;
+
+            SkillWave wave = SkillWave(hurtPoint);
+
+            return wave;
         };
         return SkillPtr(new Skill("Shot", f));
     }

@@ -10,6 +10,7 @@
 
 #include "Sprite.h"
 #include <iostream>
+#include "SkillManager.h"
 
 namespace cmengine
 {
@@ -21,8 +22,11 @@ namespace cmengine
         health = health_;
     }
     
-    void Sprite::operator()(long skillID)
+    SkillWave Sprite::operator()(string skillKey)
     {
-        std::cout << skillID << std::endl;
+        SkillPtr sk = SkillManager::GetSkillWithKey(skillKey);
+        SkillWave wave = sk->wave(*this);
+
+        return wave;
     }
 }

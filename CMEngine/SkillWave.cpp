@@ -10,4 +10,10 @@
 
 #include "SkillWave.h"
 
-
+namespace cmengine
+{
+    void SkillWave::operator>>(Sprite &sp)
+    {
+        sp.health -= (this->hurtPoint - sp.defence);
+    }
+}

@@ -14,10 +14,11 @@
 #include <string>
 #include <functional>
 #include <iostream>
+#include "SkillWave.h"
 
 namespace cmengine
 {
-    typedef std::function<void()> SkillActionFunc;
+    typedef std::function<SkillWave(const Sprite &sp)> SkillActionFunc;
 
     class Skill
     {
@@ -26,10 +27,9 @@ namespace cmengine
 
     public:
         const std::string name;
-        const SkillActionFunc action;
+        const SkillActionFunc wave;
 
-        Skill() : name(""), action([](){std::cout << "This is a invalid skill!" << std::endl;}) {}
-        Skill(std::string name_, SkillActionFunc action_) : name(name_), action(action_) {}
+        Skill(std::string name_, SkillActionFunc wave_) : name(name_), wave(wave_) {}
     };
 
 }

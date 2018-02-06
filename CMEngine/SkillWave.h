@@ -11,14 +11,23 @@
 #ifndef SKILLWAVE_H
 #define SKILLWAVE_H
 
-class SkillWave
+#include "Sprite.h"
+
+namespace cmengine
 {
-private:
-    
+    class Sprite;
 
-public:
-    SkillWave();
-    virtual ~SkillWave();
-};
+    class SkillWave
+    {
+    private:
+        
 
+    public:
+        const int hurtPoint;
+
+        SkillWave(int hurtPoint_) : hurtPoint(hurtPoint_) {}
+
+        void operator>>(Sprite &sp);
+    };
+}
 #endif /* SKILLWAVE_H */
