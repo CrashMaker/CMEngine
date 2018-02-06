@@ -10,7 +10,7 @@ int main()
     SkillManager::LoadSkills(LoadSkillListForCMEngine());
     SkillManager::ShowSkills();
     
-    SkillPtr sk = SkillManager::GetSkillWithKey("");
+    SkillPtr sk = SkillManager::GetSkillWithKey("Cut");
     sk->action();
     
     return 0;

@@ -35,11 +35,6 @@ namespace cmengine
 
     SkillPtr SkillManager::GetSkillWithKey(string key)
     {
-        if (key.empty()) {
-            std::cout << "Please enter a valid key!" << std::endl;
-            return nullptr;
-        }
-
         SkillMap::iterator it = skMap.find(key);
         
         if (it != skMap.end()) {
