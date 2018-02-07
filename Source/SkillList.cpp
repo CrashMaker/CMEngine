@@ -9,7 +9,6 @@
 ================================================================*/
 
 #include "SkillList.h"
-#include "../CMEngine/SkillWave.h"
 
 // 加载技能列表
 SkillMap LoadSkillListForCMEngine()

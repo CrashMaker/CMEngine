@@ -12,6 +12,7 @@
 #define SPRITE_H
 
 #include <string>
+
 #include "SkillWave.h"
 
 namespace cmengine

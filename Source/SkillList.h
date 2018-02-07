@@ -11,19 +11,9 @@
 #ifndef SKILLLIST_H
 #define SKILLLIST_H
 
-#include <map>
-#include <memory>
-#include <string>
-#include "../CMEngine/Skill.h"
+#include "../CMEngine/CMEngine.h"
 
 using namespace cmengine;
-
-using std::map;
-using std::shared_ptr;
-using std::string;
-
-typedef shared_ptr<Skill> SkillPtr;
-typedef map<string, SkillPtr> SkillMap;
 
 SkillMap LoadSkillListForCMEngine();
 

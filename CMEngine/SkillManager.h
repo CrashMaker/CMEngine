@@ -12,8 +12,9 @@
 #define SKILLMANAGER_H
 
 #include <map>
-#include <string>
 #include <memory>
+#include <string>
+
 #include "Skill.h"
 
 namespace cmengine

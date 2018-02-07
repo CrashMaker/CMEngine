@@ -9,7 +9,6 @@
 ================================================================*/
 
 #include "Sprite.h"
-#include <iostream>
 #include "SkillManager.h"
 
 namespace cmengine
