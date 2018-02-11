@@ -27,10 +27,10 @@ namespace game
     // 技能列表
     SkillPtr Cut()
     {
-        SkillActionFunc f = [](Sprite &sp){
+        ActionFunc f = [](Sprite &sp){
             int hurtPoint = sp.attack;
 
-            SkillWave wave = SkillWave(sp, hurtPoint);
+            Wave wave = Wave(sp, hurtPoint);
 
             return wave;
         };

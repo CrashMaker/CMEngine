@@ -21,10 +21,10 @@ namespace cmengine
         health = health_;
     }
     
-    SkillWave Sprite::operator()(string skillKey)
+    Wave Sprite::operator()(string skillKey)
     {
         SkillPtr sk = SkillManager::GetSkillWithKey(skillKey);
-        SkillWave wave = sk->wave(*this);
+        Wave wave = sk->wave(*this);
 
         return wave;
     }

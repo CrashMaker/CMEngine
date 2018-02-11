@@ -13,11 +13,11 @@
 
 #include <string>
 
-#include "SkillWave.h"
+#include "Wave.h"
 
 namespace cmengine
 {
-    class SkillWave;
+    class Wave;
 
     using std::string;
 
@@ -33,7 +33,7 @@ namespace cmengine
 
         Sprite(string name_, int attack_, int defence_, int health_);
 
-        SkillWave operator()(string skillKey);
+        Wave operator()(string skillKey);
     };
 }
 

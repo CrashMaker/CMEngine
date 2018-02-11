@@ -1,19 +1,27 @@
 /*================================================================
 *   Copyright (C) 2018 CrashMaker. All rights reserved.
 *   
-*   文件名称：CMEngine.h
+*   文件名称：Formula.h
 *   创 建 者：CrashMaker
-*   创建日期：2018年02月07日
+*   创建日期：2018年02月11日
 *   描    述：
 *
 ================================================================*/
 
-#ifndef CMENGINE_H
-#define CMENGINE_H
+#ifndef FORMULA_H
+#define FORMULA_H
 
-#include "SkillManager.h"
-#include "Skill.h"
-#include "Wave.h"
-#include "Sprite.h"
+namespace cmengine 
+{
+    class Formula
+    {
+    private:
 
-#endif /* CMENGINE_H */
+
+    public:
+        
+
+    };
+}
+
+#endif /* FORMULA_H */
