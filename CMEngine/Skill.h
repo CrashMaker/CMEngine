@@ -18,7 +18,7 @@
 
 namespace cmengine
 {
-    typedef std::function<SkillWave(const Sprite &sp)> SkillActionFunc;
+    typedef std::function<SkillWave(Sprite &sp)> SkillActionFunc;
 
     class Skill
     {

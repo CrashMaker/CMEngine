@@ -23,9 +23,10 @@ namespace cmengine
         
 
     public:
+        Sprite &caster;
         const int hurtPoint;
 
-        SkillWave(int hurtPoint_) : hurtPoint(hurtPoint_) {}
+        SkillWave(Sprite &caster_, int hurtPoint_) : caster(caster_), hurtPoint(hurtPoint_) {}
 
         void operator>>(Sprite &sp);
     };

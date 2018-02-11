@@ -18,7 +18,6 @@ SkillMap LoadSkillListForCMEngine()
     SkillMap m;
 
     m.insert(SkillMap::value_type("Cut", Cut()));
-    m.insert(SkillMap::value_type("Shot", Shot()));
     
     return m;
 }
@@ -28,25 +27,13 @@ namespace game
     // 技能列表
     SkillPtr Cut()
     {
-        SkillActionFunc f = [](const Sprite &sp){
+        SkillActionFunc f = [](Sprite &sp){
             int hurtPoint = sp.attack;
 
-            SkillWave wave = SkillWave(hurtPoint);
+            SkillWave wave = SkillWave(sp, hurtPoint);
 
             return wave;
         };
         return SkillPtr(new Skill("Cut", f));
-    }
-
-    SkillPtr Shot()
-    {
-        SkillActionFunc f = [](const Sprite &sp){
-            int hurtPoint = sp.attack * 2;
-
-            SkillWave wave = SkillWave(hurtPoint);
-
-            return wave;
-        };
-        return SkillPtr(new Skill("Shot", f));
     }
 }

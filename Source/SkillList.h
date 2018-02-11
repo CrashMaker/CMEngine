@@ -21,7 +21,6 @@ namespace game
 {
     // 技能列表
     SkillPtr Cut();
-    SkillPtr Shot();
 }
 
 #endif /* SKILLLIST_H */

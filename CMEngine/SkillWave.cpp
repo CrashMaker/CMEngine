@@ -15,5 +15,6 @@ namespace cmengine
     void SkillWave::operator>>(Sprite &sp)
     {
         sp.health -= (this->hurtPoint - sp.defence);
+        this->caster.health -= 19;
     }
 }
