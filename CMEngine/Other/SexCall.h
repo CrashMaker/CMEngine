@@ -26,9 +26,10 @@ namespace cmengine
     public:
         SexCall(Sprite &sp_, const Skill &sk_) : sp(sp_), sk(sk_) {}
 
-        friend SexCall operator+(Sprite &sp_, const Skill &sk_);
         Round operator>>(Sprite &sp_); 
     };
+
+    SexCall operator+(Sprite &sp_, const Skill &sk_);
 }
 
 #endif /* SEXCALL_H */

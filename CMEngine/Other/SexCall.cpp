@@ -12,15 +12,15 @@
 
 namespace cmengine
 {
-    SexCall operator+(Sprite &sp_, const Skill &sk_)
-    {
-        return SexCall(sp_, sk_); 
-    }
-
     Round SexCall::operator>>(Sprite &sp_)
     {
         Round round = Round(sp, sp_, sk);
         round.action();
         return round;
+    }
+
+    SexCall operator+(Sprite &sp_, const Skill &sk_)
+    {
+        return SexCall(sp_, sk_); 
     }
 }
