@@ -11,29 +11,25 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
-#include <string>
-
-#include "Wave.h"
+#include <iostream>
 
 namespace cmengine
 {
-    class Wave;
-
-    using std::string;
-
+    using namespace std;
+    
     class Sprite
     {
     private:
-
-    public:
         string name;
         int attack;
         int defence;   
         int health;
 
-        Sprite(string name_, int attack_, int defence_, int health_);
+    public:
+        friend class Round;
 
-        Wave operator()(string skillKey);
+        Sprite(string name_, int attack_, int defence_, int health_) : 
+            name(name_), attack(attack_), defence(defence_), health(health_) {}
     };
 }
 

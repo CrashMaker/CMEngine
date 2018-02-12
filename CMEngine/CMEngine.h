@@ -11,9 +11,9 @@
 #ifndef CMENGINE_H
 #define CMENGINE_H
 
-#include "SkillManager.h"
-#include "Skill.h"
-#include "Wave.h"
-#include "Sprite.h"
+#include "Sprite/Sprite.h"
+#include "Skill/Skill.h"
+#include "Battle/Round.h"
+#include "Other/SexCall.h"
 
 #endif /* CMENGINE_H */

@@ -11,25 +11,22 @@
 #ifndef SKILL_H
 #define SKILL_H
 
-#include <string>
-#include <functional>
-
-#include "Wave.h"
+#include <iostream>
 
 namespace cmengine
 {
-    typedef std::function<Wave(Sprite &sp)> ActionFunc;
-
+    using namespace std;
+    
     class Skill
     {
     private:
-        
+        string name;
 
     public:
-        const std::string name;
-        const ActionFunc wave;
+        friend class Round;
 
-        Skill(std::string name_, ActionFunc wave_) : name(name_), wave(wave_) {}
+        Skill(string name_) : name(name_) {} 
+
     };
 
 }
