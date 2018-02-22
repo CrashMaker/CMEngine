@@ -1,34 +1,21 @@
 /*================================================================
 *   Copyright (C) 2018 CrashMaker. All rights reserved.
 *   
-*   文件名称：Skill.h
+*   文件名称：Attack.cpp
 *   创 建 者：CrashMaker
-*   创建日期：2018年02月02日
+*   创建日期：2018年02月22日
 *   描    述：
 *
 ================================================================*/
 
-#ifndef SKILL_H
-#define SKILL_H
+#include "Attack.h"
 
 #include <iostream>
 
 namespace cmengine
 {
-    using namespace std;
-    
-    class Skill
+    void Attack::action()
     {
-    private:
-        string name;
-
-    public:
-        friend class Attack;
-
-        Skill(string name_) : name(name_) {} 
-
-    };
-
+        std::cout << caster.name << skill.name << target.name << std::endl;
+    }
 }
-
-#endif /* SKILL_H */

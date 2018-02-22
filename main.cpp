@@ -10,7 +10,9 @@ int main()
     Sprite sp_2 = Sprite("猎人", 111, 222, 333);
     Skill skill = Skill("Cut");
     
-    sp_1+skill>>sp_2;
-    
+    Attack attack = sp_1+skill>>sp_2;
+    Round round = Round(attack);
+    round.action();
+
     return 0;
 }

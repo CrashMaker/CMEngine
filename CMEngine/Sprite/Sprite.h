@@ -26,7 +26,7 @@ namespace cmengine
         int health;
 
     public:
-        friend class Round;
+        friend class Attack;
 
         Sprite(string name_, int attack_, int defence_, int health_) : 
             name(name_), attack(attack_), defence(defence_), health(health_) {}

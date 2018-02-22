@@ -15,5 +15,6 @@
 #include "Skill/Skill.h"
 #include "Battle/Round.h"
 #include "Other/SexCall.h"
+#include "Battle/Attack.h"
 
 #endif /* CMENGINE_H */

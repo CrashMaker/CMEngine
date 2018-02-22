@@ -13,7 +13,7 @@
 
 #include "../Sprite/Sprite.h"
 #include "../Skill/Skill.h"
-#include "../Battle/Round.h"
+#include "../Battle/Attack.h"
 
 namespace cmengine
 {
@@ -26,7 +26,7 @@ namespace cmengine
     public:
         SexCall(Sprite &sp_, const Skill &sk_) : sp(sp_), sk(sk_) {}
 
-        Round operator>>(Sprite &sp_); 
+        Attack operator>>(Sprite &sp_); 
     };
 
     SexCall operator+(Sprite &sp_, const Skill &sk_);

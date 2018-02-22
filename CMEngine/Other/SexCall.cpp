@@ -12,10 +12,9 @@
 
 namespace cmengine
 {
-    Round SexCall::operator>>(Sprite &sp_)
+    Attack SexCall::operator>>(Sprite &sp_)
     {
-        Round round = Round(sp, sp_, sk);
-        round.action();
+        Attack round = Attack(sp, sp_, sk);
         return round;
     }
 

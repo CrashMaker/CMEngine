@@ -10,14 +10,27 @@
 
 #include "Round.h"
 
-#include <iostream>
-
 namespace cmengine
 {
     void Round::action()
     {
-        std::cout << caster.name << std::endl;
-        std::cout << skill.name << std::endl;
-        std::cout << target.name << std::endl;
+        Begin();
+        Battle();
+        Finish();
+    }
+
+    void Round::Begin()
+    {
+
+    }
+
+    void Round::Battle()
+    {
+        attack.action();
+    }
+
+    void Round::Finish()
+    {
+        
     }
 }
