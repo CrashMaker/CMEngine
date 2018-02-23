@@ -11,16 +11,14 @@
 #ifndef CMSOURCEMANAGER_H
 #define CMSOURCEMANAGER_H
 
-#include <map>
+#include "../CMGeneral/CMBaseType.h"
 
 namespace cmengine
 {
-    using std::map;
-
     class CMSourceManager
     {
     private:
-        static map<int, int> skillMap; 
+        static SkillMap skillMap; 
     public:
         static void LoadSkill();
     };

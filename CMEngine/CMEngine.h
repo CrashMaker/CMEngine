@@ -17,6 +17,7 @@
 #include "CMOther/CMSexCall.h"
 #include "CMBattle/CMAttack.h"
 #include "CMSourceManager/CMSourceManager.h"
+#include "CMGeneral/CMBaseType.h"
 
 namespace cmengine
 {
