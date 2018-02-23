@@ -13,7 +13,7 @@ void Hit(int point);
 int main()
 {
     using namespace cmengine;
-    LoadSkillSourceForCMEngine();    
+    CMEngineRun();
     
     CMSprite sp_1 = CMSprite("战士");
     CMSprite sp_2 = CMSprite("猎人");

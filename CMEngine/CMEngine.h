@@ -16,5 +16,14 @@
 #include "CMBattle/CMRound.h"
 #include "CMOther/CMSexCall.h"
 #include "CMBattle/CMAttack.h"
+#include "CMSourceManager/CMSourceManager.h"
+
+namespace cmengine
+{
+    inline void CMEngineRun()
+    {
+        CMSourceManager::LoadSkill();
+    }
+}
 
 #endif /* CMENGINE_H */
