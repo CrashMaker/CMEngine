@@ -11,10 +11,10 @@
 #ifndef CMENGINE_H
 #define CMENGINE_H
 
-#include "Sprite/Sprite.h"
-#include "Skill/Skill.h"
-#include "Battle/Round.h"
-#include "Other/SexCall.h"
-#include "Battle/Attack.h"
+#include "CMSprite/CMSprite.h"
+#include "CMSkill/CMSkill.h"
+#include "CMBattle/CMRound.h"
+#include "CMOther/CMSexCall.h"
+#include "CMBattle/CMAttack.h"
 
 #endif /* CMENGINE_H */
