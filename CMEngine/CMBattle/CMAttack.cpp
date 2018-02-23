@@ -14,6 +14,6 @@ namespace cmengine
 {
     void CMAttack::action()
     {
-
+        skill.model.logicFun(caster.model, target.model, skill.model);
     }
 }

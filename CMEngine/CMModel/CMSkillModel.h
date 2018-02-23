@@ -24,7 +24,9 @@ namespace cmengine
     struct CMSkillModel
     {
         string name;            
-        function<void(const CMSpriteModel &caster, const CMSpriteModel &target)> logicFun;
+        function<void(const CMSpriteModel &caster, 
+                      const CMSpriteModel &target, 
+                      const CMSkillModel &skill)> logicFun;
     };
 }
 

@@ -11,6 +11,7 @@
 #ifndef CMSKILL_H
 #define CMSKILL_H
 
+#include "../CMGeneral/CMBaseType.h"
 #include "../CMModel/CMSkillModel.h"
 
 namespace cmengine
@@ -21,7 +22,9 @@ namespace cmengine
         CMSkillModel model;
 
     public:
+        friend class CMAttack;
 
+        CMSkill(CreateSkillFun f);
     };
 }
 

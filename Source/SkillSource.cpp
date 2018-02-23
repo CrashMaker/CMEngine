@@ -12,9 +12,9 @@
 
 #include <iostream>
 
-SkillMap cmengine::LoadSkillSourceForCMEngine()
+CreateSkillFunMap cmengine::GetSkillSourceForCMEngine()
 {
-    SkillMap map;
+    CreateSkillFunMap map;
 
     map = {
         {1, Cut}, 
@@ -26,8 +26,10 @@ SkillMap cmengine::LoadSkillSourceForCMEngine()
 // 技能列表
 void Cut(CMSkillModel &model)
 {
-    model.name = "I am Cut";
-    model.logicFun = [](const CMSpriteModel &caster, const CMSpriteModel &target){
-        std::cout << caster.name << " " << target.name << std::endl;
+    model.name = "Cut";
+    model.logicFun = [](const CMSpriteModel &caster, 
+                        const CMSpriteModel &target, 
+                        const CMSkillModel &skill) {
+        std::cout << caster.name << skill.name << target.name << std::endl;
     };
 }

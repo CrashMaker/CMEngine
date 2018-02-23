@@ -4,7 +4,7 @@
 *   文件名称：CMSexCall.h
 *   创 建 者：CrashMaker
 *   创建日期：2018年02月23日
-*   描    述：可以使用如下格式进行战斗：(施法者)+(技能)>>(目标)
+*   描    述：可以使用如下格式进行战斗：(施法者)+(技能编号)>>(目标)
 *
 ================================================================*/
 
@@ -14,6 +14,7 @@
 #include "../CMSprite/CMSprite.h"
 #include "../CMSkill/CMSkill.h"
 #include "../CMBattle/CMAttack.h"
+#include "../CMSourceManager/CMSourceManager.h"
 
 namespace cmengine
 {
@@ -21,15 +22,15 @@ namespace cmengine
     {
     private:
         CMSprite &sp;
-        const CMSkill &sk; 
+        CMSkill sk; 
 
     public:
-        CMSexCall(CMSprite &sp_, const CMSkill &sk_) : sp(sp_), sk(sk_) {}
+        CMSexCall(CMSprite &sp_, CMSkill sk_) : sp(sp_), sk(sk_) {}
 
         CMAttack operator>>(CMSprite &sp_); 
     };
 
-    CMSexCall operator+(CMSprite &sp_, const CMSkill &sk_);
+    CMSexCall operator+(CMSprite &sp_, MapKey key);
 }
 
 

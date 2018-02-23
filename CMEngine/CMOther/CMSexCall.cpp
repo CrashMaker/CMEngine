@@ -20,8 +20,9 @@ namespace cmengine
         return attack;
     }
 
-    CMSexCall operator+(CMSprite &sp_, const CMSkill &sk_)
+    CMSexCall operator+(CMSprite &sp_, MapKey key)
     {
-        return CMSexCall(sp_, sk_); 
+        CMSkill sk = CMSkill(CMSourceManager::GetCreateSkillFunWithKey(key));
+        return CMSexCall(sp_, sk);
     }
 }

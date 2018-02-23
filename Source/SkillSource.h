@@ -13,12 +13,12 @@
 
 #include "../CMEngine/CMEngine.h"
 
-using cmengine::SkillMap;
+using cmengine::CreateSkillFunMap;
 using cmengine::CMSkillModel;
 using cmengine::CMSpriteModel;
 
 // 需要实现的函数
-SkillMap cmengine::LoadSkillSourceForCMEngine();
+CreateSkillFunMap cmengine::GetSkillSourceForCMEngine();
 
 // 技能列表
 void Cut(CMSkillModel &model);

@@ -20,8 +20,8 @@ namespace cmengine
 {
     typedef int MapKey;
 
-    typedef std::function<void(CMSkillModel &model)> SkillFun;
-    typedef std::map<MapKey, SkillFun> SkillMap;
+    typedef std::function<void(CMSkillModel &model)> CreateSkillFun;
+    typedef std::map<MapKey, CreateSkillFun> CreateSkillFunMap;
 }
 
 #endif /* CMBASETYPE_H */

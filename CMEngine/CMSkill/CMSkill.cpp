@@ -12,4 +12,8 @@
 
 namespace cmengine
 {
+    CMSkill::CMSkill(CreateSkillFun f)
+    {
+        f(model);
+    }
 }

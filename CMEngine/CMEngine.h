@@ -24,11 +24,11 @@
 namespace cmengine
 {
     // 需要实现该函数
-    SkillMap LoadSkillSourceForCMEngine();
+    CreateSkillFunMap GetSkillSourceForCMEngine();
 
     inline void CMEngineRun()
     {
-        CMSourceManager::LoadSkill(LoadSkillSourceForCMEngine());
+        CMSourceManager::LoadSkill(GetSkillSourceForCMEngine());
     }
 }
 

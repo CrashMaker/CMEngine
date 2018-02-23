@@ -14,20 +14,22 @@
 
 namespace cmengine
 {
-    SkillMap CMSourceManager::skillMap;
+    CreateSkillFunMap CMSourceManager::skillSource;
 
-    void CMSourceManager::LoadSkill(const SkillMap &map)
+    void CMSourceManager::LoadSkill(const CreateSkillFunMap &map)
     {
-        CMSourceManager::skillMap = map;    
+        CMSourceManager::skillSource = map;    
     }
 
-    SkillFun CMSourceManager::GetSkillFunWithKey(int key)
+    CreateSkillFun CMSourceManager::GetCreateSkillFunWithKey(int key)
     {
-        SkillMap::iterator it;
+        CreateSkillFunMap::iterator it;
 
-        it = CMSourceManager::skillMap.find(key);
-        if (it != CMSourceManager::skillMap.end()) {
+        it = CMSourceManager::skillSource.find(key);
+        if (it != CMSourceManager::skillSource.end()) {
             return it->second;
+        } else {
+            std::cout << "No CreateSkillFun in map!" << std::endl;
         }
 
         return 0;

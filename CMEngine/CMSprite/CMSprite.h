@@ -21,7 +21,9 @@ namespace cmengine
         CMSpriteModel model;
 
     public:
+        friend class CMAttack;
 
+        CMSprite(const CMSpriteModel &model_) : model(model_) {}
     };
 }
 
