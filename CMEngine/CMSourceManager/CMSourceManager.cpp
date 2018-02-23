@@ -14,8 +14,22 @@
 
 namespace cmengine
 {
-    void CMSourceManager::LoadSkill()
+    SkillMap CMSourceManager::skillMap;
+
+    void CMSourceManager::LoadSkill(const SkillMap &map)
     {
-        
+        CMSourceManager::skillMap = map;    
+    }
+
+    SkillFun CMSourceManager::GetSkillFunWithKey(int key)
+    {
+        SkillMap::iterator it;
+
+        it = CMSourceManager::skillMap.find(key);
+        if (it != CMSourceManager::skillMap.end()) {
+            return it->second;
+        }
+
+        return 0;
     }
 }

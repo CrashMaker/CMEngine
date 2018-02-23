@@ -10,7 +10,24 @@
 
 #include "SkillSource.h"
 
-void LoadSkillSourceForCMEngine()
-{
+#include <iostream>
 
+SkillMap cmengine::LoadSkillSourceForCMEngine()
+{
+    SkillMap map;
+
+    map = {
+        {1, Cut}, 
+    };
+
+    return map;
+}
+
+// 技能列表
+void Cut(CMSkillModel &model)
+{
+    model.name = "I am Cut";
+    model.logicFun = [](const CMSpriteModel &caster, const CMSpriteModel &target){
+        std::cout << caster.name << " " << target.name << std::endl;
+    };
 }

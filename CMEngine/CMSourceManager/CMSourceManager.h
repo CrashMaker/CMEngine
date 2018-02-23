@@ -20,7 +20,8 @@ namespace cmengine
     private:
         static SkillMap skillMap; 
     public:
-        static void LoadSkill();
+        static void LoadSkill(const SkillMap &map);
+        static SkillFun GetSkillFunWithKey(int key);
     };
 }
 

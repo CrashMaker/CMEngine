@@ -10,4 +10,6 @@
 
 #include "CMSkill.h"
 
-
+namespace cmengine
+{
+}

@@ -11,6 +11,16 @@
 #ifndef SKILLSOURCE_H
 #define SKILLSOURCE_H
 
-void LoadSkillSourceForCMEngine();
+#include "../CMEngine/CMEngine.h"
+
+using cmengine::SkillMap;
+using cmengine::CMSkillModel;
+using cmengine::CMSpriteModel;
+
+// 需要实现的函数
+SkillMap cmengine::LoadSkillSourceForCMEngine();
+
+// 技能列表
+void Cut(CMSkillModel &model);
 
 #endif /* SKILLSOURCE_H */

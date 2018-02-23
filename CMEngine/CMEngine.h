@@ -18,12 +18,17 @@
 #include "CMBattle/CMAttack.h"
 #include "CMSourceManager/CMSourceManager.h"
 #include "CMGeneral/CMBaseType.h"
+#include "CMModel/CMSkillModel.h"
+#include "CMModel/CMSpriteModel.h"
 
 namespace cmengine
 {
+    // 需要实现该函数
+    SkillMap LoadSkillSourceForCMEngine();
+
     inline void CMEngineRun()
     {
-        CMSourceManager::LoadSkill();
+        CMSourceManager::LoadSkill(LoadSkillSourceForCMEngine());
     }
 }
 

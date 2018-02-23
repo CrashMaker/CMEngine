@@ -14,10 +14,14 @@
 #include <map>
 #include <functional>
 
-typedef int key;
+#include "../CMModel/CMSkillModel.h"
 
-typedef std::function<void(int)> SkillFunc;
+namespace cmengine
+{
+    typedef int MapKey;
 
-typedef std::map<key, SkillFunc>SkillMap;
+    typedef std::function<void(CMSkillModel &model)> SkillFun;
+    typedef std::map<MapKey, SkillFun> SkillMap;
+}
 
 #endif /* CMBASETYPE_H */

@@ -11,19 +11,16 @@
 #ifndef CMSPRITE_H
 #define CMSPRITE_H
 
-#include <string>
+#include "../CMModel/CMSpriteModel.h"
 
 namespace cmengine
 {
-    using std::string;
-    
     class CMSprite
     {
     private:
-        string name;
+        CMSpriteModel model;
 
     public:
-        CMSprite(string name_) : name(name_) {} 
 
     };
 }
