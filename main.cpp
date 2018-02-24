@@ -13,7 +13,6 @@ int main()
     model_1.attack = 10;
     model_1.defense = 5;
     model_1.health = 100;
-
     CMSprite sp_1 = CMSprite(model_1);
     
     CMSpriteModel model_2;
@@ -21,7 +20,6 @@ int main()
     model_2.attack = 8;
     model_2.defense = 6;
     model_2.health = 110;
-
     CMSprite sp_2 = CMSprite(model_2);
 
     sp_1+1>>sp_2;

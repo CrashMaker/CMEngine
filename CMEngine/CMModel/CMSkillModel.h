@@ -14,19 +14,20 @@
 #include <string>
 #include <functional>
 
-#include "CMSpriteModel.h"
+#include "../CMSprite/CMSprite.h"
 
 namespace cmengine
 {
     using std::string;
     using std::function;
+    class CMSkill;
 
     struct CMSkillModel
     {
         string name;            
-        function<void(const CMSpriteModel &caster, 
-                      const CMSpriteModel &target, 
-                      const CMSkillModel &skill)> logicFun;
+        function<void(CMSprite &caster, 
+                      CMSprite &target, 
+                      CMSkill &skill)> logicFun;
     };
 }
 

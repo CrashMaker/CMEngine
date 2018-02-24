@@ -20,10 +20,11 @@
 #include "CMGeneral/CMBaseType.h"
 #include "CMModel/CMSkillModel.h"
 #include "CMModel/CMSpriteModel.h"
+#include "CMInterface/CMBattleInterface.h"
 
 namespace cmengine
 {
-    // 需要实现该函数
+    // 需要实现的函数
     CreateSkillFunMap GetSkillSourceForCMEngine();
 
     inline void CMEngineRun()

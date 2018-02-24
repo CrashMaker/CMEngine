@@ -15,7 +15,9 @@
 
 using cmengine::CreateSkillFunMap;
 using cmengine::CMSkillModel;
-using cmengine::CMSpriteModel;
+using cmengine::CMSprite;
+using cmengine::CMSkill;
+using cmengine::CMBattleInterface;
 
 // 需要实现的函数
 CreateSkillFunMap cmengine::GetSkillSourceForCMEngine();

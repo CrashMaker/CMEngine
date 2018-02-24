@@ -10,8 +10,6 @@
 
 #include "SkillSource.h"
 
-#include <iostream>
-
 CreateSkillFunMap cmengine::GetSkillSourceForCMEngine()
 {
     CreateSkillFunMap map;
@@ -27,9 +25,9 @@ CreateSkillFunMap cmengine::GetSkillSourceForCMEngine()
 void Cut(CMSkillModel &model)
 {
     model.name = "Cut";
-    model.logicFun = [](const CMSpriteModel &caster, 
-                        const CMSpriteModel &target, 
-                        const CMSkillModel &skill) {
-        std::cout << caster.name << skill.name << target.name << std::endl;
+    model.logicFun = [](CMSprite &caster, 
+                        CMSprite &target, 
+                        CMSkill &skill) {
+        CMBattleInterface::dead(target);
     };
 }
