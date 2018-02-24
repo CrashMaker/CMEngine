@@ -18,7 +18,9 @@ namespace cmengine
     class CMBattleInterface
     {
     public:
-        static void dead(CMSprite &sp);
+        static void Dead(CMSprite &sp);
+        static void Hurt(CMSprite &sp, int point);
+        static void PhysicalBlow(CMSprite &sp, int point); 
     };
 }
 

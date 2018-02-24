@@ -24,6 +24,7 @@ namespace cmengine
         friend class CMBattleInterface;
 
         CMSprite(const CMSpriteModel &model_) : model(model_) {}
+        CMSpriteModel GetModel() {return model;}
     };
 }
 

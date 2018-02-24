@@ -14,10 +14,30 @@
 
 namespace cmengine
 {
-    void CMBattleInterface::dead(CMSprite &sp)
+    void CMBattleInterface::Dead(CMSprite &sp)
     {
         sp.model.health = 0;
         
         std::cout << sp.model.name << "死亡" << std::endl;
+    }
+
+    void CMBattleInterface::Hurt(CMSprite &sp, int point)
+    {
+        sp.model.health -= point;
+
+        if (sp.model.health <= 0) {
+            CMBattleInterface::Dead(sp);
+        }
+    }
+
+    void CMBattleInterface::PhysicalBlow(CMSprite &sp, int point)
+    {
+        int p = point - sp.model.defense;
+
+        if (p < 0) {
+            p = 0;
+        }
+
+        CMBattleInterface::Hurt(sp, p);
     }
 }

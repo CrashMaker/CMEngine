@@ -28,6 +28,6 @@ void Cut(CMSkillModel &model)
     model.logicFun = [](CMSprite &caster, 
                         CMSprite &target, 
                         CMSkill &skill) {
-        CMBattleInterface::dead(target);
+        CMBattleInterface::PhysicalBlow(target, caster.GetModel().attack);
     };
 }

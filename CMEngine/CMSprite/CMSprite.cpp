@@ -10,4 +10,7 @@
 
 #include "CMSprite.h"
 
+namespace cmengine
+{
 
+}
