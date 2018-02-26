@@ -17,8 +17,6 @@ namespace cmengine
     void CMBattleInterface::Dead(CMSprite &sp)
     {
         sp.model.health = 0;
-        
-        std::cout << sp.model.name << "死亡" << std::endl;
     }
 
     void CMBattleInterface::Hurt(CMSprite &sp, int point)
