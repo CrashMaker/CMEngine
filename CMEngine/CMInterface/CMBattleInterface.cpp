@@ -10,25 +10,34 @@
 
 #include "CMBattleInterface.h"
 
-#include <iostream>
+#include <string>
+#include <sstream>
 
 namespace cmengine
 {
-    void CMBattleInterface::Dead(CMSprite &sp)
+    void CMBattleInterface::Dead(CMSprite &sp, CMStateLog &stateLog)
     {
         sp.model.health = 0;
+
+        std::string log = sp.model.name + "已死亡";
+        stateLog.Push(log);
     }
 
-    void CMBattleInterface::Hurt(CMSprite &sp, int point)
+    void CMBattleInterface::Hurt(CMSprite &sp, int point, CMStateLog &stateLog)
     {
         sp.model.health -= point;
 
+        std::stringstream ss;
+        ss << point;
+        std::string log = sp.model.name + "受到 " + ss.str() + " 点伤害";
+        stateLog.Push(log);
+
         if (sp.model.health <= 0) {
-            CMBattleInterface::Dead(sp);
+            CMBattleInterface::Dead(sp, stateLog);
         }
     }
 
-    void CMBattleInterface::PhysicalBlow(CMSprite &sp, int point)
+    void CMBattleInterface::PhysicalBlow(CMSprite &sp, int point, CMStateLog &stateLog)
     {
         int p = point - sp.model.defense;
 
@@ -36,6 +45,6 @@ namespace cmengine
             p = 0;
         }
 
-        CMBattleInterface::Hurt(sp, p);
+        CMBattleInterface::Hurt(sp, p, stateLog);
     }
 }

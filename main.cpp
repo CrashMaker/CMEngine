@@ -32,6 +32,6 @@ int main()
     sp_1+1>>sp_2;
     sp_1+1>>sp_2;
     sp_1+1>>sp_2;
-    
+
     return 0;
 }

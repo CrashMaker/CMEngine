@@ -15,6 +15,7 @@
 #include <functional>
 
 #include "../CMSprite/CMSprite.h"
+#include "../CMStateLog/CMStateLog.h"
 
 namespace cmengine
 {
@@ -27,7 +28,8 @@ namespace cmengine
         string name;            
         function<void(CMSprite &caster, 
                       CMSprite &target, 
-                      CMSkill &skill)> logicFun;
+                      CMSkill &skill, 
+                      CMStateLog &stateLog)> logicFun;
     };
 }
 

@@ -21,6 +21,7 @@
 #include "CMModel/CMSkillModel.h"
 #include "CMModel/CMSpriteModel.h"
 #include "CMInterface/CMBattleInterface.h"
+#include "CMStateLog/CMStateLog.h"
 
 namespace cmengine
 {

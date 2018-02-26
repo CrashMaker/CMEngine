@@ -12,15 +12,16 @@
 #define CMBATTLEINTERFACE_H
 
 #include "../CMSprite/CMSprite.h"
+#include "../CMStateLog/CMStateLog.h"
 
 namespace cmengine
 {
     class CMBattleInterface
     {
     public:
-        static void Dead(CMSprite &sp);
-        static void Hurt(CMSprite &sp, int point);
-        static void PhysicalBlow(CMSprite &sp, int point); 
+        static void Dead(CMSprite &sp, CMStateLog &stateLog);
+        static void Hurt(CMSprite &sp, int point, CMStateLog &stateLog);
+        static void PhysicalBlow(CMSprite &sp, int point, CMStateLog &stateLog); 
     };
 }
 
