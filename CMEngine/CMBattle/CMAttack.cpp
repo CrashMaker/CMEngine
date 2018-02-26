@@ -14,6 +14,6 @@ namespace cmengine
 {
     void CMAttack::action()
     {
-        skill.model.logicFun(caster, target, skill);
+        skill.GetModel().logicFun(caster, target, skill);
     }
 }

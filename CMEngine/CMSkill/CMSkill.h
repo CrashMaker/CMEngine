@@ -22,9 +22,9 @@ namespace cmengine
         CMSkillModel model;
 
     public:
-        friend class CMAttack;
-
         CMSkill(CreateSkillFun f);
+        
+        CMSkillModel GetModel() {return model;}
     };
 }
 
