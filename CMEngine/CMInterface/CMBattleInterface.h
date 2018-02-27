@@ -21,7 +21,7 @@ namespace cmengine
     public:
         static void Dead(CMSprite &sp, CMStateLog &stateLog);
         static void Hurt(CMSprite &sp, int point, CMStateLog &stateLog);
-        static void PhysicalBlow(CMSprite &sp, int point, CMStateLog &stateLog); 
+        static void PhysicalBlow(CMSprite &caster, CMSprite &target, CMStateLog &stateLog);
     };
 }
 

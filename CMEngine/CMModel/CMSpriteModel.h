@@ -22,7 +22,10 @@ namespace cmengine
         string name;
         int attack;
         int defense;
+        int magicAtk;
+        int magicDef;
         int health;
+        int speed;
     };
 }
 

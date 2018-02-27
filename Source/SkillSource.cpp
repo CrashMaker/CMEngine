@@ -29,6 +29,6 @@ void Cut(CMSkillModel &model)
                         CMSprite &target, 
                         CMSkill &skill, 
                         CMStateLog &stateLog) {
-        CMBattleInterface::PhysicalBlow(target, caster.GetModel().attack, stateLog);
+        CMBattleInterface::PhysicalBlow(caster, target, stateLog);
     };
 }

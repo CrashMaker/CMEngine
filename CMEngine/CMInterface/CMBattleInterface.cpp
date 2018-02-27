@@ -37,14 +37,19 @@ namespace cmengine
         }
     }
 
-    void CMBattleInterface::PhysicalBlow(CMSprite &sp, int point, CMStateLog &stateLog)
+    void CMBattleInterface::PhysicalBlow(CMSprite &caster, CMSprite &target, CMStateLog &stateLog)
     {
-        int p = point - sp.model.defense;
+        int point = caster.model.attack - target.model.defense;
 
-        if (p < 0) {
-            p = 0;
+        if (point < 0) {
+            point = 0;
         }
 
-        CMBattleInterface::Hurt(sp, p, stateLog);
+        std::stringstream ss;
+        ss << point;
+        std::string log = caster.model.name + "造成 " + ss.str() + " 点物理伤害";
+        stateLog.Push(log);
+
+        CMBattleInterface::Hurt(target, point, stateLog);
     }
 }
