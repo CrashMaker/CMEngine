@@ -15,14 +15,14 @@
 
 namespace cmengine
 {
+    class CMBattleInterface;
+
     class CMSprite
     {
     private:
         CMSpriteModel model;
 
     public:
-        friend class CMBattleInterface;
-
         CMSprite(const CMSpriteModel &model_) : model(model_) {}
         CMSpriteModel GetModel() {return model;}
     };

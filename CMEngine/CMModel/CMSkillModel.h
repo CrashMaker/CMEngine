@@ -18,7 +18,7 @@ namespace cmengine
 {
     using std::string;
     using std::function;
-    class CMSkill;
+
     class CMBattleInterface;
 
     enum AttackType { 

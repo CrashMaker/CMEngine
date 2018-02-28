@@ -24,6 +24,8 @@ namespace cmengine
 
     public:
         CMSkill(CreateSkillFun f);
+        CMSkillModel GetModel() {return model;}
+
         void Cast(CMSprite &caster, CMSprite &target); 
     };
 }

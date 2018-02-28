@@ -9,7 +9,6 @@
 ================================================================*/
 
 #include "CMAttack.h"
-#include "../CMStateLog/CMStateLog.h"
 
 namespace cmengine
 {

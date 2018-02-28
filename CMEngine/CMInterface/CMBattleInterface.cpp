@@ -15,5 +15,33 @@
 
 namespace cmengine
 {
+    void CMBattleInterface::Dead(bool showLog)
+    {
+        
+    }
 
+    void CMBattleInterface::Hurt(int point, bool showLog)
+    {
+
+    }
+
+    void CMBattleInterface::Blow(float multiplication, int addition, bool showLog)
+    {
+        int hurtPoint = 0;
+        int resistancePoint = 0;
+        
+        if (DamageTypePhysical == skill.GetModel().damageType) {
+            hurtPoint = caster.GetModel().attack;
+            resistancePoint = target.GetModel().defense;
+        } else if (DamageTypeMagic == skill.GetModel().damageType) {
+            hurtPoint = caster.GetModel().magicAtk;
+            resistancePoint = target.GetModel().magicDef;
+        }
+
+        hurtPoint *= multiplication;
+        hurtPoint += addition;
+
+        int resultPoint = hurtPoint - resistancePoint;
+        if (resultPoint < 0) resultPoint = 0;
+    }
 }
