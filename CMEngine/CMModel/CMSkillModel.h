@@ -14,22 +14,30 @@
 #include <string>
 #include <functional>
 
-#include "../CMSprite/CMSprite.h"
-#include "../CMStateLog/CMStateLog.h"
-
 namespace cmengine
 {
     using std::string;
     using std::function;
     class CMSkill;
+    class CMBattleInterface;
+
+    enum AttackType { 
+        AttackTypeMelee,        // 近战
+        AttackTypeRemote,       // 远程
+    };
+
+    enum DamageType {
+        DamageTypePhysical,     // 物理伤害
+        DamageTypeMagic,        // 魔法伤害
+    };
 
     struct CMSkillModel
     {
         string name;            
-        function<void(CMSprite &caster, 
-                      CMSprite &target, 
-                      CMSkill &skill, 
-                      CMStateLog &stateLog)> logicFun;
+        AttackType attackType;
+        DamageType damageType;
+
+        function<void(const CMBattleInterface &interface)> logicFun;
     };
 }
 

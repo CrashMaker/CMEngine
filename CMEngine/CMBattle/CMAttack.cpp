@@ -15,9 +15,6 @@ namespace cmengine
 {
     void CMAttack::action()
     {
-        CMStateLog stateLog = CMStateLog(caster.GetModel().name, 
-                target.GetModel().name, skill.GetModel().name);
-        skill.GetModel().logicFun(caster, target, skill, stateLog);
-        stateLog.Print();
+        skill.Cast(caster, target);
     }
 }

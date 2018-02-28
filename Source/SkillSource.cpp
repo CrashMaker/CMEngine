@@ -10,9 +10,9 @@
 
 #include "SkillSource.h"
 
-CreateSkillFunMap cmengine::GetSkillSourceForCMEngine()
+cmengine::CreateSkillFunMap cmengine::GetSkillSourceForCMEngine()
 {
-    CreateSkillFunMap map;
+    cmengine::CreateSkillFunMap map;
 
     map = {
         {1, Cut}, 
@@ -22,13 +22,13 @@ CreateSkillFunMap cmengine::GetSkillSourceForCMEngine()
 }
 
 // 技能列表
-void Cut(CMSkillModel &model)
+void Cut(cmengine::CMSkillModel &model)
 {
     model.name = "Cut";
-    model.logicFun = [](CMSprite &caster, 
-                        CMSprite &target, 
-                        CMSkill &skill, 
-                        CMStateLog &stateLog) {
-        CMBattleInterface::PhysicalBlow(caster, target, stateLog);
+    model.attackType = cmengine::AttackTypeMelee;
+    model.damageType = cmengine::DamageTypePhysical;
+
+    model.logicFun = [](const cmengine::CMBattleInterface &interface) {
+
     };
 }

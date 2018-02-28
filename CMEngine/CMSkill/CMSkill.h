@@ -13,6 +13,7 @@
 
 #include "../CMGeneral/CMBaseType.h"
 #include "../CMModel/CMSkillModel.h"
+#include "../CMSprite/CMSprite.h"
 
 namespace cmengine
 {
@@ -23,8 +24,7 @@ namespace cmengine
 
     public:
         CMSkill(CreateSkillFun f);
-        
-        CMSkillModel GetModel() {return model;}
+        void Cast(CMSprite &caster, CMSprite &target); 
     };
 }
 

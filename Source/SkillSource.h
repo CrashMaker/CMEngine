@@ -13,17 +13,10 @@
 
 #include "../CMEngine/CMEngine.h"
 
-using cmengine::CreateSkillFunMap;
-using cmengine::CMSkillModel;
-using cmengine::CMSprite;
-using cmengine::CMSkill;
-using cmengine::CMBattleInterface;
-using cmengine::CMStateLog;
-
 // 需要实现的函数
-CreateSkillFunMap cmengine::GetSkillSourceForCMEngine();
+cmengine::CreateSkillFunMap cmengine::GetSkillSourceForCMEngine();
 
 // 技能列表
-void Cut(CMSkillModel &model);
+void Cut(cmengine::CMSkillModel &model);
 
 #endif /* SKILLSOURCE_H */

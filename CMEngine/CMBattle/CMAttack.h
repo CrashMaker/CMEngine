@@ -18,16 +18,16 @@ namespace cmengine
 {
     class CMAttack
     {
-        private:
-            CMSprite &caster;
-            CMSprite &target;
-            CMSkill &skill;
+    private:
+        CMSprite &caster;
+        CMSprite &target;
+        CMSkill &skill;
 
-        public:
-            CMAttack(CMSprite &caster_, CMSprite &target_, CMSkill &skill_) : 
-                caster(caster_), target(target_), skill(skill_) {}
+    public:
+        CMAttack(CMSprite &caster_, CMSprite &target_, CMSkill &skill_) : 
+            caster(caster_), target(target_), skill(skill_) {}
 
-            void action();
+        void action();
     };
 }
 
