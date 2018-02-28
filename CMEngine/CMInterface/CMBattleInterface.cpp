@@ -15,16 +15,6 @@
 
 namespace cmengine
 {
-    void CMBattleInterface::Dead(bool showLog)
-    {
-        
-    }
-
-    void CMBattleInterface::Hurt(int point, bool showLog)
-    {
-
-    }
-
     void CMBattleInterface::Blow(float multiplication, int addition, bool showLog)
     {
         int hurtPoint = 0;
