@@ -21,8 +21,8 @@ namespace cmengine
         CMSprite &sprite;
 
     public:
-        void Dead(bool showLog = true);
-        void Hurt(int point, bool showLog = true);
+        void Dead();
+        void Hurt(int point);
 
         CMSpriteInterface(CMSprite &sprite_) : sprite(sprite_) {}
 

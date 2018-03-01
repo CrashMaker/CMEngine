@@ -21,19 +21,18 @@ namespace cmengine
     private:
         CMSprite &caster;
         CMSprite &target;
-        CMSkill &skill;
+        const CMSkill &skill;
 
     public:
-        CMBattleInterface(CMSprite &caster_, CMSprite &target_, CMSkill &skill_) : 
+        CMBattleInterface(CMSprite &caster_, CMSprite &target_, const CMSkill &skill_) : 
             caster(caster_), target(target_), skill(skill_) {}
 
         /* 对目标打击造成伤害，伤害由施放者的属性决定，伤害类型
          * 由技能的伤害类型决定，入参可以对伤害数值进行调整。
          *
          * multiplication : 伤害的相乘系数
-         * addition : 伤害的相加系数
-         * showLog : 是否打印日志 */
-        void Blow(float multiplication = 1, int addition = 0, bool showLog = true);
+         * addition : 伤害的相加系数 */
+        void Blow(float multiplication = 1, int addition = 0) const;
     };
 }
 

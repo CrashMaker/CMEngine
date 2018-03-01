@@ -21,10 +21,10 @@ namespace cmengine
     private:
         CMSprite &caster;
         CMSprite &target;
-        CMSkill &skill;
+        const CMSkill &skill;
 
     public:
-        CMAttack(CMSprite &caster_, CMSprite &target_, CMSkill &skill_) : 
+        CMAttack(CMSprite &caster_, CMSprite &target_, const CMSkill &skill_) : 
             caster(caster_), target(target_), skill(skill_) {}
 
         void action();

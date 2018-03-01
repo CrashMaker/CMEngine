@@ -29,6 +29,6 @@ void Cut(cmengine::CMSkillModel &model)
     model.damageType = cmengine::DamageTypePhysical;
 
     model.logicFun = [](const cmengine::CMBattleInterface &interface) {
-
+        interface.Blow();
     };
 }

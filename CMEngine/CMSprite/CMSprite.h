@@ -23,6 +23,8 @@ namespace cmengine
         CMSpriteModel model;
 
     public:
+        friend class CMSpriteInterface;
+
         CMSprite(const CMSpriteModel &model_) : model(model_) {}
         CMSpriteModel GetModel() {return model;}
     };

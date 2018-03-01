@@ -10,12 +10,13 @@
 
 #include "CMBattleInterface.h"
 
-#include <string>
-#include <sstream>
+#include <iostream>
+
+#include "CMSpriteInterface.h"
 
 namespace cmengine
 {
-    void CMBattleInterface::Blow(float multiplication, int addition, bool showLog)
+    void CMBattleInterface::Blow(float multiplication, int addition) const
     {
         int hurtPoint = 0;
         int resistancePoint = 0;
@@ -33,5 +34,15 @@ namespace cmengine
 
         int resultPoint = hurtPoint - resistancePoint;
         if (resultPoint < 0) resultPoint = 0;
+
+        std::cout << caster.GetModel().name 
+                  << "对" 
+                  << target.GetModel().name
+                  << "使用"
+                  << skill.GetModel().name << std::endl;
+
+        CMSpriteInterface spriteInterface = CMSpriteInterface(target);
+        spriteInterface.Hurt(resultPoint);
+
     }
 }

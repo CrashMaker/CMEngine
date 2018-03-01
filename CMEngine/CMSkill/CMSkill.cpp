@@ -18,7 +18,7 @@ namespace cmengine
         f(model);
     }
 
-    void CMSkill::Cast(CMSprite &caster, CMSprite &target)
+    void CMSkill::Cast(CMSprite &caster, CMSprite &target) const
     {
         CMBattleInterface interface = CMBattleInterface(caster, target, *this);
         model.logicFun(interface);
