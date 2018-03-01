@@ -9,9 +9,6 @@
 ================================================================*/
 
 #include "CMBattleInterface.h"
-
-#include <iostream>
-
 #include "CMSpriteInterface.h"
 
 namespace cmengine
@@ -34,12 +31,6 @@ namespace cmengine
 
         int resultPoint = hurtPoint - resistancePoint;
         if (resultPoint < 0) resultPoint = 0;
-
-        std::cout << caster.GetModel().name 
-                  << "对" 
-                  << target.GetModel().name
-                  << "使用"
-                  << skill.GetModel().name << std::endl;
 
         CMSpriteInterface spriteInterface = CMSpriteInterface(target);
         spriteInterface.Hurt(resultPoint);
