@@ -10,13 +10,10 @@
 
 #include "CMBattleNote.h"
 
-#include <iostream>
-
 namespace cmengine
 {
     void CMBattleNote::Push(const CMBattleLog &log)
     {
-        std::cout << log.GetLog() << std::endl;
         logVector.push_back(log);     
     }
 }

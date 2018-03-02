@@ -20,17 +20,25 @@ namespace cmengine
     class CMBattleInterface
     {
     private:
-        CMSprite &caster;
-        CMSprite &target;
-        const CMSkill &skill;
-        CMBattleNote &note;
+        CMSprite &caster;           // 施法者
+        CMSprite &target;           // 目标
+        const CMSkill &skill;       // 技能
+        CMBattleNote &note;         // 战斗日志
+
+        // 根据施放者的属性和技能的属性生成伤害
+        int MakeAttackPoint() const;
+
+        // 根据目标的属性和技能的属性生成可抵抗的伤害
+        int MakeDefensePoint() const;
+
+        // 计算最终伤害数值
+        int CreateHurtPoint(int attackPoint, int defensePoint) const;
 
     public:
         CMBattleInterface(CMSprite &caster_, CMSprite &target_, const CMSkill &skill_, CMBattleNote &note_) : 
             caster(caster_), target(target_), skill(skill_), note(note_) {}
 
-        /* 对目标打击造成伤害，伤害由施放者的属性决定，伤害类型
-         * 由技能的伤害类型决定，入参可以对伤害数值进行调整。
+        /* 对目标打击造成伤害，入参可以对伤害数值进行调整。
          *
          * multiplication : 伤害的相乘系数
          * addition : 伤害的相加系数 */

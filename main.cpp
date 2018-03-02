@@ -1,12 +1,22 @@
 #include <iostream>
 #include <string>
+#include <random>
+#include <ctime>
 
 #include "CMEngine/CMEngine.h"
 #include "Source/SkillSource.h"
 
 int main()
 {
+    using namespace std;
     using namespace cmengine;
+
+    // default_random_engine e(time(0));
+    // uniform_int_distribution<unsigned> u(1, 2);
+    // for(int i=0; i<10; ++i)
+    //     cout<<u(e)<<endl;
+    // return 0;
+
     CMEngineRun();
 
     CMSpriteModel model_1;
