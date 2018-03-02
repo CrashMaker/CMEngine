@@ -13,8 +13,6 @@
 
 #include "../CMGeneral/CMBaseType.h"
 #include "../CMModel/CMSkillModel.h"
-#include "../CMSprite/CMSprite.h"
-#include "../CMLog/CMBattleNote.h"
 
 namespace cmengine
 {
@@ -27,8 +25,6 @@ namespace cmengine
         CMSkill(CreateSkillFun f);
 
         CMSkillModel GetModel() const {return model;}
-
-        void Cast(CMSprite &caster, CMSprite &target, CMBattleNote &note) const;
     };
 }
 

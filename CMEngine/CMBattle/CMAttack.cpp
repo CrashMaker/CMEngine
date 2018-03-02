@@ -9,11 +9,13 @@
 ================================================================*/
 
 #include "CMAttack.h"
+#include "../CMInterface/CMBattleInterface.h"
 
 namespace cmengine
 {
     void CMAttack::action()
     {
-        skill.Cast(caster, target, note);
+        CMBattleInterface interface = CMBattleInterface(caster, target, skill, note);
+        skill.GetModel().logicFun(interface);
     }
 }

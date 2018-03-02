@@ -9,18 +9,11 @@
 ================================================================*/
 
 #include "CMSkill.h"
-#include "../CMInterface/CMBattleInterface.h"
 
 namespace cmengine
 {
     CMSkill::CMSkill(CreateSkillFun f)
     {
         f(model);
-    }
-
-    void CMSkill::Cast(CMSprite &caster, CMSprite &target, CMBattleNote &note) const
-    {
-        CMBattleInterface interface = CMBattleInterface(caster, target, *this, note);
-        model.logicFun(interface);
     }
 }
