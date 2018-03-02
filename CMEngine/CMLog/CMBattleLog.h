@@ -18,12 +18,12 @@ namespace cmengine
     class CMBattleLog
     {
     private:
-        std::string info;
+        std::string log;
 
     public:
-        CMBattleLog(std::string info_) : info(info_) {}
+        CMBattleLog(std::string log_) : log(log_) {}
 
-        std::string GetInfo() {return info;}
+        std::string GetLog() const {return log;}
     };
 }
 

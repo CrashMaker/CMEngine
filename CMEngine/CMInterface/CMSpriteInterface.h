@@ -12,6 +12,7 @@
 #define CMSPRITEINTERFACE_H
 
 #include "../CMSprite/CMSprite.h"
+#include "../CMLog/CMBattleNote.h"
 
 namespace cmengine
 {
@@ -19,12 +20,14 @@ namespace cmengine
     {
     private:
         CMSprite &sprite;
+        CMBattleNote &note;
 
     public:
         void Dead();
-        void Hurt(int point);
+        void Hurt(unsigned int point);
 
-        CMSpriteInterface(CMSprite &sprite_) : sprite(sprite_) {}
+        CMSpriteInterface(CMSprite &sprite_, CMBattleNote &note_) 
+            : sprite(sprite_), note(note_) {}
 
     };
 }

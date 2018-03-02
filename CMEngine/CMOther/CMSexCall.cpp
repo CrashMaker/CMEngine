@@ -9,15 +9,15 @@
 ================================================================*/
 
 #include "CMSexCall.h"
+#include "../CMLog/CMBattleNote.h"
 
 namespace cmengine
 {
-    CMAttack CMSexCall::operator>>(CMSprite &sp_)
+    void CMSexCall::operator>>(CMSprite &sp_)
     {
-        CMAttack attack = CMAttack(sp, sp_, sk);
+        CMBattleNote note;
+        CMAttack attack = CMAttack(sp, sp_, sk, note);
         attack.action();
-
-        return attack;
     }
 
     CMSexCall operator+(CMSprite &sp_, MapKey key)

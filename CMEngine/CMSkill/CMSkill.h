@@ -14,6 +14,7 @@
 #include "../CMGeneral/CMBaseType.h"
 #include "../CMModel/CMSkillModel.h"
 #include "../CMSprite/CMSprite.h"
+#include "../CMLog/CMBattleNote.h"
 
 namespace cmengine
 {
@@ -27,7 +28,7 @@ namespace cmengine
 
         CMSkillModel GetModel() const {return model;}
 
-        void Cast(CMSprite &caster, CMSprite &target) const;
+        void Cast(CMSprite &caster, CMSprite &target, CMBattleNote &note) const;
     };
 }
 

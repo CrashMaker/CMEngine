@@ -10,15 +10,30 @@
 
 #include "CMSpriteInterface.h"
 
+#include <sstream>
+
 namespace cmengine
 {
     void CMSpriteInterface::Dead()
     {
+        // 添加Log至战斗记录
+        std::string log = sprite.GetModel().name + "死亡";
+        note.Push(CMBattleLog(log));
+        
         sprite.model.health = 0;
     }
 
-    void CMSpriteInterface::Hurt(int point)
+    void CMSpriteInterface::Hurt(unsigned int point)
     {
+        // 添加Log至战斗记录
+        std::stringstream stream;
+        stream << point;
+        std::string log = sprite.GetModel().name 
+                          + "受到" 
+                          + stream.str() 
+                          + "点伤害";
+        note.Push(CMBattleLog(log));
+
         sprite.model.health -= point;
 
         if (sprite.model.health <= 0) {

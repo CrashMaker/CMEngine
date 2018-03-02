@@ -13,6 +13,7 @@
 
 #include "../CMSprite/CMSprite.h"
 #include "../CMSkill/CMSkill.h"
+#include "../CMLog/CMBattleNote.h"
 
 namespace cmengine
 {
@@ -22,10 +23,11 @@ namespace cmengine
         CMSprite &caster;
         CMSprite &target;
         const CMSkill &skill;
+        CMBattleNote &note;
 
     public:
-        CMBattleInterface(CMSprite &caster_, CMSprite &target_, const CMSkill &skill_) : 
-            caster(caster_), target(target_), skill(skill_) {}
+        CMBattleInterface(CMSprite &caster_, CMSprite &target_, const CMSkill &skill_, CMBattleNote &note_) : 
+            caster(caster_), target(target_), skill(skill_), note(note_) {}
 
         /* 对目标打击造成伤害，伤害由施放者的属性决定，伤害类型
          * 由技能的伤害类型决定，入参可以对伤害数值进行调整。

@@ -14,6 +14,6 @@ namespace cmengine
 {
     void CMAttack::action()
     {
-        skill.Cast(caster, target);
+        skill.Cast(caster, target, note);
     }
 }

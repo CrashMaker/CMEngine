@@ -27,7 +27,7 @@ namespace cmengine
     public:
         CMSexCall(CMSprite &sp_, CMSkill sk_) : sp(sp_), sk(sk_) {}
 
-        CMAttack operator>>(CMSprite &sp_); 
+        void operator>>(CMSprite &sp_); 
     };
 
     CMSexCall operator+(CMSprite &sp_, MapKey key);

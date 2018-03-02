@@ -15,6 +15,14 @@ namespace cmengine
 {
     void CMBattleInterface::Blow(float multiplication, int addition) const
     {
+        // 添加Log至战斗记录
+        std::string log = caster.GetModel().name 
+                          + "对" 
+                          + target.GetModel().name 
+                          + "使用" 
+                          + skill.GetModel().name;
+        note.Push(CMBattleLog(log));
+
         int hurtPoint = 0;
         int resistancePoint = 0;
         
@@ -32,8 +40,7 @@ namespace cmengine
         int resultPoint = hurtPoint - resistancePoint;
         if (resultPoint < 0) resultPoint = 0;
 
-        CMSpriteInterface spriteInterface = CMSpriteInterface(target);
+        CMSpriteInterface spriteInterface = CMSpriteInterface(target, note);
         spriteInterface.Hurt(resultPoint);
-
     }
 }
