@@ -16,9 +16,6 @@
 
 namespace cmengine
 {
-    using std::string;
-    using std::function;
-
     class CMBattleInterface;
 
     enum AttackType { 
@@ -33,11 +30,11 @@ namespace cmengine
 
     struct CMSkillModel
     {
-        string name;            
+        std::string name;            
         AttackType attackType;
         DamageType damageType;
 
-        function<void(const CMBattleInterface &interface)> logicFun;
+        std::function<void(const CMBattleInterface &interface)> logicFun;
     };
 }
 

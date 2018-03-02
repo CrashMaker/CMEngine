@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 #include "CMEngine/CMEngine.h"
 #include "Source/SkillSource.h"

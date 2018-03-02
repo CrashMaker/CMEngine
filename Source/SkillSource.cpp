@@ -24,11 +24,13 @@ cmengine::CreateSkillFunMap cmengine::GetSkillSourceForCMEngine()
 // 技能列表
 void Cut(cmengine::CMSkillModel &model)
 {
-    model.name = "Cut";
-    model.attackType = cmengine::AttackTypeMelee;
-    model.damageType = cmengine::DamageTypePhysical;
+    using namespace cmengine;
 
-    model.logicFun = [](const cmengine::CMBattleInterface &interface) {
+    model.name = "Cut";
+    model.attackType = AttackTypeMelee;
+    model.damageType = DamageTypePhysical;
+
+    model.logicFun = [](const CMBattleInterface &interface) {
         interface.Blow();
     };
 }

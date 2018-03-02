@@ -15,11 +15,9 @@
 
 namespace cmengine
 {
-    using std::string;
- 
     struct CMSpriteModel
     {
-        string name;
+        std::string name;
         int attack;
         int defense;
         int magicAtk;
