@@ -14,10 +14,10 @@
 #include <map>
 #include <functional>
 
-#include "../CMModel/CMSkillModel.h"
-
 namespace cmengine
 {
+    struct CMSkillModel;
+    
     typedef int MapKey;
 
     typedef std::function<void(CMSkillModel &model)> CreateSkillFun;

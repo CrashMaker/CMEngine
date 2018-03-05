@@ -10,4 +10,7 @@
 
 #include "CMBattleAlgorithm.h"
 
+namespace cmengine
+{
 
+}

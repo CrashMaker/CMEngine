@@ -11,12 +11,15 @@
 #ifndef CMBATTLEALGORITHM_H
 #define CMBATTLEALGORITHM_H
 
-class CMBattleAlgorithm
+namespace cmengine
 {
-private:
+    class CMBattleAlgorithm
+    {
+    private:
 
-public:
+    public:
 
-};
+    };
+}
 
 #endif /* CMBATTLEALGORITHM_H */
