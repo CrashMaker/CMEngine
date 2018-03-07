@@ -37,12 +37,9 @@ int main()
     // CMBaseSkill *baseSkill = new CMBaseSkill("BaseSkill");
     // CMSkill *skill = baseSkill;
 
-    // auto skill = CMInstantiateSource<CMSkill>::InstantiateSkill(2);
-    // std::cout << skill->GetName() << std::endl;
+    CMSkill skill = CMInstantiateSource<CMSkill>::InstantiateSkill(2);
+    std::cout << skill.i << std::endl;
 
-    CMSkill skill("CMSkill", 111);
-    CMBaseSkill &baseSkill = skill;
 
-    std::cout << typeid(baseSkill).name() << std::endl;
     return 0;
 }

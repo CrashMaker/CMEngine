@@ -34,7 +34,7 @@ BaseSkill Cut()
 
 BaseSkill Shot()
 {
-    BaseSkill skill(new CMSkill("Shot", 11));
+    BaseSkill skill(new CMSkill("Shot", 22));
 
     return skill;
 }

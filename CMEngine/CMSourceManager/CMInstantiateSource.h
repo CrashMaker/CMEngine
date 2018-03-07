@@ -23,22 +23,22 @@ namespace cmengine
     class CMInstantiateSource
     {
     public:
-        static std::unique_ptr<T> InstantiateSkill(MapKey key);
+        static T InstantiateSkill(MapKey key);
     };
 
     template <class T>
-    std::unique_ptr<T> CMInstantiateSource<T>::InstantiateSkill(MapKey key)
+    T CMInstantiateSource<T>::InstantiateSkill(MapKey key)
     {
         CreateSkillFun f = CMSourceManager::GetCreateSkillFunWithKey(key);
-        std::unique_ptr<T> t = f();
+        BaseSkill s = f();
+        CMBaseSkill* skill = &*s;
         
-       throw 0; 
-        // if (typeid(std::unique_ptr<T>) == typeid(baseSkill)) {
-        //     return (std::unique_ptr<T>)baseSkill;
-        // } else {
-        //     std::cout << "Instantiate Skill error!" << std::endl;
-        //     throw 0;
-        // }
+        if (typeid(T) == typeid(*skill)) {
+            return *((T*)skill);
+        } else {
+            std::cout << "Instantiate Skill error!" << std::endl;
+            throw 0;
+        }
     }
 }
 
