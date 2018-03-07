@@ -17,6 +17,7 @@
 cmengine::CreateSkillFunMap cmengine::GetSkillSourceForCMEngine();
 
 // 技能列表
-void Cut(cmengine::CMSkillModel &model);
+cmengine::BaseSkill Cut();
+cmengine::BaseSkill Shot();
 
 #endif /* SKILLSOURCE_H */

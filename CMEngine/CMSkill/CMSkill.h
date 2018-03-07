@@ -11,20 +11,18 @@
 #ifndef CMSKILL_H
 #define CMSKILL_H
 
-#include "../CMGeneral/CMBaseType.h"
-#include "../CMModel/CMSkillModel.h"
+#include "CMBaseSkill.h"
 
 namespace cmengine
 {
-    class CMSkill
+    class CMSkill : public CMBaseSkill
     {
     private:
-        CMSkillModel model;
 
     public:
-        CMSkill(CreateSkillFun f);
-
-        CMSkillModel GetModel() const {return model;}
+        int i;
+        CMSkill(std::string name, int i_) : CMBaseSkill(name), i(i_) {}
+        virtual ~CMSkill() {}
     };
 }
 

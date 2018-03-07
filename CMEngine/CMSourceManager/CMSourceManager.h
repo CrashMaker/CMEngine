@@ -17,11 +17,11 @@ namespace cmengine
 {
     class CMSourceManager
     {
-    private:
-        static CreateSkillFunMap skillSource; 
     public:
         static void LoadSkill(const CreateSkillFunMap &map);
-        static CreateSkillFun GetCreateSkillFunWithKey(int key);
+        static CreateSkillFun GetCreateSkillFunWithKey(MapKey key);
+    private:
+        static CreateSkillFunMap skillSource; 
     };
 }
 

@@ -15,7 +15,7 @@ namespace cmengine
 {
     void CMAttack::action()
     {
-        CMBattleInterface interface = CMBattleInterface(caster, target, skill, note);
-        skill.GetModel().logicFun(interface);
+        // CMBattleInterface interface = CMBattleInterface(caster, target, skill, note);
+        // skill.GetModel().logicFun(interface);
     }
 }

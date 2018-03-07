@@ -13,16 +13,16 @@
 
 namespace cmengine
 {
-    void CMSexCall::operator>>(CMSprite &sp_)
-    {
-        CMBattleNote note;
-        CMAttack attack = CMAttack(sp, sp_, sk, note);
-        attack.action();
-    }
-
-    CMSexCall operator+(CMSprite &sp_, MapKey key)
-    {
-        CMSkill sk = CMSkill(CMSourceManager::GetCreateSkillFunWithKey(key));
-        return CMSexCall(sp_, sk);
-    }
+    // void CMSexCall::operator>>(CMSprite &sp_)
+    // {
+    //     CMBattleNote note;
+    //     CMAttack attack = CMAttack(sp, sp_, sk, note);
+    //     attack.action();
+    // }
+    // 
+    // CMSexCall operator+(CMSprite &sp_, MapKey key)
+    // {
+    //     CMSkill sk = CMSkill(CMSourceManager::GetCreateSkillFunWithKey(key));
+    //     return CMSexCall(sp_, sk);
+    // }
 }

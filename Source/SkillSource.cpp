@@ -10,27 +10,31 @@
 
 #include "SkillSource.h"
 
-cmengine::CreateSkillFunMap cmengine::GetSkillSourceForCMEngine()
+using namespace cmengine;
+
+CreateSkillFunMap cmengine::GetSkillSourceForCMEngine()
 {
     cmengine::CreateSkillFunMap map;
 
     map = {
         {1, Cut}, 
+        {2, Shot}, 
     };
 
     return map;
 }
 
 // 技能列表
-void Cut(cmengine::CMSkillModel &model)
+BaseSkill Cut()
 {
-    using namespace cmengine;
+    BaseSkill skill(new CMBaseSkill("Cut"));
 
-    model.name = "Cut";
-    model.attackType = AttackTypeMelee;
-    model.damageType = DamageTypePhysical;
+    return skill;
+}
 
-    model.logicFun = [](const CMBattleInterface &interface) {
-        interface.Blow();
-    };
+BaseSkill Shot()
+{
+    BaseSkill skill(new CMSkill("Shot", 11));
+
+    return skill;
 }

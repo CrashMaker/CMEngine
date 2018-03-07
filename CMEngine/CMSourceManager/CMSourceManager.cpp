@@ -9,7 +9,7 @@
 ================================================================*/
 
 #include "CMSourceManager.h"
-
+#include "../CMGeneral/CMBaseType.h"
 #include <iostream>
 
 namespace cmengine
@@ -21,7 +21,7 @@ namespace cmengine
         CMSourceManager::skillSource = map;    
     }
 
-    CreateSkillFun CMSourceManager::GetCreateSkillFunWithKey(int key)
+    CreateSkillFun CMSourceManager::GetCreateSkillFunWithKey(MapKey key)
     {
         CreateSkillFunMap::iterator it;
 
@@ -30,8 +30,7 @@ namespace cmengine
             return it->second;
         } else {
             std::cout << "No CreateSkillFun in map!" << std::endl;
+            throw 0;
         }
-
-        return 0;
     }
 }

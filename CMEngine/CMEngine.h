@@ -21,6 +21,8 @@
 #include "CMModel/CMSkillModel.h"
 #include "CMModel/CMSpriteModel.h"
 #include "CMInterface/CMBattleInterface.h"
+#include "CMSkill/CMBaseSkill.h"
+#include "CMSourceManager/CMInstantiateSource.h"
 
 namespace cmengine
 {
