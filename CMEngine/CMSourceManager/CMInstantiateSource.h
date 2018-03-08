@@ -35,7 +35,7 @@ namespace cmengine
         if (typeid(T) == typeid(*skill)) {
             return *((T*)skill);
         } else {
-            std::cout << "Instantiate Skill error!" << std::endl;
+            std::cout << "Instantiate skill error!" << std::endl;
             throw 0;
         }
     }

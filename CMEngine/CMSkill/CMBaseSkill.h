@@ -18,7 +18,7 @@ namespace cmengine
     class CMBaseSkill
     {
     public:
-        CMBaseSkill (std::string name_) : name(name_) {}
+        explicit CMBaseSkill (std::string name_) : name(name_) {}
         virtual ~CMBaseSkill () {}
     
         std::string GetName() const {return name;}

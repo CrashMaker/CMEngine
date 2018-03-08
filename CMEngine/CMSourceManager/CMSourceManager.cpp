@@ -29,7 +29,7 @@ namespace cmengine
         if (it != CMSourceManager::skillSource.end()) {
             return it->second;
         } else {
-            std::cout << "No CreateSkillFun in map!" << std::endl;
+            std::cout << "No create skill function in map!" << std::endl;
             throw 0;
         }
     }
