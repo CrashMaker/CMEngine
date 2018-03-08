@@ -16,13 +16,13 @@
 #include "CMOther/CMSexCall.h"
 #include "CMBattle/CMAttack.h"
 #include "CMSourceManager/CMSourceManager.h"
-#include "CMGeneral/CMBaseType.h"
 #include "CMModel/CMSkillModel.h"
 #include "CMModel/CMSpriteModel.h"
 #include "CMInterface/CMBattleInterface.h"
 #include "CMSkill/CMBaseSkill.h"
 #include "CMSourceManager/CMInstantiateSource.h"
 #include "CMSkill/CMNormalSkill.h"
+#include "CMGeneral/CMGeneralTypedef.h"
 
 namespace cmengine
 {

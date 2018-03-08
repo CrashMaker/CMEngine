@@ -11,7 +11,7 @@
 #ifndef CMSOURCEMANAGER_H
 #define CMSOURCEMANAGER_H
 
-#include "../CMGeneral/CMBaseType.h"
+#include "../CMGeneral/CMGeneralTypedef.h"
 
 namespace cmengine
 {

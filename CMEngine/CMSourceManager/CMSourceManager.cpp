@@ -9,7 +9,6 @@
 ================================================================*/
 
 #include "CMSourceManager.h"
-#include "../CMGeneral/CMBaseType.h"
 #include <iostream>
 
 namespace cmengine
