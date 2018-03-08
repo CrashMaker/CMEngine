@@ -12,7 +12,6 @@
 #define CMENGINE_H
 
 #include "CMSprite/CMSprite.h"
-#include "CMSkill/CMSkill.h"
 #include "CMBattle/CMRound.h"
 #include "CMOther/CMSexCall.h"
 #include "CMBattle/CMAttack.h"
@@ -23,6 +22,7 @@
 #include "CMInterface/CMBattleInterface.h"
 #include "CMSkill/CMBaseSkill.h"
 #include "CMSourceManager/CMInstantiateSource.h"
+#include "CMSkill/CMNormalSkill.h"
 
 namespace cmengine
 {

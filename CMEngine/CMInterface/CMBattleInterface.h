@@ -12,7 +12,6 @@
 #define CMBATTLEINTERFACE_H
 
 #include "../CMSprite/CMSprite.h"
-#include "../CMSkill/CMSkill.h"
 #include "../CMLog/CMBattleNote.h"
 
 namespace cmengine
@@ -22,7 +21,6 @@ namespace cmengine
     private:
         CMSprite &caster;           // 施法者
         CMSprite &target;           // 目标
-        const CMSkill &skill;       // 技能
         CMBattleNote &note;         // 战斗日志
 
         // 根据施放者的属性和技能的属性生成伤害
@@ -35,8 +33,8 @@ namespace cmengine
         int CreateHurtPoint(int attackPoint, int defensePoint) const;
 
     public:
-        CMBattleInterface(CMSprite &caster_, CMSprite &target_, const CMSkill &skill_, CMBattleNote &note_) : 
-            caster(caster_), target(target_), skill(skill_), note(note_) {}
+        CMBattleInterface(CMSprite &caster_, CMSprite &target_, CMBattleNote &note_) : 
+            caster(caster_), target(target_), note(note_) {}
 
         /* 对目标打击造成伤害，入参可以对伤害数值进行调整。
          *

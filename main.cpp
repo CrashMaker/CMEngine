@@ -19,7 +19,7 @@ int main()
     // return 0;
 
     CMEngineRun();
-
+    
     CMSpriteModel model_1;
     model_1.name = "战士";
     model_1.attack = 10;
@@ -34,12 +34,9 @@ int main()
     model_2.health = 40;
     CMSprite sp_2 = CMSprite(model_2);
 
-    // CMBaseSkill *baseSkill = new CMBaseSkill("BaseSkill");
-    // CMSkill *skill = baseSkill;
-
-    CMSkill skill = CMInstantiateSource<CMSkill>::InstantiateSkill(2);
-    std::cout << skill.i << std::endl;
-
+    CMNormalSkill skill = CMInstantiateSource<CMNormalSkill>::InstantiateSkill(1);
+    skill.Cast(sp_1);
+    std::cout << skill.GetName() << std::endl;
 
     return 0;
 }

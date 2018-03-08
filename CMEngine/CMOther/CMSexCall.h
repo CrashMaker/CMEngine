@@ -12,7 +12,6 @@
 #define CMSEXCALL_H
 
 #include "../CMSprite/CMSprite.h"
-#include "../CMSkill/CMSkill.h"
 #include "../CMBattle/CMAttack.h"
 #include "../CMSourceManager/CMSourceManager.h"
 
@@ -22,10 +21,9 @@ namespace cmengine
     {
     private:
         CMSprite &sp;
-        CMSkill sk; 
 
     public:
-        CMSexCall(CMSprite &sp_, CMSkill sk_) : sp(sp_), sk(sk_) {}
+        CMSexCall(CMSprite &sp_) : sp(sp_) {}
 
         void operator>>(CMSprite &sp_); 
     };

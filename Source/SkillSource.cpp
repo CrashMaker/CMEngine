@@ -27,14 +27,17 @@ CreateSkillFunMap cmengine::GetSkillSourceForCMEngine()
 // 技能列表
 BaseSkill Cut()
 {
-    BaseSkill skill(new CMBaseSkill("Cut"));
-
+    auto logicFun = [](CMNormalSkill& skill, CMSprite& caster){
+        std::cout << "111" << std::endl;
+    };
+    
+    BaseSkill skill(new CMNormalSkill("Cut", logicFun));
     return skill;
 }
 
 BaseSkill Shot()
 {
-    BaseSkill skill(new CMSkill("Shot", 22));
+    BaseSkill skill(new CMBaseSkill("Shot"));
 
     return skill;
 }
