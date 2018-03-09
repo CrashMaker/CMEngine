@@ -23,6 +23,7 @@
 #include "CMSourceManager/CMInstantiateSource.h"
 #include "CMSkill/CMNormalSkill.h"
 #include "CMGeneral/CMGeneralTypedef.h"
+#include "CMSkill/CMSkillCastTarget.h"
 
 namespace cmengine
 {

@@ -7,19 +7,27 @@
 #include "CMEngine/CMEngine.h"
 #include "Source/SkillSource.h"
 
-int main()
+using namespace std;
+using namespace cmengine;
+
+class TestClass : CMSkillCastTargetDelegate
 {
-    using namespace std;
-    using namespace cmengine;
+public:
+    void Run();
+};
 
-    // default_random_engine e(time(0));
-    // uniform_int_distribution<unsigned> u(1, 2);
-    // for(int i=0; i<10; ++i)
-    //     cout<<u(e)<<endl;
-    // return 0;
+CMSprite CMSkillCastTargetDelegate::GetTarget()
+{
 
-    CMEngineRun();
-    
+}
+
+vector<CMSprite&> CMSkillCastTargetDelegate::GetTargetVector()
+{
+
+}
+
+void TestClass::Run()
+{
     CMSpriteModel model_1;
     model_1.name = "战士";
     model_1.attack = 10;
@@ -34,9 +42,27 @@ int main()
     model_2.health = 40;
     CMSprite sp_2 = CMSprite(model_2);
 
-    CMNormalSkill skill = CMInstantiateSource<CMNormalSkill>::InstantiateSkill(1);
-    skill.Cast(sp_1);
-    std::cout << skill.GetName() << std::endl;
+    CMSpriteModel model_3;
+    model_3.name = "猎人";
+    model_3.attack = 8;
+    model_3.defense = 6;
+    model_3.health = 40;
+    CMSprite sp_3 = CMSprite(model_3);
+}
+
+int main()
+{
+
+    // default_random_engine e(time(0));
+    // uniform_int_distribution<unsigned> u(1, 2);
+    // for(int i=0; i<10; ++i)
+    //     cout<<u(e)<<endl;
+    // return 0;
+
+    CMEngineRun();
+    
+    // TestClass test;
+    // test.Run();
 
     return 0;
 }

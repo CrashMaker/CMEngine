@@ -12,6 +12,7 @@
 #define CMNORMALSKILL_H
 
 #include "CMBaseSkill.h"
+#include "CMSkillCastTarget.h"
 #include <functional>
 
 namespace cmengine
@@ -20,11 +21,11 @@ namespace cmengine
     class CMNormalSkill;
     typedef std::function<void(CMNormalSkill& skill, CMSprite& caster)> NormalSkillLogicFun;
 
-    class CMNormalSkill : public CMBaseSkill
+    class CMNormalSkill : public CMBaseSkill, public CMSkillCastTarget
     {
     public:
-        CMNormalSkill(std::string name, NormalSkillLogicFun logicFun_) 
-            : CMBaseSkill(name), logicFun(logicFun_) {}
+        CMNormalSkill(std::string name, SkillCastTargetType targetType, NormalSkillLogicFun logicFun_) 
+            : CMBaseSkill(name), CMSkillCastTarget(targetType), logicFun(logicFun_) {}
         virtual ~CMNormalSkill() {}
 
         void Cast(CMSprite& caster) {logicFun(*this, caster);} 

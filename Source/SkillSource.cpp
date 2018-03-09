@@ -31,7 +31,7 @@ BaseSkill Cut()
         std::cout << "111" << std::endl;
     };
     
-    BaseSkill skill(new CMNormalSkill("Cut", logicFun));
+    BaseSkill skill(new CMNormalSkill("Cut", SkillCastTargetSelf, logicFun));
     return skill;
 }
 
