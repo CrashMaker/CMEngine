@@ -28,7 +28,6 @@ namespace cmengine
             : CMBaseSkill(name), CMSkillCastTarget(targetType), logicFun(logicFun_) {}
         virtual ~CMNormalSkill() {}
 
-        void Cast(CMSprite& caster) {logicFun(*this, caster);} 
     private:
         NormalSkillLogicFun logicFun;
     };

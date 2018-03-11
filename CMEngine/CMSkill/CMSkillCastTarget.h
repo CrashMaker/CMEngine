@@ -26,8 +26,8 @@ namespace cmengine
     class CMSkillCastTargetDelegate
     {
     public:
-        virtual CMSprite GetTarget() = 0;
-        virtual std::vector<CMSprite&> GetTargetVector() = 0;
+        virtual CMSprite& GetTarget();
+        virtual std::vector<CMSprite&> GetTargetVector();
     };
     
     class CMSkillCastTarget
@@ -35,11 +35,15 @@ namespace cmengine
     public:
         CMSkillCastTarget(SkillCastTargetType targetType_) : targetType(targetType_) {}
         virtual ~CMSkillCastTarget() {}
-        virtual void CastWithTargetVector(CMSprite& caster, std::vector<CMSprite&>& targetVector) = 0;
 
+        // 根据目标类型选取目标施放
         void Cast(CMSprite& caster);
+        // 对自身施放
         void CastWithSelf(CMSprite& caster);
+        // 对单个目标施放
         void CastWithTarget(CMSprite& caster, CMSprite& target);
+        // 对多个目标施放
+        virtual void CastWithTargetVector(CMSprite& caster, std::vector<CMSprite&> targetVector);
     private:
         CMSkillCastTargetDelegate* delegate = nullptr;
         SkillCastTargetType targetType;         // 目标类型

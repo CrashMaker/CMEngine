@@ -13,41 +13,40 @@ using namespace cmengine;
 class TestClass : CMSkillCastTargetDelegate
 {
 public:
+    TestClass();
     void Run();
+private:
+    CMSprite sp_1;
+    CMSprite sp_2;
+    CMSprite sp_3;
 };
 
-CMSprite CMSkillCastTargetDelegate::GetTarget()
-{
-
-}
-
-vector<CMSprite&> CMSkillCastTargetDelegate::GetTargetVector()
-{
-
-}
-
-void TestClass::Run()
+TestClass::TestClass()
 {
     CMSpriteModel model_1;
     model_1.name = "战士";
     model_1.attack = 10;
     model_1.defense = 5;
     model_1.health = 30;
-    CMSprite sp_1 = CMSprite(model_1);
+    sp_1 = CMSprite(model_1);
     
     CMSpriteModel model_2;
     model_2.name = "骑士";
     model_2.attack = 8;
     model_2.defense = 6;
     model_2.health = 40;
-    CMSprite sp_2 = CMSprite(model_2);
+    sp_2 = CMSprite(model_2);
 
     CMSpriteModel model_3;
     model_3.name = "猎人";
     model_3.attack = 8;
     model_3.defense = 6;
     model_3.health = 40;
-    CMSprite sp_3 = CMSprite(model_3);
+    sp_3 = CMSprite(model_3);
+}
+
+void TestClass::Run()
+{
 }
 
 int main()
