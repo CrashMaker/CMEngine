@@ -11,6 +11,7 @@
 #include "SkillSource.h"
 
 using namespace cmengine;
+using namespace std;
 
 CreateSkillFunMap cmengine::GetSkillSourceForCMEngine()
 {
@@ -28,10 +29,13 @@ CreateSkillFunMap cmengine::GetSkillSourceForCMEngine()
 BaseSkill Cut()
 {
     auto logicFun = [](CMNormalSkillInterface interface){
-        std::cout << "111" << std::endl;
+        vector<CMSprite> spVec = interface.GetTargetVector();
+        for (CMSprite sp : spVec) {
+            cout << sp.GetModel().health << std::endl;
+        }
     };
     
-    BaseSkill skill(new CMNormalSkill("Cut", SkillCastTargetTypeSelf, logicFun));
+    BaseSkill skill(new CMNormalSkill("Cut", SkillCastTargetTypeMultiple, logicFun));
     return skill;
 }
 

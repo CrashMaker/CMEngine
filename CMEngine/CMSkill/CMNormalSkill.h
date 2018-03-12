@@ -25,10 +25,14 @@ namespace cmengine
     class CMNormalSkillInterface
     {
     public:
-        CMNormalSkillInterface(CMSprite* caster_, std::vector<CMSprite*> targetVector_) : 
-            caster(caster_), targetVector(targetVector_) {}
+        CMNormalSkillInterface(CMSprite* caster_, std::vector<CMSprite*> targetVector_)
+            : caster(caster_), targetVector(targetVector_) {}
+        
+        CMSprite GetCaster();
+        std::vector<CMSprite> GetTargetVector();
+
     private:
-        CMSprite *caster;
+        CMSprite* caster;
         std::vector<CMSprite*> targetVector;
     };
 

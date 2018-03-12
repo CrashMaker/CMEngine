@@ -36,6 +36,9 @@ namespace cmengine
         CMSkillCastTarget(SkillCastTargetType targetType_) : targetType(targetType_) {}
         virtual ~CMSkillCastTarget() {}
 
+        // 目标的提供类需要继承CMSkillCastTargetDelegate，并对此变量赋值
+        CMSkillCastTargetDelegate* delegate = nullptr;
+
         // 根据目标类型选取目标施放
         void Cast(CMSprite* caster);
         // 对自身施放
@@ -45,7 +48,6 @@ namespace cmengine
         // 对多个目标施放
         virtual void CastWithTargetVector(CMSprite* caster, std::vector<CMSprite*> targetVector) = 0;
     private:
-        CMSkillCastTargetDelegate* delegate = nullptr;
         SkillCastTargetType targetType;         // 目标类型
     };
 }
