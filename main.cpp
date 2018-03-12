@@ -42,7 +42,8 @@ vector<CMSprite*> TestClass::GetTargetVector()
 
 void TestClass::Run()
 {
-
+    CMNormalSkill skill = CMInstantiateSource<CMNormalSkill>::InstantiateSkill(1);
+    skill.Cast(&sp_1);
 }
 
 int main()

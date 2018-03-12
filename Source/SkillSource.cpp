@@ -27,7 +27,7 @@ CreateSkillFunMap cmengine::GetSkillSourceForCMEngine()
 // 技能列表
 BaseSkill Cut()
 {
-    auto logicFun = [](){
+    auto logicFun = [](CMNormalSkillInterface interface){
         std::cout << "111" << std::endl;
     };
     
