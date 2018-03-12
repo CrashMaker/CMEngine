@@ -19,7 +19,7 @@ namespace cmengine
 {
     class CMSprite;
     class CMNormalSkill;
-    typedef std::function<void(CMNormalSkill& skill, CMSprite& caster)> NormalSkillLogicFun;
+    typedef std::function<void(void)> NormalSkillLogicFun;
 
     class CMNormalSkill : public CMBaseSkill, public CMSkillCastTarget
     {
@@ -28,6 +28,9 @@ namespace cmengine
             : CMBaseSkill(name), CMSkillCastTarget(targetType), logicFun(logicFun_) {}
         virtual ~CMNormalSkill() {}
 
+        virtual void CastWithTargetVector(CMSprite* caster, std::vector<CMSprite*> targetVector) {
+
+        }
     private:
         NormalSkillLogicFun logicFun;
     };

@@ -14,33 +14,33 @@ namespace cmengine
 {
     using namespace std;
 
-    void CMSkillCastTarget::Cast(CMSprite& caster) 
+    void CMSkillCastTarget::Cast(CMSprite* caster) 
     {
-        if (SkillCastTargetSelf == castTarget) {
-            vector<CMSprite&> targetVector = {caster};
+        if (SkillCastTargetTypeSelf == targetType) {
+            vector<CMSprite*> targetVector = {caster};
             CastWithTargetVector(caster, targetVector);
-        } else if (SkillCastTargetSingle == castTarget) {
+        } else if (SkillCastTargetTypeSingle == targetType) {
             if (!delegate) return;
-            vector<CMSprite&> targetVector = { 
+            vector<CMSprite*> targetVector = { 
                 delegate->GetTarget()
             };
             CastWithTargetVector(caster, targetVector);
-        } else if (SkillCastTargetMultiple == castTarget) {
+        } else if (SkillCastTargetTypeMultiple == targetType) {
             if (!delegate) return;
-            vector<CMSprite&> targetVector = delegate->GetTargetVector();
+            vector<CMSprite*> targetVector = delegate->GetTargetVector();
             CastWithTargetVector(caster, targetVector);
         }
     }
 
-    void CMSkillCastTarget::CastWithSelf(CMSprite& caster)
+    void CMSkillCastTarget::CastWithSelf(CMSprite* caster)
     {
-        vector<CMSprite&> targetVector = {caster};
+        vector<CMSprite*> targetVector = {caster};
         CastWithTargetVector(caster, targetVector);
     }
 
-    void CMSkillCastTarget::CastWithTarget(CMSprite& caster, CMSprite& target)
+    void CMSkillCastTarget::CastWithTarget(CMSprite* caster, CMSprite* target)
     {
-        vector<CMSprite&> targetVector = {target};
+        vector<CMSprite*> targetVector = {target};
         CastWithTargetVector(caster, targetVector);
     }
 }
