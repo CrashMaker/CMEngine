@@ -24,6 +24,8 @@
 #include "CMSkill/CMNormalSkill.h"
 #include "CMGeneral/CMGeneralTypedef.h"
 #include "CMSkill/CMSkillCastTarget.h"
+#include "CMInterface/CMSkillInterface/CMBaseSkillInterface.h"
+#include "CMInterface/CMSkillInterface/CMNormalSkillInterface.h"
 
 namespace cmengine
 {

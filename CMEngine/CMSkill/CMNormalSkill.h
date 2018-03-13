@@ -13,28 +13,14 @@
 
 #include "CMBaseSkill.h"
 #include "CMSkillCastTarget.h"
+#include "../CMInterface/CMSkillInterface/CMNormalSkillInterface.h"
 #include <functional>
 
 namespace cmengine
 {
     class CMSprite;
     class CMNormalSkill;
-    class CMNormalSkillInterface;
     typedef std::function<void(CMNormalSkillInterface interface)> NormalSkillLogicFun;
-
-    class CMNormalSkillInterface
-    {
-    public:
-        CMNormalSkillInterface(CMSprite* caster_, std::vector<CMSprite*> targetVector_)
-            : caster(caster_), targetVector(targetVector_) {}
-        
-        CMSprite GetCaster();
-        std::vector<CMSprite> GetTargetVector();
-
-    private:
-        CMSprite* caster;
-        std::vector<CMSprite*> targetVector;
-    };
 
     class CMNormalSkill : public CMBaseSkill, public CMSkillCastTarget
     {
@@ -44,7 +30,7 @@ namespace cmengine
         virtual ~CMNormalSkill() {}
 
         virtual void CastWithTargetVector(CMSprite* caster, std::vector<CMSprite*> targetVector) {
-            CMNormalSkillInterface interface = CMNormalSkillInterface(caster, targetVector);
+            CMNormalSkillInterface interface = CMNormalSkillInterface(caster, targetVector, this);
             logicFun(interface);
         }
     private:
