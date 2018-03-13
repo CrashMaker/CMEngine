@@ -21,7 +21,8 @@ namespace cmengine
     public:
         CMBaseSkillInterface(CMSprite* caster_, std::vector<CMSprite*> targetVector_)
             : caster(caster_), targetVector(targetVector_) {}
-        
+        virtual ~CMBaseSkillInterface () {}
+
         CMSprite GetCaster();
         std::vector<CMSprite> GetTargetVector();
 

@@ -19,7 +19,6 @@
 namespace cmengine
 {
     class CMSprite;
-    class CMNormalSkill;
     typedef std::function<void(CMNormalSkillInterface interface)> NormalSkillLogicFun;
 
     class CMNormalSkill : public CMBaseSkill, public CMSkillCastTarget

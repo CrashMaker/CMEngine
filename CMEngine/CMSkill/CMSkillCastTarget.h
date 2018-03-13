@@ -11,17 +11,12 @@
 #ifndef CMSKILLCASTTARGET_H
 #define CMSKILLCASTTARGET_H
 
+#include "../CMGeneral/CMGeneralSkillType.h"
 #include <vector>
 
 namespace cmengine
 {
     class CMSprite;
-
-    enum SkillCastTargetType {
-        SkillCastTargetTypeSelf,            // 自身
-        SkillCastTargetTypeSingle,          // 单一目标
-        SkillCastTargetTypeMultiple,        // 多个目标
-    };
 
     class CMSkillCastTargetDelegate
     {
