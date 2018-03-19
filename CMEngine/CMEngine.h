@@ -11,12 +11,10 @@
 #ifndef CMENGINE_H
 #define CMENGINE_H
 
-#include "CMSprite/CMSprite.h"
 #include "CMBattle/CMRound.h"
 #include "CMOther/CMSexCall.h"
 #include "CMBattle/CMAttack.h"
 #include "CMSourceManager/CMSourceManager.h"
-#include "CMModel/CMSkillModel.h"
 #include "CMModel/CMSpriteModel.h"
 #include "CMInterface/CMBattleInterface.h"
 #include "CMSkill/CMBaseSkill.h"
@@ -28,6 +26,8 @@
 #include "CMInterface/CMSkillInterface/CMNormalSkillInterface.h"
 #include "CMGeneral/CMGeneralSkillType.h"
 #include "CMInterface/CMSkillInterface/CMDamageSkillInterface.h"
+#include "CMSprite/CMBaseSprite.h"
+#include "CMGeneral/CMGeneralSpriteType.h"
 
 namespace cmengine
 {

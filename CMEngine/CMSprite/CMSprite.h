@@ -15,12 +15,16 @@
 
 namespace cmengine
 {
-    class CMBattleInterface;
 
     class CMSprite
     {
     private:
         CMSpriteModel model;
+
+        // 基础属性
+        // 附加属性
+        // 综合属性
+        // 现有属性
 
     public:
         friend class CMSpriteInterface;
