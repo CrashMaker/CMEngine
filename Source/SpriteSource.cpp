@@ -29,12 +29,12 @@ CreateSpriteFunMap cmengine::GetSpriteSourceForCMEngine()
 BaseSprite Dog()
 {
     CMSpriteGrowthRate growthRate;
-    growthRate.attackGrowthRate = 1;
-    growthRate.defenseGrowthRate = 1;
-    growthRate.magicAtkGrowthRate = 1;
-    growthRate.magicDefGrowthRate = 1;
-    growthRate.healthGrowthRate = 1;
-    growthRate.speedGrowthRate = 1;
+    growthRate.attackGrowthRate = 0.8;
+    growthRate.defenseGrowthRate = 0.4;
+    growthRate.magicAtkGrowthRate = 0.8;
+    growthRate.magicDefGrowthRate = 0.4;
+    growthRate.healthGrowthRate = 1.2;
+    growthRate.speedGrowthRate = 0.4;
     
     BaseSprite sprite(new CMMonsterSprite("Dog", growthRate));
     return sprite;

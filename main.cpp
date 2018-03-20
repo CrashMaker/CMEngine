@@ -57,26 +57,13 @@ int main()
     CMEngineRun();
 
     CMHeroSprite hero = CMInstantiateSource<CMHeroSprite>::InstantiateHero(1);
-    std::cout << hero.GetName() << std::endl;
+    hero.SetLevel(5);
+    hero.PrintAttribute();
 
-    // CMSpriteModel model_1;
-    // model_1.name = "战士";
-    // model_1.attack = 20;
-    // model_1.defense = 10;
-    // model_1.health = 11;
-    // 
-    // CMSpriteModel model_2;
-    // model_2.name = "法师";
-    // model_2.attack = 20;
-    // model_2.defense = 10;
-    // model_2.health = 22;
-    // 
-    // CMSpriteModel model_3;
-    // model_3.name = "猎人";
-    // model_3.attack = 20;
-    // model_3.defense = 10;
-    // model_3.health = 33;
-    // 
+    CMMonsterSprite monster = CMInstantiateSource<CMMonsterSprite>::InstantiateSprite(1);
+    monster.SetLevel(9);
+    monster.PrintAttribute();
+
     // TestClass test(model_1, model_2, model_3);
     // test.Run();
 

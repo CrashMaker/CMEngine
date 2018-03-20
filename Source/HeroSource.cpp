@@ -30,11 +30,11 @@ CreateHeroFunMap cmengine::GetHeroSourceForCMEngine()
 HeroSprite Warrior()
 {
     CMSpriteGrowthRate growthRate;
-    growthRate.attackGrowthRate = 1;
+    growthRate.attackGrowthRate = 2;
     growthRate.defenseGrowthRate = 1;
     growthRate.magicAtkGrowthRate = 1;
     growthRate.magicDefGrowthRate = 1;
-    growthRate.healthGrowthRate = 1;
+    growthRate.healthGrowthRate = 3;
     growthRate.speedGrowthRate = 1;
     
     HeroSprite hero(new CMHeroSprite("Warrior", growthRate));

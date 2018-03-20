@@ -9,6 +9,7 @@
 ================================================================*/
 
 #include "CMBaseSprite.h"
+#include <iostream>
 
 #define MaxLevel 99         // 最高等级
 
@@ -46,5 +47,22 @@ namespace cmengine
 
         // 恢复生命值
         healthPoint = currentAttribute.health;
+    }
+
+
+    // 打印状态
+    void CMBaseSprite::PrintAttribute()
+    {
+        using namespace std;
+
+        cout << "name:" << name << endl;
+        cout << "level:" << level << endl;
+        cout << "HP:" << healthPoint << endl << endl;
+        cout << "attack:" << currentAttribute.attack << endl;
+        cout << "defense:" << currentAttribute.defense << endl;
+        cout << "magicAtk:" << currentAttribute.magicAtk << endl;
+        cout << "magicDef:" << currentAttribute.magicDef << endl;
+        cout << "health:" << currentAttribute.health << endl;
+        cout << "speed:" << currentAttribute.speed << endl << endl;
     }
 }

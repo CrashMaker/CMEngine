@@ -73,6 +73,9 @@ namespace cmengine
         void SetLevel(int lv);
         void SetupInnateAttribute();
         void SetupCurrentAttribute();
+
+        // 打印状态
+        void PrintAttribute();
     private:
         std::string name;
         CMSpriteGrowthRate growthRate;
