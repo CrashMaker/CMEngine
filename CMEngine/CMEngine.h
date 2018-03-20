@@ -28,6 +28,8 @@
 #include "CMInterface/CMSkillInterface/CMDamageSkillInterface.h"
 #include "CMSprite/CMBaseSprite.h"
 #include "CMGeneral/CMGeneralSpriteType.h"
+#include "CMSprite/CMHeroSprite.h"
+#include "CMSprite/CMMonsterSprite.h"
 
 namespace cmengine
 {

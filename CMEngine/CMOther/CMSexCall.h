@@ -11,7 +11,7 @@
 #ifndef CMSEXCALL_H
 #define CMSEXCALL_H
 
-#include "../CMSprite/CMSprite.h"
+#include "../CMSprite/CMBaseSprite.h"
 #include "../CMBattle/CMAttack.h"
 #include "../CMSourceManager/CMSourceManager.h"
 
@@ -20,15 +20,15 @@ namespace cmengine
     class CMSexCall
     {
     private:
-        CMSprite &sp;
+        CMBaseSprite &sp;
 
     public:
-        CMSexCall(CMSprite &sp_) : sp(sp_) {}
+        CMSexCall(CMBaseSprite &sp_) : sp(sp_) {}
 
-        void operator>>(CMSprite &sp_); 
+        void operator>>(CMBaseSprite &sp_); 
     };
 
-    CMSexCall operator+(CMSprite &sp_, MapKey key);
+    CMSexCall operator+(CMBaseSprite &sp_, MapKey key);
 }
 
 

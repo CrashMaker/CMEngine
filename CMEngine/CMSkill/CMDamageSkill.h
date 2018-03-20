@@ -19,7 +19,7 @@
 
 namespace cmengine
 {
-    class CMSprite;
+    class CMBaseSprite;
     typedef std::function<void(CMDamageSkillInterface interface)> NamageSkillInterface;
 
     class CMDamageSkill : public CMBaseSkill, public CMSkillCastTarget
@@ -32,7 +32,7 @@ namespace cmengine
               , damageType(damageType_), logicFun(logicFun_) {}
         virtual ~CMDamageSkill () {}
 
-        virtual void CastWithTargetVector(CMSprite* caster, std::vector<CMSprite*> targetVector) {
+        virtual void CastWithTargetVector(CMBaseSprite* caster, std::vector<CMBaseSprite*> targetVector) {
             CMDamageSkillInterface interface = CMDamageSkillInterface(caster, targetVector, this);
             logicFun(interface);
         }

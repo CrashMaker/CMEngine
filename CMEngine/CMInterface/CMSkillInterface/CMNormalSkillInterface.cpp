@@ -13,8 +13,8 @@
 
 namespace cmengine
 {
-    CMNormalSkill CMNormalSkillInterface::GetSkill()
+    const CMNormalSkill* CMNormalSkillInterface::GetSkill()
     {
-        return *skill;
+        return skill;
     }
 }

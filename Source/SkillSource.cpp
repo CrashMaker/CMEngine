@@ -29,9 +29,9 @@ CreateSkillFunMap cmengine::GetSkillSourceForCMEngine()
 BaseSkill Cut()
 {
     auto logicFun = [](CMNormalSkillInterface interface){
-        vector<CMSprite> spVec = interface.GetTargetVector();
-        for (CMSprite sp : spVec) {
-            cout << sp.GetModel().health << std::endl;
+        vector<const CMBaseSprite*> spVec = interface.GetTargetVector();
+        for (const CMBaseSprite* sp : spVec) {
+            cout << sp->GetName() << std::endl;
         }
     };
     

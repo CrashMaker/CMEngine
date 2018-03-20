@@ -12,23 +12,23 @@
 #define CMBASESKILLINTERFACE_H
 
 #include <vector>
-#include "../../CMSprite/CMSprite.h"
+#include "../../CMSprite/CMBaseSprite.h"
 
 namespace cmengine
 {
     class CMBaseSkillInterface
     {
     public:
-        CMBaseSkillInterface(CMSprite* caster_, std::vector<CMSprite*> targetVector_)
+        CMBaseSkillInterface(CMBaseSprite* caster_, std::vector<CMBaseSprite*> targetVector_)
             : caster(caster_), targetVector(targetVector_) {}
         virtual ~CMBaseSkillInterface () {}
 
-        CMSprite GetCaster();
-        std::vector<CMSprite> GetTargetVector();
+        const CMBaseSprite* GetCaster();
+        std::vector<const CMBaseSprite*> GetTargetVector();
 
     private:
-        CMSprite* caster;
-        std::vector<CMSprite*> targetVector;
+        CMBaseSprite* caster;
+        std::vector<CMBaseSprite*> targetVector;
     };
 }
 

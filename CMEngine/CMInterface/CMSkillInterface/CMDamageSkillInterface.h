@@ -20,11 +20,11 @@ namespace cmengine
     class CMDamageSkillInterface : public CMBaseSkillInterface
     {
     public:
-        CMDamageSkillInterface(CMSprite* caster_, std::vector<CMSprite*> targetVector_, CMDamageSkill *skill_)
+        CMDamageSkillInterface(CMBaseSprite* caster_, std::vector<CMBaseSprite*> targetVector_, CMDamageSkill *skill_)
             : CMBaseSkillInterface(caster_, targetVector_), skill(skill_) {}
         virtual ~CMDamageSkillInterface () {}
     
-        CMDamageSkill GetSkill();
+        const CMDamageSkill* GetSkill();
     private:
         CMDamageSkill* skill;
     };

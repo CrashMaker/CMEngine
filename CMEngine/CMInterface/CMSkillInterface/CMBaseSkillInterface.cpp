@@ -14,16 +14,16 @@ namespace cmengine
 {
     using namespace std;
 
-    CMSprite CMBaseSkillInterface::GetCaster()
+    const CMBaseSprite* CMBaseSkillInterface::GetCaster()
     {
-        return *caster;
+        return caster;
     }
 
-    vector<CMSprite> CMBaseSkillInterface::GetTargetVector()
+    vector<const CMBaseSprite*> CMBaseSkillInterface::GetTargetVector()
     {
-        vector<CMSprite> vec;
-        for (CMSprite *sp : targetVector) {
-            vec.push_back(*sp);
+        vector<const CMBaseSprite*> vec;
+        for (CMBaseSprite *sp : targetVector) {
+            vec.push_back(sp);
         }
         return vec;
     }

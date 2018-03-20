@@ -11,7 +11,6 @@
 #ifndef CMATTACK_H
 #define CMATTACK_H
 
-#include "../CMSprite/CMSprite.h"
 #include "../CMLog/CMBattleNote.h"
 
 namespace cmengine

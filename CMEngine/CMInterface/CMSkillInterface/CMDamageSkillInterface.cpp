@@ -13,9 +13,9 @@
 
 namespace cmengine
 {
-    CMDamageSkill CMDamageSkillInterface::GetSkill()
+    const CMDamageSkill* CMDamageSkillInterface::GetSkill()
     {
-        return *skill;
+        return skill;
     }
 }
 

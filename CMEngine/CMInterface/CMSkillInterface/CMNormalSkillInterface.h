@@ -20,11 +20,11 @@ namespace cmengine
     class CMNormalSkillInterface : public CMBaseSkillInterface
     {
     public:
-        CMNormalSkillInterface(CMSprite* caster_, std::vector<CMSprite*> targetVector_, CMNormalSkill *skill_)
+        CMNormalSkillInterface(CMBaseSprite* caster_, std::vector<CMBaseSprite*> targetVector_, CMNormalSkill *skill_)
             : CMBaseSkillInterface(caster_, targetVector_), skill(skill_) {}
         virtual ~CMNormalSkillInterface () {}
         
-        CMNormalSkill GetSkill();
+        const CMNormalSkill* GetSkill();
     private:
         CMNormalSkill* skill;
     };

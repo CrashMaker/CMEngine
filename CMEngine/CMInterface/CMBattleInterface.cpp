@@ -12,7 +12,6 @@
 
 #include <sstream>
 
-#include "CMSpriteInterface.h"
 
 namespace cmengine
 {
