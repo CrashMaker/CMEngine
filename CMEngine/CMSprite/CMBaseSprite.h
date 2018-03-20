@@ -25,6 +25,10 @@ namespace cmengine
         float magicDefGrowthRate;
         float healthGrowthRate;
         float speedGrowthRate;
+
+         CMSpriteGrowthRate() 
+            : attackGrowthRate(0), defenseGrowthRate(0), magicAtkGrowthRate(0),
+              magicDefGrowthRate(0), healthGrowthRate(0), speedGrowthRate(0) {}
     };
     
     // 角色基础属性, 默认都为1

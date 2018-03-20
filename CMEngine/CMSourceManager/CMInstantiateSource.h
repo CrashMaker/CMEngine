@@ -13,6 +13,7 @@
 
 #include "CMSourceManager.h"
 #include "../CMSkill/CMBaseSkill.h"
+#include "../CMSprite/CMBaseSprite.h"
 #include <iostream>
 #include <memory>
 
@@ -23,6 +24,7 @@ namespace cmengine
     {
     public:
         static T InstantiateSkill(MapKey key);
+        static T InstantiateSprite(MapKey key);
     };
 
     template <class T>
@@ -39,6 +41,22 @@ namespace cmengine
             throw 0;
         }
     }
+
+    template <class T>
+    T CMInstantiateSource<T>::InstantiateSprite(MapKey key)
+    {
+        CreateSpriteFun f = CMSourceManager::GetCreateSpriteFunWithKey(key);
+        BaseSprite s = f();
+        CMBaseSprite* sprite = &*s;
+        
+        if (typeid(T) == typeid(*sprite)) {
+            return *((T*)sprite);
+        } else {
+            std::cout << "Instantiate sprite error!" << std::endl;
+            throw 0;
+        }
+    }
+
 }
 
 #endif /* CMINSTANTIATESOURCE_H */

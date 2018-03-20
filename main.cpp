@@ -57,6 +57,9 @@ int main()
 
     CMEngineRun();
 
+    CMMonsterSprite sprite = CMInstantiateSource<CMMonsterSprite>::InstantiateSprite(1);
+    std::cout << sprite.GetName() << std::endl;
+
     // CMSpriteModel model_1;
     // model_1.name = "战士";
     // model_1.attack = 20;

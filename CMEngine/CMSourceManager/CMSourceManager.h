@@ -20,8 +20,12 @@ namespace cmengine
     public:
         static void LoadSkill(const CreateSkillFunMap &map);
         static CreateSkillFun GetCreateSkillFunWithKey(MapKey key);
+
+        static void LoadSprite(const CreateSpriteFunMap &map);
+        static CreateSpriteFun GetCreateSpriteFunWithKey(MapKey key);
     private:
         static CreateSkillFunMap skillSource; 
+        static CreateSpriteFunMap spriteSource;
     };
 }
 

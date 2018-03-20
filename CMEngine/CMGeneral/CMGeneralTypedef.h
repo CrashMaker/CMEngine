@@ -18,6 +18,7 @@
 namespace cmengine
 {
     class CMBaseSkill;
+    class CMBaseSprite;
     
     typedef int MapKey;
 
@@ -25,6 +26,11 @@ namespace cmengine
     typedef std::unique_ptr<CMBaseSkill> BaseSkill;
     typedef std::function<BaseSkill(void)> CreateSkillFun;
     typedef std::map<MapKey, CreateSkillFun> CreateSkillFunMap;
+
+    // 用于：创建怪物类函数
+    typedef std::unique_ptr<CMBaseSprite> BaseSprite;
+    typedef std::function<BaseSprite(void)> CreateSpriteFun;
+    typedef std::map<MapKey, CreateSpriteFun> CreateSpriteFunMap;
 }
 
 #endif /* CMGENERALTYPEDEF_H */
