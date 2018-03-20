@@ -5,7 +5,6 @@
 #include <memory>
 
 #include "CMEngine/CMEngine.h"
-#include "Source/SkillSource.h"
 
 using namespace std;
 using namespace cmengine;
@@ -57,8 +56,8 @@ int main()
 
     CMEngineRun();
 
-    CMMonsterSprite sprite = CMInstantiateSource<CMMonsterSprite>::InstantiateSprite(1);
-    std::cout << sprite.GetName() << std::endl;
+    CMHeroSprite hero = CMInstantiateSource<CMHeroSprite>::InstantiateHero(1);
+    std::cout << hero.GetName() << std::endl;
 
     // CMSpriteModel model_1;
     // model_1.name = "战士";

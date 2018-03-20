@@ -15,6 +15,7 @@ namespace cmengine
 {
     CreateSkillFunMap CMSourceManager::skillSource;
     CreateSpriteFunMap CMSourceManager::spriteSource;
+    CreateHeroFunMap CMSourceManager::heroSource;
 
     void CMSourceManager::LoadSkill(const CreateSkillFunMap &map)
     {
@@ -48,6 +49,24 @@ namespace cmengine
             return it->second;
         } else {
             std::cout << "No create sprite function in map!" << std::endl;
+            throw 0;
+        }
+    }
+
+    void CMSourceManager::LoadHero(const CreateHeroFunMap &map)
+    {
+        CMSourceManager::heroSource = map;
+    }
+
+    CreateHeroFun CMSourceManager::GetCreateHeroFunWithKey(MapKey key)
+    {
+        CreateHeroFunMap::iterator it;
+
+        it = CMSourceManager::heroSource.find(key);
+        if (it != CMSourceManager::heroSource.end()) {
+            return it->second;
+        } else {
+            std::cout << "No create hero function in map!" << std::endl;
             throw 0;
         }
     }

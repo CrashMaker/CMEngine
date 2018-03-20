@@ -36,12 +36,13 @@ namespace cmengine
     // 需要实现的函数
     CreateSkillFunMap GetSkillSourceForCMEngine();
     CreateSpriteFunMap GetSpriteSourceForCMEngine();
-
+    CreateHeroFunMap GetHeroSourceForCMEngine();
 
     inline void CMEngineRun()
     {
         CMSourceManager::LoadSkill(GetSkillSourceForCMEngine());
         CMSourceManager::LoadSprite(GetSpriteSourceForCMEngine());
+        CMSourceManager::LoadHero(GetHeroSourceForCMEngine());
     }
 }
 
