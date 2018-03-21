@@ -28,6 +28,7 @@ namespace cmengine
             Obtain();
             CMBaseSkill::Cast();
         }
+
     private:
 
     };
