@@ -11,7 +11,6 @@
 #ifndef CMSKILLCASTTARGET_H
 #define CMSKILLCASTTARGET_H
 
-#include "../CMGeneral/CMGeneralSkillType.h"
 #include <vector>
 
 namespace cmengine
@@ -21,8 +20,15 @@ namespace cmengine
     class CMSkillCastTargetDelegate
     {
     public:
-        virtual CMBaseSprite* GetTarget() = 0;
-        virtual std::vector<CMBaseSprite*> GetTargetVector() = 0;
+        virtual CMBaseSprite* ObtainCaster() = 0;
+        virtual CMBaseSprite* ObtainTarget() = 0;
+        virtual std::vector<CMBaseSprite*> ObtainTargetVector() = 0;
+    };
+
+    enum SkillCastTargetType {
+        SkillCastTargetTypeSelf,            // 自身
+        SkillCastTargetTypeSingle,          // 单一目标
+        SkillCastTargetTypeMultiple,        // 多个目标
     };
     
     class CMSkillCastTarget
@@ -34,16 +40,37 @@ namespace cmengine
         // 目标的提供类需要继承CMSkillCastTargetDelegate，并对此变量赋值
         CMSkillCastTargetDelegate* delegate = nullptr;
 
-        // 根据目标类型选取目标施放
-        void Cast(CMBaseSprite* caster);
-        // 对自身施放
-        void CastWithSelf(CMBaseSprite* caster);
-        // 对单个目标施放
-        void CastWithTarget(CMBaseSprite* caster, CMBaseSprite* target);
-        // 对多个目标施放
-        virtual void CastWithTargetVector(CMBaseSprite* caster, std::vector<CMBaseSprite*> targetVector) = 0;
+        CMBaseSprite* GetCaster() {return caster;}
+        CMBaseSprite* GetTarget() {return target;}
+        std::vector<CMBaseSprite*> GetTargetVector() {return targetVector;}
+
+    protected:
+        // 获取施放者和目标
+        void Obtain()
+        {
+            caster = nullptr;
+            target = nullptr;
+            targetVector.clear();
+            if (!delegate) return;
+
+            if (SkillCastTargetTypeSelf == targetType) {
+                caster = delegate->ObtainCaster();
+                target = delegate->ObtainCaster();
+            } else if (SkillCastTargetTypeSingle == targetType) {
+                caster = delegate->ObtainCaster();
+                target = delegate->ObtainTarget();
+            } else if (SkillCastTargetTypeMultiple == targetType) {
+                caster = delegate->ObtainCaster();
+                targetVector = delegate->ObtainTargetVector();
+            }
+        }
+
     private:
         SkillCastTargetType targetType;         // 目标类型
+        CMBaseSprite* caster = nullptr;         // 技能施放者
+        CMBaseSprite* target = nullptr;         // 技能目标
+        // 技能目标，当targetType == SkillCastTargetTypeMultiple有值;
+        std::vector<CMBaseSprite*> targetVector = {};
     };
 }
 

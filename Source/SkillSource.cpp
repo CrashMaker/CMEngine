@@ -28,20 +28,23 @@ CreateSkillFunMap cmengine::GetSkillSourceForCMEngine()
 // 技能列表
 BaseSkill Cut()
 {
-    auto logicFun = [](CMNormalSkillInterface interface){
-        vector<const CMBaseSprite*> spVec = interface.GetTargetVector();
-        for (const CMBaseSprite* sp : spVec) {
-            cout << sp->GetName() << std::endl;
-        }
+    auto logicFun = [](CMBaseSkill* skill) {
+        CMNormalSkill* sk = (CMNormalSkill*)skill;
+        CMBaseSprite* sp = sk->GetCaster();
+        sp->PrintAttribute();
     };
     
-    BaseSkill skill(new CMNormalSkill("Cut", SkillCastTargetTypeMultiple, logicFun));
+    BaseSkill skill(new CMNormalSkill("Cut", logicFun, SkillCastTargetTypeSelf));
     return skill;
 }
 
 BaseSkill Shot()
 {
-    BaseSkill skill(new CMBaseSkill("Shot"));
+    auto logicFun = [](CMBaseSkill* skill) {
+        std::cout << skill->GetName() << std::endl;
+    };
+
+    BaseSkill skill(new CMBaseSkill("Shot", logicFun));
 
     return skill;
 }

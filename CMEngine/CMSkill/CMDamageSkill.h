@@ -22,25 +22,25 @@ namespace cmengine
     class CMBaseSprite;
     typedef std::function<void(CMDamageSkillInterface interface)> NamageSkillInterface;
 
-    class CMDamageSkill : public CMBaseSkill, public CMSkillCastTarget
-    {
-    public:
-        CMDamageSkill(std::string name, SkillCastTargetType targetType, 
-                SkillAttackType attackType_, SkillDamageType damageType_, 
-                NamageSkillInterface logicFun_) 
-            : CMBaseSkill(name), CMSkillCastTarget(targetType), attackType(attackType_)
-              , damageType(damageType_), logicFun(logicFun_) {}
-        virtual ~CMDamageSkill () {}
-
-        virtual void CastWithTargetVector(CMBaseSprite* caster, std::vector<CMBaseSprite*> targetVector) {
-            CMDamageSkillInterface interface = CMDamageSkillInterface(caster, targetVector, this);
-            logicFun(interface);
-        }
-    private:
-        SkillAttackType attackType;
-        SkillDamageType damageType;
-        NamageSkillInterface logicFun;
-    };
+    // class CMDamageSkill : public CMBaseSkill, public CMSkillCastTarget
+    // {
+    // public:
+    //     CMDamageSkill(std::string name, SkillCastTargetType targetType, 
+    //             SkillAttackType attackType_, SkillDamageType damageType_, 
+    //             NamageSkillInterface logicFun_) 
+    //         : CMBaseSkill(name), CMSkillCastTarget(targetType), attackType(attackType_)
+    //           , damageType(damageType_), logicFun(logicFun_) {}
+    //     virtual ~CMDamageSkill () {}
+    // 
+    //     virtual void CastWithTargetVector(CMBaseSprite* caster, std::vector<CMBaseSprite*> targetVector) {
+    //         CMDamageSkillInterface interface = CMDamageSkillInterface(caster, targetVector, this);
+    //         logicFun(interface);
+    //     }
+    // private:
+    //     SkillAttackType attackType;
+    //     SkillDamageType damageType;
+    //     NamageSkillInterface logicFun;
+    // };
 }
 
 #endif /* CMDAMAGESKILL_H */

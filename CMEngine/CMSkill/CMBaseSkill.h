@@ -12,18 +12,25 @@
 #define CMBASESKILL_H
 
 #include <string>
+#include <functional>
 
 namespace cmengine
 {
+    class CMBaseSkill;
+    typedef std::function<void(CMBaseSkill* skill)> SkillLogicFun;
+    
     class CMBaseSkill
     {
     public:
-        explicit CMBaseSkill (std::string name_) : name(name_) {}
+        MBaseSkill (std::string name_, SkillLogicFun logicFun_) 
+            : name(name_), logicFun(logicFun_) {}
         virtual ~CMBaseSkill () {}
     
         std::string GetName() const {return name;}
+        void Cast() {logicFun(this);}
     private:
         std::string name;
+        SkillLogicFun logicFun;
     };
 }
 

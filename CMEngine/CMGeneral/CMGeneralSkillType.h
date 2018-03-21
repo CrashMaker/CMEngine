@@ -13,12 +13,6 @@
 
 namespace cmengine
 {
-    enum SkillCastTargetType {
-        SkillCastTargetTypeSelf,            // 自身
-        SkillCastTargetTypeSingle,          // 单一目标
-        SkillCastTargetTypeMultiple,        // 多个目标
-    };
-
     enum SkillAttackType { 
         SkillAttackTypeMelee,        // 近战
         SkillAttackTypeRemote,       // 远程

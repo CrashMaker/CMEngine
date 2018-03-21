@@ -12,35 +12,5 @@
 
 namespace cmengine
 {
-    using namespace std;
 
-    void CMSkillCastTarget::Cast(CMBaseSprite* caster) 
-    {
-        if (SkillCastTargetTypeSelf == targetType) {
-            vector<CMBaseSprite*> targetVector = {caster};
-            CastWithTargetVector(caster, targetVector);
-        } else if (SkillCastTargetTypeSingle == targetType) {
-            if (!delegate) return;
-            vector<CMBaseSprite*> targetVector = { 
-                delegate->GetTarget()
-            };
-            CastWithTargetVector(caster, targetVector);
-        } else if (SkillCastTargetTypeMultiple == targetType) {
-            if (!delegate) return;
-            vector<CMBaseSprite*> targetVector = delegate->GetTargetVector();
-            CastWithTargetVector(caster, targetVector);
-        }
-    }
-
-    void CMSkillCastTarget::CastWithSelf(CMBaseSprite* caster)
-    {
-        vector<CMBaseSprite*> targetVector = {caster};
-        CastWithTargetVector(caster, targetVector);
-    }
-
-    void CMSkillCastTarget::CastWithTarget(CMBaseSprite* caster, CMBaseSprite* target)
-    {
-        vector<CMBaseSprite*> targetVector = {target};
-        CastWithTargetVector(caster, targetVector);
-    }
 }

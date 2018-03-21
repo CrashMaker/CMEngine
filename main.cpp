@@ -9,43 +9,49 @@
 using namespace std;
 using namespace cmengine;
 
-class TestClass : CMSkillCastTargetDelegate
+class TestClass : public CMSkillCastTargetDelegate
 {
 public:
-    // TestClass(const CMSpriteModel& model_1, const CMSpriteModel& model_2, const CMSpriteModel& model_3)
-    //     : sp_1(model_1), sp_2(model_2), sp_3(model_3) {}
-    // 
-    // virtual CMSprite* GetTarget();
-    // virtual vector<CMSprite*> GetTargetVector();
-    // void Run();
+    TestClass(CMBaseSprite* hero_, CMBaseSprite* monster_)
+        : hero(hero_), monster(monster_) {}
+    
+    virtual CMBaseSprite* ObtainCaster();
+    virtual CMBaseSprite* ObtainTarget();
+    virtual std::vector<CMBaseSprite*> ObtainTargetVector();
+    
+    void Run();
 private:
-    // CMSprite sp_1;
-    // CMSprite sp_2;
-    // CMSprite sp_3;
+    CMBaseSprite* hero;
+    CMBaseSprite* monster;
 };
 
-// CMSprite* TestClass::GetTarget()
-// {
-//     return &sp_2;
-// }
-// 
-// vector<CMSprite*> TestClass::GetTargetVector()
-// {
-//     vector<CMSprite*> vec = {
-//         &sp_2, 
-//         &sp_3,
-//     };
-// 
-//     return vec;
-// }
-// 
-// void TestClass::Run()
-// {
-//     CMNormalSkill skill = CMInstantiateSource<CMNormalSkill>::InstantiateSkill(1);
-//     skill.delegate = this;
-//     skill.Cast(&sp_1);
-// }
-// 
+CMBaseSprite* TestClass::ObtainCaster()
+{
+    return hero;
+}
+
+CMBaseSprite* TestClass::ObtainTarget()
+{
+    return monster;
+}
+
+vector<CMBaseSprite*> TestClass::ObtainTargetVector()
+{
+    vector<CMBaseSprite*> vec = {
+        hero, 
+        monster,
+    };
+
+    return vec;
+}
+
+void TestClass::Run()
+{
+    CMNormalSkill skill = CMInstantiateSource<CMNormalSkill>::InstantiateSkill(1);
+    skill.delegate = this;
+    skill.Cast();
+}
+
 int main()
 {
     // default_random_engine e(time(0));
@@ -58,14 +64,15 @@ int main()
 
     CMHeroSprite hero = CMInstantiateSource<CMHeroSprite>::InstantiateHero(1);
     hero.SetLevel(5);
-    hero.PrintAttribute();
-
+    
     CMMonsterSprite monster = CMInstantiateSource<CMMonsterSprite>::InstantiateSprite(1);
     monster.SetLevel(9);
-    monster.PrintAttribute();
 
-    // TestClass test(model_1, model_2, model_3);
-    // test.Run();
+    TestClass test(&hero, &monster);
+    test.Run();
+
+    CMNormalSkill skill = CMInstantiateSource<CMNormalSkill>::InstantiateSkill(1);
+    skill.Cast();
 
     return 0;
 }
