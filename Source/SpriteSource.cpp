@@ -28,28 +28,30 @@ CreateSpriteFunMap cmengine::GetSpriteSourceForCMEngine()
 // 怪物列表
 BaseSprite Dog()
 {
-    CMSpriteGrowthRate growthRate;
-    growthRate.attackGrowthRate = 0.8;
-    growthRate.defenseGrowthRate = 0.4;
-    growthRate.magicAtkGrowthRate = 0.8;
-    growthRate.magicDefGrowthRate = 0.4;
-    growthRate.healthGrowthRate = 1.2;
-    growthRate.speedGrowthRate = 0.4;
-    
+    float attackGrow = 1.0f;
+    float defenseGrow = 1.0f;
+    float magicAtkGrow = 1.0f;
+    float magicDefGrow = 1.0f;
+    float healthGrow = 1.0f;
+    float speedGrow = 1.0f;
+ 
+    CMSpriteGrowthRate growthRate(attackGrow, defenseGrow, magicAtkGrow, 
+            magicDefGrow, healthGrow, speedGrow);
     BaseSprite sprite(new CMMonsterSprite("Dog", growthRate));
     return sprite;
 }
 
 BaseSprite Pig()
 {
-    CMSpriteGrowthRate growthRate;
-    growthRate.attackGrowthRate = 2;
-    growthRate.defenseGrowthRate = 2;
-    growthRate.magicAtkGrowthRate = 2;
-    growthRate.magicDefGrowthRate = 2;
-    growthRate.healthGrowthRate = 2;
-    growthRate.speedGrowthRate = 2;
-    
+    float attackGrow = 1.0f;
+    float defenseGrow = 1.0f;
+    float magicAtkGrow = 1.0f;
+    float magicDefGrow = 1.0f;
+    float healthGrow = 1.0f;
+    float speedGrow = 1.0f;
+ 
+    CMSpriteGrowthRate growthRate(attackGrow, defenseGrow, magicAtkGrow, 
+            magicDefGrow, healthGrow, speedGrow);
     BaseSprite sprite(new CMMonsterSprite("Pig", growthRate));
 
     return sprite;

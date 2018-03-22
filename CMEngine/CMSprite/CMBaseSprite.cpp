@@ -11,16 +11,14 @@
 #include "CMBaseSprite.h"
 #include <iostream>
 
-#define MaxLevel 99         // 最高等级
-
 namespace cmengine
 {
     void CMBaseSprite::SetLevel(int lv)
     {
-        if (lv <= 0) {
-            level = 1;
-        } else if (lv > MaxLevel) {
-            level = MaxLevel;
+        if (lv < SpriteMinLevel) {
+            level = SpriteMinLevel;
+        } else if (lv > SpriteMaxLevel) {
+            level = SpriteMaxLevel;
         } else {
             level = lv;
         }
@@ -28,15 +26,47 @@ namespace cmengine
         SetupInnateAttribute();
     }
 
+    void CMBaseSprite::SetHealthPoint(int hp)
+    {
+        // 当角色为life状态时，生命值才可以被改变
+        if (SpriteStateTypeLife == stateType) {
+            if (hp < 0) {
+                healthPoint = 0;
+            } else if (hp > currentAttribute.GetHealth()) {
+                healthPoint = currentAttribute.GetHealth();
+            } else {
+                healthPoint = hp;
+            }
+
+            // 当生命值为0时，角色进入Dead状态
+            if (0 == healthPoint) {
+                stateType = SpriteStateTypeDead;
+            }
+        }
+    }
+
     void CMBaseSprite::SetupInnateAttribute()
     {
+        // 重置属性
         innateAttribute.Reset();
-        innateAttribute.attack += (growthRate.attackGrowthRate * level);
-        innateAttribute.defense += (growthRate.defenseGrowthRate * level);
-        innateAttribute.magicAtk += (growthRate.magicAtkGrowthRate * level);
-        innateAttribute.magicDef += (growthRate.magicDefGrowthRate * level);
-        innateAttribute.health += (growthRate.healthGrowthRate * level);
-        innateAttribute.speed += (growthRate.speedGrowthRate * level);
+        // 设置攻击力
+        int attack = innateAttribute.GetAttack() +  growthRate.GetAttackGrow() * level * SpriteGrowthRatioAttack;
+        innateAttribute.SetAttack(attack);
+        // 设置防御力
+        int defense = innateAttribute.GetDefense() +  growthRate.GetDefenseGrow() * level * SpriteGrowthRatioDefense;
+        innateAttribute.SetDefense(defense);
+        // 设置魔法攻击力
+        int magicAtk = innateAttribute.GetMagicAtk() +  growthRate.GetMagicAtkGrow() * level * SpriteGrowthRatioMagicAtk;
+        innateAttribute.SetMagicAtk(magicAtk);
+        // 设置魔法防御力
+        int magicDef = innateAttribute.GetMagicDef() +  growthRate.GetMagicDefGrow() * level * SpriteGrowthRatioMagicDef;
+        innateAttribute.SetMagicDef(magicDef);
+        // 设置生命值
+        int health = innateAttribute.GetHealth() +  growthRate.GetHealthGrow() * level * SpriteGrowthRatioHealth;
+        innateAttribute.SetHealth(health);
+        // 设置速度
+        int speed = innateAttribute.GetSpeed() +  growthRate.GetSpeedGrow() * level * SpriteGrowthRatioSpeed;
+        innateAttribute.SetSpeed(speed);
 
         SetupCurrentAttribute();
     }
@@ -46,7 +76,7 @@ namespace cmengine
         currentAttribute = innateAttribute;
 
         // 恢复生命值
-        healthPoint = currentAttribute.health;
+        SetHealthPoint(currentAttribute.GetHealth());
     }
 
 
@@ -58,11 +88,11 @@ namespace cmengine
         cout << "name:" << name << endl;
         cout << "level:" << level << endl;
         cout << "HP:" << healthPoint << endl << endl;
-        cout << "attack:" << currentAttribute.attack << endl;
-        cout << "defense:" << currentAttribute.defense << endl;
-        cout << "magicAtk:" << currentAttribute.magicAtk << endl;
-        cout << "magicDef:" << currentAttribute.magicDef << endl;
-        cout << "health:" << currentAttribute.health << endl;
-        cout << "speed:" << currentAttribute.speed << endl << endl;
+        cout << "attack:" << currentAttribute.GetAttack() << endl;
+        cout << "defense:" << currentAttribute.GetDefense() << endl;
+        cout << "magicAtk:" << currentAttribute.GetMagicAtk() << endl;
+        cout << "magicDef:" << currentAttribute.GetMagicDef() << endl;
+        cout << "health:" << currentAttribute.GetHealth() << endl;
+        cout << "speed:" << currentAttribute.GetSpeed() << endl << endl;
     }
 }

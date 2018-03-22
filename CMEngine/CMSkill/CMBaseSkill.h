@@ -22,7 +22,7 @@ namespace cmengine
     class CMBaseSkill
     {
     public:
-        MBaseSkill (std::string name_, SkillLogicFun logicFun_) 
+        CMBaseSkill (std::string name_, SkillLogicFun logicFun_) 
             : name(name_), logicFun(logicFun_) {}
         virtual ~CMBaseSkill () {}
     

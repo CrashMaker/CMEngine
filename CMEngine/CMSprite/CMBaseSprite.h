@@ -14,33 +14,61 @@
 #include "../CMGeneral/CMGeneralSpriteType.h"
 #include <string>
 
+#define SpriteMaxLevel      99      // 最高等级
+#define SpriteMinLevel      1       // 最低等级
+
+#define SpriteMaxAttack     999     // 最高攻击力
+#define SpriteMaxDefense    999     // 最高防御力
+#define SpriteMaxMagicAtk   999     // 最高魔法攻击力
+#define SpriteMaxMagicDef   999     // 最高魔法防御力
+#define SpriteMaxHealth     9999    // 最高生命
+#define SpriteMaxSpeed      999     // 最高速度
+
+// 属性成长率换算比例
+#define SpriteGrowthRatioAttack     2
+#define SpriteGrowthRatioDefense    1
+#define SpriteGrowthRatioMagicAtk   2
+#define SpriteGrowthRatioMagicDef   1
+#define SpriteGrowthRatioHealth     3
+#define SpriteGrowthRatioSpeed      1
+
+// 所有属性值一律不准小于0
+#define SpriteMinAttribute 0
+
 namespace cmengine
 {
-    // 角色成长率，建议攻击、防御、生命以2:1:3的比例成长
+    // 角色成长率
     struct CMSpriteGrowthRate
     {
-        float attackGrowthRate;
-        float defenseGrowthRate;
-        float magicAtkGrowthRate;
-        float magicDefGrowthRate;
-        float healthGrowthRate;
-        float speedGrowthRate;
+    public:
+        CMSpriteGrowthRate() 
+            : attackGrow(0), defenseGrow(0), magicAtkGrow(0),
+            magicDefGrow(0), healthGrow(0), speedGrow(0) {}
+        CMSpriteGrowthRate(float attackGrow_, float defenseGrow_, float magicAtkGrow_, 
+            float magicDefGrow_, float healthGrow_, float speedGrow_) 
+            : attackGrow(attackGrow_), defenseGrow(defenseGrow_), magicAtkGrow(magicAtkGrow_),
+              magicDefGrow(magicDefGrow_), healthGrow(healthGrow_), speedGrow(speedGrow_) {}
 
-         CMSpriteGrowthRate() 
-            : attackGrowthRate(0), defenseGrowthRate(0), magicAtkGrowthRate(0),
-              magicDefGrowthRate(0), healthGrowthRate(0), speedGrowthRate(0) {}
+        float GetAttackGrow() {return attackGrow;}
+        float GetDefenseGrow() {return defenseGrow;}
+        float GetMagicAtkGrow() {return magicAtkGrow;}
+        float GetMagicDefGrow() {return magicDefGrow;}
+        float GetHealthGrow() {return healthGrow;}
+        float GetSpeedGrow() {return speedGrow;}
+        
+    private:
+        float attackGrow;
+        float defenseGrow;
+        float magicAtkGrow;
+        float magicDefGrow;
+        float healthGrow;
+        float speedGrow;
     };
     
     // 角色基础属性, 默认都为1
     struct CMSpriteBaseAttribute
     {
-        int attack;
-        int defense;
-        int magicAtk;
-        int magicDef;
-        int health;
-        int speed;
-
+    public:
         CMSpriteBaseAttribute() 
             : attack(1), defense(1), magicAtk(1),
               magicDef(1), health(1), speed(1) {}
@@ -54,6 +82,41 @@ namespace cmengine
             health = 1;
             speed = 1;
         }
+
+        int GetAttack() {return attack;}
+        int GetDefense() {return defense;}
+        int GetMagicAtk() {return magicAtk;}
+        int GetMagicDef() {return magicDef;}
+        int GetHealth() {return health;}
+        int GetSpeed() {return speed;}
+        
+        void SetAttack(int atk) {attack = GetCorrectNum(atk, SpriteMaxAttack);}
+        void SetDefense(int def) {defense = GetCorrectNum(def, SpriteMaxDefense);}
+        void SetMagicAtk(int mAtk) {magicAtk = GetCorrectNum(mAtk, SpriteMaxMagicAtk);}
+        void SetMagicDef(int mDef) {magicDef = GetCorrectNum(mDef, SpriteMaxMagicDef);}
+        void SetHealth(int hl) {health = GetCorrectNum(hl, SpriteMaxHealth);}
+        void SetSpeed(int sp) {speed = GetCorrectNum(sp, SpriteMaxSpeed);}
+
+    private:
+        int attack;
+        int defense;
+        int magicAtk;
+        int magicDef;
+        int health;
+        int speed;
+
+        int GetCorrectNum(int num, int maxNum)
+        {
+            int result = 0;
+            if (num < SpriteMinAttribute) {
+                result = SpriteMinAttribute;
+            } else if (num > maxNum) {
+                result = maxNum;
+            } else {
+                result = num;
+            }
+            return result;
+        }
     };
 
     class CMBaseSprite
@@ -63,7 +126,7 @@ namespace cmengine
             : name(name_), growthRate(growthRate_) 
         {
             stateType = SpriteStateTypeLife;
-            SetLevel(1);
+            SetLevel(SpriteMinLevel);
         }
         virtual ~CMBaseSprite () {}
     
@@ -71,6 +134,7 @@ namespace cmengine
         int GetLevel() const {return level;}
 
         void SetLevel(int lv);
+        void SetHealthPoint(int hp);
         void SetupInnateAttribute();
         void SetupCurrentAttribute();
 

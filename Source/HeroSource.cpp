@@ -29,28 +29,30 @@ CreateHeroFunMap cmengine::GetHeroSourceForCMEngine()
 // 英雄列表
 HeroSprite Warrior()
 {
-    CMSpriteGrowthRate growthRate;
-    growthRate.attackGrowthRate = 2;
-    growthRate.defenseGrowthRate = 1;
-    growthRate.magicAtkGrowthRate = 1;
-    growthRate.magicDefGrowthRate = 1;
-    growthRate.healthGrowthRate = 3;
-    growthRate.speedGrowthRate = 1;
-    
+    float attackGrow = 1.0f;
+    float defenseGrow = 1.0f;
+    float magicAtkGrow = 1.0f;
+    float magicDefGrow = 1.0f;
+    float healthGrow = 1.0f;
+    float speedGrow = 1.0f;
+ 
+    CMSpriteGrowthRate growthRate(attackGrow, defenseGrow, magicAtkGrow, 
+            magicDefGrow, healthGrow, speedGrow);
     HeroSprite hero(new CMHeroSprite("Warrior", growthRate));
     return hero;
 }
 
 HeroSprite Mage()
 {
-    CMSpriteGrowthRate growthRate;
-    growthRate.attackGrowthRate = 1;
-    growthRate.defenseGrowthRate = 1;
-    growthRate.magicAtkGrowthRate = 1;
-    growthRate.magicDefGrowthRate = 1;
-    growthRate.healthGrowthRate = 1;
-    growthRate.speedGrowthRate = 1;
-    
+    float attackGrow = 1.0f;
+    float defenseGrow = 1.0f;
+    float magicAtkGrow = 1.0f;
+    float magicDefGrow = 1.0f;
+    float healthGrow = 1.0f;
+    float speedGrow = 1.0f;
+ 
+    CMSpriteGrowthRate growthRate(attackGrow, defenseGrow, magicAtkGrow, 
+            magicDefGrow, healthGrow, speedGrow);
     HeroSprite hero(new CMHeroSprite("Mage", growthRate));
     return hero;
 }
