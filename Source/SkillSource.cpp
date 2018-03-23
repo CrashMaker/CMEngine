@@ -30,7 +30,7 @@ BaseSkill Cut()
 {
     auto logicFun = [](CMBaseSkill* skill) {
         CMNormalSkill* sk = (CMNormalSkill*)skill;
-        CMBaseSprite* sp = sk->GetCaster();
+        const CMBaseSprite* sp = sk->GetCaster();
         sp->PrintAttribute();
     };
     

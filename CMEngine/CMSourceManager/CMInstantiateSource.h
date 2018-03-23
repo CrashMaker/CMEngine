@@ -73,7 +73,6 @@ namespace cmengine
             throw 0;
         }
     }
-
 }
 
 #endif /* CMINSTANTIATESOURCE_H */

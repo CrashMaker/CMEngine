@@ -81,7 +81,7 @@ namespace cmengine
 
 
     // 打印状态
-    void CMBaseSprite::PrintAttribute()
+    void CMBaseSprite::PrintAttribute() const
     {
         using namespace std;
 

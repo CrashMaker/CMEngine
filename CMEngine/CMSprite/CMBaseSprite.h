@@ -49,12 +49,12 @@ namespace cmengine
             : attackGrow(attackGrow_), defenseGrow(defenseGrow_), magicAtkGrow(magicAtkGrow_),
               magicDefGrow(magicDefGrow_), healthGrow(healthGrow_), speedGrow(speedGrow_) {}
 
-        float GetAttackGrow() {return attackGrow;}
-        float GetDefenseGrow() {return defenseGrow;}
-        float GetMagicAtkGrow() {return magicAtkGrow;}
-        float GetMagicDefGrow() {return magicDefGrow;}
-        float GetHealthGrow() {return healthGrow;}
-        float GetSpeedGrow() {return speedGrow;}
+        float GetAttackGrow() const {return attackGrow;}
+        float GetDefenseGrow() const {return defenseGrow;}
+        float GetMagicAtkGrow() const {return magicAtkGrow;}
+        float GetMagicDefGrow() const {return magicDefGrow;}
+        float GetHealthGrow() const {return healthGrow;}
+        float GetSpeedGrow() const {return speedGrow;}
         
     private:
         float attackGrow;
@@ -83,12 +83,12 @@ namespace cmengine
             speed = 1;
         }
 
-        int GetAttack() {return attack;}
-        int GetDefense() {return defense;}
-        int GetMagicAtk() {return magicAtk;}
-        int GetMagicDef() {return magicDef;}
-        int GetHealth() {return health;}
-        int GetSpeed() {return speed;}
+        int GetAttack() const {return attack;}
+        int GetDefense() const {return defense;}
+        int GetMagicAtk() const {return magicAtk;}
+        int GetMagicDef() const {return magicDef;}
+        int GetHealth() const {return health;}
+        int GetSpeed() const {return speed;}
         
         void SetAttack(int atk) {attack = GetCorrectNum(atk, SpriteMaxAttack);}
         void SetDefense(int def) {defense = GetCorrectNum(def, SpriteMaxDefense);}
@@ -139,7 +139,7 @@ namespace cmengine
         void SetupCurrentAttribute();
 
         // 打印状态
-        void PrintAttribute();
+        void PrintAttribute() const;
     private:
         std::string name;
         CMSpriteGrowthRate growthRate;

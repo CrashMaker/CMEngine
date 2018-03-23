@@ -40,9 +40,16 @@ namespace cmengine
         // 目标的提供类需要继承CMSkillCastTargetDelegate，并对此变量赋值
         CMSkillCastTargetDelegate* delegate = nullptr;
 
-        CMBaseSprite* GetCaster() {return caster;}
-        CMBaseSprite* GetTarget() {return target;}
-        std::vector<CMBaseSprite*> GetTargetVector() {return targetVector;}
+        const CMBaseSprite* GetCaster() {return caster;}
+        const CMBaseSprite* GetTarget() {return target;}
+        std::vector<const CMBaseSprite*> GetTargetVector() 
+        {
+            std::vector<const CMBaseSprite*> vc = {};
+            for (const CMBaseSprite* sp : targetVector) {
+                vc.push_back(sp);
+            }
+            return vc;
+        }
 
     protected:
         // 获取施放者和目标
@@ -65,7 +72,6 @@ namespace cmengine
             }
         }
 
-    private:
         SkillCastTargetType targetType;         // 目标类型
         CMBaseSprite* caster = nullptr;         // 技能施放者
         CMBaseSprite* target = nullptr;         // 技能目标
