@@ -35,7 +35,7 @@ BaseSprite Dog()
     float healthGrow = 1.0f;
     float speedGrow = 1.0f;
  
-    CMSpriteGrowthRate growthRate(attackGrow, defenseGrow, magicAtkGrow, 
+    CMGrowthRateOfSprite growthRate(attackGrow, defenseGrow, magicAtkGrow, 
             magicDefGrow, healthGrow, speedGrow);
     BaseSprite sprite(new CMMonsterSprite("Dog", growthRate));
     return sprite;
@@ -50,7 +50,7 @@ BaseSprite Pig()
     float healthGrow = 1.0f;
     float speedGrow = 1.0f;
  
-    CMSpriteGrowthRate growthRate(attackGrow, defenseGrow, magicAtkGrow, 
+    CMGrowthRateOfSprite growthRate(attackGrow, defenseGrow, magicAtkGrow, 
             magicDefGrow, healthGrow, speedGrow);
     BaseSprite sprite(new CMMonsterSprite("Pig", growthRate));
 

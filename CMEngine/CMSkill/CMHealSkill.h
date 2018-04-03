@@ -27,10 +27,16 @@ namespace cmengine
         {
             Obtain();
             CMBaseSkill::Cast();
+
+            // 治疗算法
+            int value = (healPoint + addReviseValue) * mulReviseValue;
+            
         }
 
     private:
-        /* data */
+        int healPoint = 0;          // 治疗点数
+        int mulReviseValue = 1;     // 乘数修正值
+        int addReviseValue = 0;     // 加数修正值
     };
 }
 

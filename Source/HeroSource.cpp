@@ -36,7 +36,7 @@ HeroSprite Warrior()
     float healthGrow = 1.0f;
     float speedGrow = 1.0f;
  
-    CMSpriteGrowthRate growthRate(attackGrow, defenseGrow, magicAtkGrow, 
+    CMGrowthRateOfSprite growthRate(attackGrow, defenseGrow, magicAtkGrow, 
             magicDefGrow, healthGrow, speedGrow);
     HeroSprite hero(new CMHeroSprite("Warrior", growthRate));
     return hero;
@@ -51,7 +51,7 @@ HeroSprite Mage()
     float healthGrow = 1.0f;
     float speedGrow = 1.0f;
  
-    CMSpriteGrowthRate growthRate(attackGrow, defenseGrow, magicAtkGrow, 
+    CMGrowthRateOfSprite growthRate(attackGrow, defenseGrow, magicAtkGrow, 
             magicDefGrow, healthGrow, speedGrow);
     HeroSprite hero(new CMHeroSprite("Mage", growthRate));
     return hero;

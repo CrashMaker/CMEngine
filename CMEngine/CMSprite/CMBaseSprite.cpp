@@ -15,10 +15,10 @@ namespace cmengine
 {
     void CMBaseSprite::SetLevel(int lv)
     {
-        if (lv < SpriteMinLevel) {
-            level = SpriteMinLevel;
-        } else if (lv > SpriteMaxLevel) {
-            level = SpriteMaxLevel;
+        if (lv < MinLevel) {
+            level = MinLevel;
+        } else if (lv > MaxLevel) {
+            level = MaxLevel;
         } else {
             level = lv;
         }
@@ -50,22 +50,22 @@ namespace cmengine
         // 重置属性
         innateAttribute.Reset();
         // 设置攻击力
-        int attack = innateAttribute.GetAttack() +  growthRate.GetAttackGrow() * level * SpriteGrowthRatioAttack;
+        int attack = innateAttribute.GetAttack() + growthRate.GetAttackWithLevel(level);
         innateAttribute.SetAttack(attack);
         // 设置防御力
-        int defense = innateAttribute.GetDefense() +  growthRate.GetDefenseGrow() * level * SpriteGrowthRatioDefense;
+        int defense = innateAttribute.GetDefense() + growthRate.GetDefenseWithLevel(level);
         innateAttribute.SetDefense(defense);
         // 设置魔法攻击力
-        int magicAtk = innateAttribute.GetMagicAtk() +  growthRate.GetMagicAtkGrow() * level * SpriteGrowthRatioMagicAtk;
+        int magicAtk = innateAttribute.GetMagicAtk() + growthRate.GetMagicAtkWithLevel(level);
         innateAttribute.SetMagicAtk(magicAtk);
         // 设置魔法防御力
-        int magicDef = innateAttribute.GetMagicDef() +  growthRate.GetMagicDefGrow() * level * SpriteGrowthRatioMagicDef;
+        int magicDef = innateAttribute.GetMagicDef() + growthRate.GetMagicDefWithLevel(level);
         innateAttribute.SetMagicDef(magicDef);
         // 设置生命值
-        int health = innateAttribute.GetHealth() +  growthRate.GetHealthGrow() * level * SpriteGrowthRatioHealth;
+        int health = innateAttribute.GetHealth() + growthRate.GetHealthWithLevel(level);
         innateAttribute.SetHealth(health);
         // 设置速度
-        int speed = innateAttribute.GetSpeed() +  growthRate.GetSpeedGrow() * level * SpriteGrowthRatioSpeed;
+        int speed = innateAttribute.GetSpeed() + growthRate.GetSpeedWithLevel(level);
         innateAttribute.SetSpeed(speed);
 
         SetupCurrentAttribute();
