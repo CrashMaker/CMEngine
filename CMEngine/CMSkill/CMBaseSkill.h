@@ -31,6 +31,7 @@ namespace cmengine
     private:
         std::string name;
         SkillLogicFun logicFun;
+        std::string flag = "";
     };
 }
 
