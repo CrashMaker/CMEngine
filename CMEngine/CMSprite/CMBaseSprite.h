@@ -32,16 +32,27 @@ namespace cmengine
         }
         virtual ~CMBaseSprite () {}
     
+        // 姓名
         std::string GetName() const {return name;}
-        int GetLevel() const {return level;}
 
+        // 等级
+        int GetLevel() const {return level;}
         void SetLevel(int lv);
+
+        // 获得治疗
+        void ObtainHeal();
+
+        // 受到伤害
+        void ObtainDamage();
+
+        // 打印状态
+        void PrintAttribute() const;
+
+    private:
         void SetHealthPoint(int hp);
         void SetupInnateAttribute();
         void SetupCurrentAttribute();
 
-        // 打印状态
-        void PrintAttribute() const;
     private:
         std::string name;
         CMGrowthRateOfSprite growthRate;

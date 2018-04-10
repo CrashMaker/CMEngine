@@ -19,17 +19,15 @@
 #include "CMInterface/CMBattleInterface.h"
 #include "CMSkill/CMBaseSkill.h"
 #include "CMSourceManager/CMInstantiateSource.h"
-#include "CMSkill/CMNormalSkill.h"
 #include "CMGeneral/CMGeneralTypedef.h"
 #include "CMSkill/CMSkillCastTarget.h"
-#include "CMInterface/CMSkillInterface/CMBaseSkillInterface.h"
-#include "CMInterface/CMSkillInterface/CMNormalSkillInterface.h"
 #include "CMGeneral/CMGeneralSkillType.h"
-#include "CMInterface/CMSkillInterface/CMDamageSkillInterface.h"
 #include "CMSprite/CMBaseSprite.h"
 #include "CMGeneral/CMGeneralSpriteType.h"
 #include "CMSprite/CMHeroSprite.h"
 #include "CMSprite/CMMonsterSprite.h"
+#include "CMSkill/CMDamageSkill.h"
+#include "CMSkill/CMHealSkill.h"
 
 namespace cmengine
 {

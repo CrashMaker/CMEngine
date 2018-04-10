@@ -13,14 +13,10 @@
 
 #include "CMBaseSkill.h"
 #include "CMSkillCastTarget.h"
-#include "../CMGeneral/CMGeneralSkillType.h"
-#include "../CMInterface/CMSkillInterface/CMDamageSkillInterface.h"
-#include <functional>
 
 namespace cmengine
 {
     class CMBaseSprite;
-    typedef std::function<void(CMDamageSkillInterface interface)> NamageSkillInterface;
 
     // class CMDamageSkill : public CMBaseSkill, public CMSkillCastTarget
     // {

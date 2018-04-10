@@ -47,7 +47,7 @@ vector<CMBaseSprite*> TestClass::ObtainTargetVector()
 
 void TestClass::Run()
 {
-    CMNormalSkill skill = CMInstantiateSource<CMNormalSkill>::InstantiateSkill(1);
+    CMHealSkill skill = CMInstantiateSource<CMHealSkill>::InstantiateSkill(1);
     skill.delegate = this;
     skill.Cast();
 }
@@ -70,9 +70,6 @@ int main()
 
     TestClass test(&hero, &monster);
     test.Run();
-
-    CMNormalSkill skill = CMInstantiateSource<CMNormalSkill>::InstantiateSkill(1);
-    skill.Cast();
 
     return 0;
 }
