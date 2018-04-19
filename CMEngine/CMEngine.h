@@ -20,7 +20,6 @@
 #include "CMSkill/CMBaseSkill.h"
 #include "CMSourceManager/CMInstantiateSource.h"
 #include "CMGeneral/CMGeneralTypedef.h"
-#include "CMSkill/CMSkillCastTarget.h"
 #include "CMGeneral/CMGeneralSkillType.h"
 #include "CMSprite/CMBaseSprite.h"
 #include "CMGeneral/CMGeneralSpriteType.h"

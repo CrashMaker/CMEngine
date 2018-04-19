@@ -12,7 +12,6 @@
 #define CMDAMAGESKILL_H
 
 #include "CMBaseSkill.h"
-#include "CMSkillCastTarget.h"
 
 namespace cmengine
 {

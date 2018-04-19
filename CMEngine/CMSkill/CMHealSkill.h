@@ -12,7 +12,7 @@
 #define CMHEALSKILL_H
 
 #include "CMBaseSkill.h"
-#include "CMSkillCastTarget.h"
+#include "ComponentsOfSkill/CMSkillCastTarget.h"
 
 namespace cmengine
 {

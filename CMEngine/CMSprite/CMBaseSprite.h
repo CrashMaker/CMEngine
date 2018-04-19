@@ -12,8 +12,8 @@
 #define CMBASESPRITE_H
 
 #include "../CMGeneral/CMGeneralSpriteType.h"
-#include "CMBaseAttributeOfSprite.h"
-#include "CMGrowthRateOfSprite.h"
+#include "ComponentsOfSprite/CMBaseAttributeOfSprite.h"
+#include "ComponentsOfSprite/CMGrowthRateOfSprite.h"
 #include <string>
 
 #define MaxLevel      99      // 最高等级
@@ -40,10 +40,10 @@ namespace cmengine
         void SetLevel(int lv);
 
         // 获得治疗
-        void ObtainHeal();
+        void ObtainHeal(int point);
 
         // 受到伤害
-        void ObtainDamage();
+        void ObtainDamage(int point);
 
         // 打印状态
         void PrintAttribute() const;

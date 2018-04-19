@@ -79,6 +79,19 @@ namespace cmengine
         SetHealthPoint(currentAttribute.GetHealth());
     }
 
+    // 获得治疗
+    void CMBaseSprite::ObtainHeal(int point)
+    {
+        int hp = healthPoint + point;
+        SetHealthPoint(hp);
+    }
+
+    // 受到伤害
+    void CMBaseSprite::ObtainDamage(int point)
+    {
+        int hp = healthPoint - point;
+        SetHealthPoint(hp);
+    }
 
     // 打印状态
     void CMBaseSprite::PrintAttribute() const
