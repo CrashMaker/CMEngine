@@ -41,13 +41,13 @@ namespace cmengine
                     attackPoint = caster->GetCurrentAttribute().GetMagicAtk();
                     defensePoint = target->GetCurrentAttribute().GetMagicDef();
                 }
-                int point = (attackPoint + addReviseValue - defensePoint) * (1 + mulReviseValue);
+                int point = (attackPoint + addReviseValue - defensePoint) * mulReviseValue;
                 target->ObtainDamage(point);
             }
         }
 
     public:
-        float mulReviseValue = 0;     // 乘数修正值
+        float mulReviseValue = 1;     // 乘数修正值
         int addReviseValue = 0;     // 加数修正值
 
     private:

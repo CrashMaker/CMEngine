@@ -30,15 +30,13 @@ namespace cmengine
             if (target) {
                 CMBaseSkill::Cast();
                 // 治疗公式
-                int point = (healPoint + addReviseValue) * (1 + mulReviseValue);
+                int point = healPoint;
                 target->ObtainHeal(point);
             }
         }
 
     public:
         int healPoint = 0;              // 治疗点数
-        float mulReviseValue = 0;       // 乘数修正值
-        int addReviseValue = 0;         // 加数修正值
     };
 }
 

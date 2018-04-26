@@ -30,7 +30,7 @@ BaseSkill Hit()
 {
     auto logicFun = [](CMBaseSkill* sk) {
         CMHitSkill* skill = (CMHitSkill*)sk;
-        skill->mulReviseValue = 0.2;
+        skill->mulReviseValue = 2;
     };
 
     BaseSkill skill(new CMHitSkill("Hit", logicFun, 
