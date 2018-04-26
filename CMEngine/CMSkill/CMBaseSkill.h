@@ -17,6 +17,7 @@
 namespace cmengine
 {
     class CMBaseSkill;
+    class CMBaseSprite;
     typedef std::function<void(CMBaseSkill* skill)> SkillLogicFun;
     
     class CMBaseSkill
@@ -26,12 +27,17 @@ namespace cmengine
             : name(name_), logicFun(logicFun_) {}
         virtual ~CMBaseSkill () {}
     
+        // 获取技能名称
         std::string GetName() const {return name;}
+        // 执行技能逻辑
         void Cast() {logicFun(this);}
+
+    public:
+        CMBaseSprite* caster;       // 施法者
+
     private:
-        std::string name;
-        SkillLogicFun logicFun;
-        std::string flag = "";
+        std::string name;           // 技能名称
+        SkillLogicFun logicFun;     // 技能逻辑
     };
 }
 

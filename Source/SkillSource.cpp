@@ -31,7 +31,7 @@ BaseSkill Heal()
         std::cout << skill->GetName() << std::endl;
     };
 
-    BaseSkill skill(new CMHealSkill("Heal", logicFun, SkillCastTargetTypeSingle));
+    BaseSkill skill(new CMHealSkill("Heal", logicFun));
 
     return skill;
 }

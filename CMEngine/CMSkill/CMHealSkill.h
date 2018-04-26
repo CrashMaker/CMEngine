@@ -4,7 +4,7 @@
 *   文件名称：CMHealSkill.h
 *   创 建 者：CrashMaker
 *   创建日期：2018年04月03日
-*   描    述：治疗法术
+*   描    述：单体治疗法术
 *
 ================================================================*/
 
@@ -12,25 +12,21 @@
 #define CMHEALSKILL_H
 
 #include "CMBaseSkill.h"
-#include "ComponentsOfSkill/CMSkillCastTarget.h"
+#include "ComponentsOfSkill/CMSkillTarget.h"
 
 namespace cmengine
 {
-    class CMHealSkill : public CMBaseSkill, public CMSkillCastTarget
+    class CMHealSkill : public CMBaseSkill, public CMSkillTarget
     {
     public:
-        CMHealSkill(std::string name_, SkillLogicFun logicFun_, SkillCastTargetType targetType_) 
-            : CMBaseSkill(name_, logicFun_), CMSkillCastTarget(targetType_) {}
+        CMHealSkill(std::string name_, SkillLogicFun logicFun_) 
+            : CMBaseSkill(name_, logicFun_) {}
         virtual ~CMHealSkill() {}
     
         void Cast() 
         {
             Obtain();
             CMBaseSkill::Cast();
-
-            // 治疗算法
-            int value = (healPoint + addReviseValue) * mulReviseValue;
-            
         }
 
     private:

@@ -45,21 +45,6 @@ namespace cmengine
     }
 
     template <class T>
-    T CMInstantiateSource<T>::InstantiateSprite(MapKey key)
-    {
-        CreateSpriteFun f = CMSourceManager::GetCreateSpriteFunWithKey(key);
-        BaseSprite s = f();
-        CMBaseSprite* sprite = &*s;
-        
-        if (typeid(T) == typeid(*sprite)) {
-            return *((T*)sprite);
-        } else {
-            std::cout << "Instantiate sprite error!" << std::endl;
-            throw 0;
-        }
-    }
-
-    template <class T>
     T CMInstantiateSource<T>::InstantiateHero(MapKey key)
     {
         CreateHeroFun f = CMSourceManager::GetCreateHeroFunWithKey(key);

@@ -9,40 +9,23 @@
 using namespace std;
 using namespace cmengine;
 
-class TestClass : public CMSkillCastTargetDelegate
+class TestClass : public CMSkillTargetDelegate
 {
 public:
-    TestClass(CMBaseSprite* hero_, CMBaseSprite* monster_)
-        : hero(hero_), monster(monster_) {}
+    TestClass(CMBaseSprite* hero_1_, CMBaseSprite* hero_2_)
+        : hero_1(hero_1_), hero_2(hero_2_) {}
     
-    virtual CMBaseSprite* ObtainCaster();
     virtual CMBaseSprite* ObtainTarget();
-    virtual std::vector<CMBaseSprite*> ObtainTargetVector();
     
     void Run();
 private:
-    CMBaseSprite* hero;
-    CMBaseSprite* monster;
+    CMBaseSprite* hero_1;
+    CMBaseSprite* hero_2;
 };
-
-CMBaseSprite* TestClass::ObtainCaster()
-{
-    return hero;
-}
 
 CMBaseSprite* TestClass::ObtainTarget()
 {
-    return monster;
-}
-
-vector<CMBaseSprite*> TestClass::ObtainTargetVector()
-{
-    vector<CMBaseSprite*> vec = {
-        hero, 
-        monster,
-    };
-
-    return vec;
+    return hero_2;
 }
 
 void TestClass::Run()
@@ -62,13 +45,13 @@ int main()
 
     CMEngineRun();
 
-    CMHeroSprite hero = CMInstantiateSource<CMHeroSprite>::InstantiateHero(1);
-    hero.SetLevel(5);
+    CMHeroSprite hero_1 = CMInstantiateSource<CMHeroSprite>::InstantiateHero(1);
+    hero_1.SetLevel(5);
     
-    CMMonsterSprite monster = CMInstantiateSource<CMMonsterSprite>::InstantiateSprite(1);
-    monster.SetLevel(9);
+    CMHeroSprite hero_2 = CMInstantiateSource<CMHeroSprite>::InstantiateHero(2);
+    hero_2.SetLevel(9);
 
-    TestClass test(&hero, &monster);
+    TestClass test(&hero_1, &hero_2);
     test.Run();
 
     return 0;

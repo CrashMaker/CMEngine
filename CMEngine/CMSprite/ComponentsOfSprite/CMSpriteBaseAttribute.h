@@ -1,15 +1,15 @@
 /*================================================================
 *   Copyright (C) 2018 CrashMaker. All rights reserved.
 *   
-*   文件名称：CMBaseAttributeOfSprite.h
+*   文件名称：CMSpriteBaseAttribute.h
 *   创 建 者：CrashMaker
-*   创建日期：2018年04月03日
-*   描    述：角色基础属性, 默认都为1
+*   创建日期：2018年04月26日
+*   描    述：
 *
 ================================================================*/
 
-#ifndef CMBASEATTRIBUTEOFSPRITE_H
-#define CMBASEATTRIBUTEOFSPRITE_H
+#ifndef CMSPRITEBASEATTRIBUTE_H
+#define CMSPRITEBASEATTRIBUTE_H
 
 #define MaxAttack     999     // 最高攻击力
 #define MaxDefense    999     // 最高防御力
@@ -22,10 +22,10 @@
 
 namespace cmengine
 {
-    class CMBaseAttributeOfSprite
+    class CMSpriteBaseAttribute
     {
     public:
-        CMBaseAttributeOfSprite() 
+        CMSpriteBaseAttribute() 
             : attack(1), defense(1), magicAtk(1),
               magicDef(1), health(1), speed(1) {}
 
@@ -76,4 +76,5 @@ namespace cmengine
     };
 }
 
-#endif /* CMBASEATTRIBUTEOFSPRITE_H */
+
+#endif /* CMSPRITEBASEATTRIBUTE_H */
