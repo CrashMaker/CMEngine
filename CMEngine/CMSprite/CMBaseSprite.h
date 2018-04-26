@@ -39,6 +39,12 @@ namespace cmengine
         int GetLevel() const {return level;}
         void SetLevel(int lv);
 
+        // 获取固有属性
+        CMSpriteBaseAttribute GetInnateAttribute() const {return innateAttribute;}
+
+        // 获取当前属性
+        CMSpriteBaseAttribute GetCurrentAttribute() const {return currentAttribute;}
+
         // 获得治疗
         void ObtainHeal(int point);
 

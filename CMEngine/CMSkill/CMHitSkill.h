@@ -1,0 +1,57 @@
+/*================================================================
+*   Copyright (C) 2018 CrashMaker. All rights reserved.
+*   
+*   文件名称：CMHitSkill.h
+*   创 建 者：CrashMaker
+*   创建日期：2018年04月26日
+*   描    述：单体打击技能
+*
+================================================================*/
+
+#ifndef CMHITSKILL_H
+#define CMHITSKILL_H
+
+#include "CMBaseSkill.h"
+#include "ComponentsOfSkill/CMSkillTarget.h"
+#include "../CMSprite/CMBaseSprite.h"
+#include "../CMGeneral/CMGeneralSkillType.h"
+
+namespace cmengine
+{
+    class CMHitSkill : public CMBaseSkill, public CMSkillTarget
+    {
+    public:
+        CMHitSkill(std::string name_, SkillLogicFun logicFun_, 
+                SkillAttackType attackType_, SkillDamageType damageType_) 
+            : CMBaseSkill(name_, logicFun_), attackType(attackType_), damageType(damageType_) {}
+        virtual ~CMHitSkill() {}
+    
+        void Cast() 
+        {
+            Obtain();
+            if (target) {
+                CMBaseSkill::Cast();
+                // 打击公式
+                int damagePoint = 0;
+                if (SkillDamageTypePhysical == damageType) {
+                    damagePoint = caster->GetCurrentAttribute().GetAttack();
+                } else if (SkillDamageTypeMagic == damageType) {
+                    damagePoint = caster->GetCurrentAttribute().GetMagicAtk();
+                }
+                
+                int point = (damagePoint + addReviseValue) * (1 + mulReviseValue);
+                target->ObtainDamage(point);
+            }
+        }
+
+    public:
+        float mulReviseValue = 0;     // 乘数修正值
+        int addReviseValue = 0;     // 加数修正值
+
+    private:
+        SkillAttackType attackType;     // 打击类型
+        SkillDamageType damageType;     // 伤害类型
+    };
+}
+
+#endif /* CMHITSKILL_H */

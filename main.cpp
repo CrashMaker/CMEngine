@@ -30,7 +30,7 @@ CMBaseSprite* TestClass::ObtainTarget()
 
 void TestClass::Run()
 {
-    CMHealSkill skill = CMInstantiateSource<CMHealSkill>::InstantiateSkill(1);
+    CMHitSkill skill = CMInstantiateSource<CMHitSkill>::InstantiateSkill(1);
     skill.delegate = this;
     skill.Cast();
 }
@@ -51,8 +51,11 @@ int main()
     CMHeroSprite hero_2 = CMInstantiateSource<CMHeroSprite>::InstantiateHero(2);
     hero_2.SetLevel(9);
 
+    hero_2.PrintAttribute();
     TestClass test(&hero_1, &hero_2);
+    hero_2.PrintAttribute();
     test.Run();
+    hero_2.PrintAttribute();
 
     return 0;
 }

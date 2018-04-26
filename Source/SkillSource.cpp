@@ -18,17 +18,32 @@ CreateSkillFunMap cmengine::GetSkillSourceForCMEngine()
     cmengine::CreateSkillFunMap map;
 
     map = {
-        {1, Heal}, 
+        {1, Hit}, 
+        {2, Heal}, 
     };
 
     return map;
 }
 
 // 技能列表
+BaseSkill Hit()
+{
+    auto logicFun = [](CMBaseSkill* sk) {
+        CMHitSkill* skill = (CMHitSkill*)sk;
+        skill->mulReviseValue = 0.2;
+    };
+
+    BaseSkill skill(new CMHitSkill("Hit", logicFun, 
+                SkillAttackTypeMelee, SkillDamageTypePhysical));
+
+    return skill;
+}
+
 BaseSkill Heal()
 {
-    auto logicFun = [](CMBaseSkill* skill) {
-        std::cout << skill->GetName() << std::endl;
+    auto logicFun = [](CMBaseSkill* sk) {
+        CMHealSkill* skill = (CMHealSkill*)sk;
+        skill->healPoint = 100;
     };
 
     BaseSkill skill(new CMHealSkill("Heal", logicFun));
