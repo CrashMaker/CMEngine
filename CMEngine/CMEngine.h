@@ -12,12 +12,10 @@
 #define CMENGINE_H
 
 #include "CMSourceManager/CMSourceManager.h"
-#include "CMSkill/CMBaseSkill.h"
 #include "CMSourceManager/CMInstantiateSource.h"
-#include "CMGeneral/CMGeneralTypedef.h"
-#include "CMGeneral/CMGeneralSkillType.h"
+
+#include "CMSkill/CMBaseSkill.h"
 #include "CMSprite/CMBaseSprite.h"
-#include "CMGeneral/CMGeneralSpriteType.h"
 #include "CMSprite/CMHeroSprite.h"
 #include "CMSkill/CMHealSkill.h"
 
