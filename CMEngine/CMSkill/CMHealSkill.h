@@ -13,6 +13,7 @@
 
 #include "CMBaseSkill.h"
 #include "ComponentsOfSkill/CMSkillTarget.h"
+#include "../CMSprite/CMBaseSprite.h"
 
 namespace cmengine
 {
@@ -26,7 +27,12 @@ namespace cmengine
         void Cast() 
         {
             Obtain();
-            CMBaseSkill::Cast();
+            if (target) {
+                CMBaseSkill::Cast();
+                // 治疗公式
+                int point = (healPoint + addReviseValue) * mulReviseValue;
+                target->ObtainHeal(point);
+            }
         }
 
     private:
