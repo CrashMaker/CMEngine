@@ -11,6 +11,9 @@
 #include "CMBaseSprite.h"
 #include <iostream>
 
+#define MaxPoint     9999       // 伤害和治疗的最高数值
+#define MinPoint     0          // 伤害和治疗的最低数值
+
 namespace cmengine
 {
     void CMBaseSprite::SetLevel(int lv)
@@ -82,6 +85,12 @@ namespace cmengine
     // 获得治疗
     void CMBaseSprite::ObtainHeal(int point)
     {
+        if (MinPoint > point) {
+            point = MinPoint;
+        } else if (MaxPoint < point) {
+            point = MaxPoint;
+        }
+
         int hp = healthPoint + point;
         SetHealthPoint(hp);
     }
@@ -89,6 +98,12 @@ namespace cmengine
     // 受到伤害
     void CMBaseSprite::ObtainDamage(int point)
     {
+        if (MinPoint > point) {
+            point = MinPoint;
+        } else if (MaxPoint < point) {
+            point = MaxPoint;
+        }
+
         int hp = healthPoint - point;
         SetHealthPoint(hp);
     }

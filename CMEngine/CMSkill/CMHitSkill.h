@@ -32,14 +32,16 @@ namespace cmengine
             if (target) {
                 CMBaseSkill::Cast();
                 // 打击公式
-                int damagePoint = 0;
+                int attackPoint = 0;
+                int defensePoint = 0;
                 if (SkillDamageTypePhysical == damageType) {
-                    damagePoint = caster->GetCurrentAttribute().GetAttack();
+                    attackPoint = caster->GetCurrentAttribute().GetAttack();
+                    defensePoint = target->GetCurrentAttribute().GetDefense();
                 } else if (SkillDamageTypeMagic == damageType) {
-                    damagePoint = caster->GetCurrentAttribute().GetMagicAtk();
+                    attackPoint = caster->GetCurrentAttribute().GetMagicAtk();
+                    defensePoint = target->GetCurrentAttribute().GetMagicDef();
                 }
-                
-                int point = (damagePoint + addReviseValue) * (1 + mulReviseValue);
+                int point = (attackPoint + addReviseValue - defensePoint) * (1 + mulReviseValue);
                 target->ObtainDamage(point);
             }
         }
