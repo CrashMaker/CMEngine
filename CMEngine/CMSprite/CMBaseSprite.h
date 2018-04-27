@@ -14,16 +14,18 @@
 #include "../CMGeneral/CMGeneralSpriteType.h"
 #include "ComponentsOfSprite/CMSpriteGrowthRate.h"
 #include "ComponentsOfSprite/CMSpriteBaseAttribute.h"
-
-#include "../CMSkill/CMBaseSkill.h"
+#include "ComponentsOfSprite/CMSpriteEquipSkillManager.h"
 
 #include <string>
+#include <vector>
 
 #define MaxLevel      99      // 最高等级
 #define MinLevel      1       // 最低等级
 
 namespace cmengine
 {
+    class CMBaseSkill;
+
     class CMBaseSprite
     {
     public:
@@ -58,7 +60,9 @@ namespace cmengine
         void PrintAttribute() const;
 
     public:
-        CMSkillDelegate* delegate = nullptr;        // 技能协议对象
+        CMSkillDelegate* skillDelegate = nullptr;           // 技能协议对象
+        
+        CMSpriteEquipSkillManager equipSkillManager;        // 角色转配的技能
 
     private:
         void SetHealthPoint(int hp);
