@@ -12,7 +12,6 @@
 #define CMSEXCALL_H
 
 #include "../CMSprite/CMBaseSprite.h"
-#include "../CMBattle/CMAttack.h"
 #include "../CMSourceManager/CMSourceManager.h"
 
 namespace cmengine

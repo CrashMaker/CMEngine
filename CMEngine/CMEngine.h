@@ -21,6 +21,8 @@
 #include "CMSkill/CMHealSkill.h"
 #include "CMSkill/CMHitSkill.h"
 
+#include "CMBattle/CMBattleScene.h"
+
 namespace cmengine
 {
     // 需要实现的函数
