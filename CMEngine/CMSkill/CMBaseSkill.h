@@ -11,6 +11,8 @@
 #ifndef CMBASESKILL_H
 #define CMBASESKILL_H
 
+#include "ComponentsOfSkill/CMSkillDelegate.h"
+
 #include <string>
 #include <functional>
 
@@ -33,7 +35,8 @@ namespace cmengine
         void Cast() {logicFun(this);}
 
     public:
-        CMBaseSprite* caster;       // 施法者
+        CMBaseSprite* caster = nullptr;             // 施法者
+        CMSkillDelegate* delegate = nullptr;        // 协议对象
 
     private:
         std::string name;           // 技能名称

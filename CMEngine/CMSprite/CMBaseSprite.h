@@ -14,6 +14,9 @@
 #include "../CMGeneral/CMGeneralSpriteType.h"
 #include "ComponentsOfSprite/CMSpriteGrowthRate.h"
 #include "ComponentsOfSprite/CMSpriteBaseAttribute.h"
+
+#include "../CMSkill/CMBaseSkill.h"
+
 #include <string>
 
 #define MaxLevel      99      // 最高等级
@@ -53,6 +56,9 @@ namespace cmengine
 
         // 打印状态
         void PrintAttribute() const;
+
+    public:
+        CMSkillDelegate* delegate = nullptr;        // 技能协议对象
 
     private:
         void SetHealthPoint(int hp);

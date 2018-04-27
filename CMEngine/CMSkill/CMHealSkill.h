@@ -26,7 +26,7 @@ namespace cmengine
     
         void Cast() 
         {
-            Obtain();
+            Obtain(delegate);
             if (target) {
                 CMBaseSkill::Cast();
                 // 治疗公式

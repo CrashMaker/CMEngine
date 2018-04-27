@@ -28,7 +28,7 @@ namespace cmengine
     
         void Cast() 
         {
-            Obtain();
+            Obtain(delegate);
             if (target) {
                 CMBaseSkill::Cast();
                 // 打击公式

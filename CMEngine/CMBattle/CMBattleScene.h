@@ -11,18 +11,24 @@
 #ifndef CMBATTLESCENE_H
 #define CMBATTLESCENE_H
 
-#include "../CMSkill/ComponentsOfSkill/CMSkillTarget.h"
+#include "../CMSprite/CMBaseSprite.h"
+
+#include <vector>
 
 namespace cmengine
 {
-    class CMBattleScene : public CMSkillTargetDelegate 
+    class CMBattleScene : public CMSkillDelegate 
     {
     public:
-        CMBattleScene();
+        CMBattleScene(std::vector<CMBaseSprite*> firstTeam_, std::vector<CMBaseSprite*> secondTeam_) 
+            : firstTeam(firstTeam_), secondTeam(secondTeam_) {}
         virtual ~CMBattleScene() {}
     
+        virtual CMBaseSprite* ObtainTarget();
+
     private:
-        
+        std::vector<CMBaseSprite*> firstTeam;
+        std::vector<CMBaseSprite*> secondTeam;
     };
 }
 

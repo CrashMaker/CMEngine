@@ -9,33 +9,6 @@
 using namespace std;
 using namespace cmengine;
 
-class TestClass : public CMSkillTargetDelegate
-{
-public:
-    TestClass(CMBaseSprite* hero_1_, CMBaseSprite* hero_2_)
-        : hero_1(hero_1_), hero_2(hero_2_) {}
-    
-    virtual CMBaseSprite* ObtainTarget();
-    
-    void Run();
-private:
-    CMBaseSprite* hero_1;
-    CMBaseSprite* hero_2;
-};
-
-CMBaseSprite* TestClass::ObtainTarget()
-{
-    return hero_2;
-}
-
-void TestClass::Run()
-{
-    CMHitSkill skill = CMInstantiateSource<CMHitSkill>::InstantiateSkill(1);
-    skill.caster = hero_1;
-    skill.delegate = this;
-    skill.Cast();
-}
-
 int main()
 {
     // default_random_engine e(time(0));
@@ -52,10 +25,15 @@ int main()
     CMHeroSprite hero_2 = CMInstantiateSource<CMHeroSprite>::InstantiateHero(2);
     hero_2.SetLevel(10);
 
-    hero_1.PrintAttribute();
-    hero_2.PrintAttribute();
-    TestClass test(&hero_1, &hero_2);
-    test.Run();
+    vector<CMBaseSprite*> firstTeam = {&hero_1};
+    vector<CMBaseSprite*> secondTeam = {&hero_2};
+    CMBattleScene battleScene = CMBattleScene(firstTeam, secondTeam);
+    
+    CMHitSkill skill = CMInstantiateSource<CMHitSkill>::InstantiateSkill(1);
+    skill.caster = &hero_1;
+    skill.delegate = &battleScene;
+    skill.Cast();
+
     hero_2.PrintAttribute();
 
     return 0;
