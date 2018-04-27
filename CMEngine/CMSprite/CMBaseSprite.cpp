@@ -9,6 +9,7 @@
 ================================================================*/
 
 #include "CMBaseSprite.h"
+#include "../CMSourceManager/CMInstantiateSource.h"
 #include <iostream>
 
 #define MaxPoint     9999       // 伤害和治疗的最高数值
@@ -80,6 +81,22 @@ namespace cmengine
 
         // 恢复生命值
         SetHealthPoint(currentAttribute.GetHealth());
+    }
+
+    // 装配的技能列表
+    void CMBaseSprite::SetSkillVec(std::vector<int> vec)
+    {
+        skillVec.clear();
+
+        std::vector<int>::iterator it;
+        for(it=vec.begin(); it!=vec.end(); it++)
+        {
+            CMBaseSkill skill = CMInstantiateSource<CMBaseSkill>::InstantiateSkill(1);
+            skill.caster = this;
+            skill.delegate = skillDelegate;
+
+            skillVec.push_back(skill);
+        }
     }
 
     // 获得治疗

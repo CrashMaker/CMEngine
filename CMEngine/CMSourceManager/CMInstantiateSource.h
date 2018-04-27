@@ -25,7 +25,6 @@ namespace cmengine
     {
     public:
         static T InstantiateSkill(MapKey key);
-        static T InstantiateSprite(MapKey key);
         static T InstantiateHero(MapKey key);
     };
 

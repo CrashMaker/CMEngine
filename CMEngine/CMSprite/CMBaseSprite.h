@@ -44,6 +44,9 @@ namespace cmengine
         int GetLevel() const {return level;}
         void SetLevel(int lv);
 
+        // 装配的技能列表
+        void SetSkillVec(std::vector<int> vec);
+
         // 获取固有属性
         CMSpriteBaseAttribute GetInnateAttribute() const {return innateAttribute;}
 
@@ -83,6 +86,8 @@ namespace cmengine
         int healthPoint;
         // 角色状态
         SpriteStateType stateType;
+        // 装配的技能列表
+        std::vector<CMBaseSkill> skillVec;
     };
 }
 
