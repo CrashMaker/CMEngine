@@ -26,9 +26,10 @@ namespace cmengine
             : CMBaseSkill(name_, logicFun_), attackType(attackType_), damageType(damageType_) {}
         virtual ~CMHitSkill() {}
     
-        void Cast() 
+        virtual void Cast() 
         {
-            Obtain(delegate);
+            std::cout << "CMHitSkill" << std::endl;
+            Obtain(*delegate);
             if (target) {
                 CMBaseSkill::Cast();
                 // 打击公式
@@ -47,8 +48,8 @@ namespace cmengine
         }
 
     public:
-        float mulReviseValue = 1;     // 乘数修正值
-        int addReviseValue = 0;     // 加数修正值
+        float mulReviseValue = 1;       // 乘数修正值
+        int addReviseValue = 0;         // 加数修正值
 
     private:
         SkillAttackType attackType;     // 打击类型

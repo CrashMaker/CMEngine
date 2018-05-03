@@ -24,9 +24,9 @@ namespace cmengine
             : CMBaseSkill(name_, logicFun_) {}
         virtual ~CMHealSkill() {}
     
-        void Cast() 
+        virtual void Cast() 
         {
-            Obtain(delegate);
+            Obtain(*delegate);
             if (target) {
                 CMBaseSkill::Cast();
                 // 治疗公式

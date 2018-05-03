@@ -12,9 +12,10 @@
 #define CMBASESPRITE_H
 
 #include "../CMGeneral/CMGeneralSpriteType.h"
+#include "../CMSkill/CMBaseSkill.h"
+#include "../CMGeneral/CMGeneralTypedef.h"
 #include "ComponentsOfSprite/CMSpriteGrowthRate.h"
 #include "ComponentsOfSprite/CMSpriteBaseAttribute.h"
-#include "ComponentsOfSprite/CMSpriteEquipSkillManager.h"
 
 #include <string>
 #include <vector>
@@ -45,6 +46,7 @@ namespace cmengine
         void SetLevel(int lv);
 
         // 装配的技能列表
+        CMBaseSkill* GetSkillWithIndex(int index);
         void SetSkillVec(std::vector<int> vec);
 
         // 获取固有属性
@@ -63,9 +65,8 @@ namespace cmengine
         void PrintAttribute() const;
 
     public:
-        CMSkillDelegate* skillDelegate = nullptr;           // 技能协议对象
-        
-        CMSpriteEquipSkillManager equipSkillManager;        // 角色转配的技能
+        // 技能协议对象
+        CMSkillDelegate* skillDelegate = nullptr;
 
     private:
         void SetHealthPoint(int hp);

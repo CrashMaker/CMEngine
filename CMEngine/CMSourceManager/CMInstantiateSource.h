@@ -20,8 +20,18 @@
 
 namespace cmengine
 {
-    template <class T>
+    // 一般初始化
     class CMInstantiateSource
+    {
+    public:
+        static BaseSkill InstantiateSkill(MapKey key);
+        static HeroSprite InstantiateHero(MapKey key);
+    };
+
+
+    // 泛类初始化
+    template <class T>
+    class CMInstantiateSourceTemplate
     {
     public:
         static T InstantiateSkill(MapKey key);
@@ -29,11 +39,11 @@ namespace cmengine
     };
 
     template <class T>
-    T CMInstantiateSource<T>::InstantiateSkill(MapKey key)
+    T CMInstantiateSourceTemplate<T>::InstantiateSkill(MapKey key)
     {
         CreateSkillFun f = CMSourceManager::GetCreateSkillFunWithKey(key);
         BaseSkill s = f();
-        CMBaseSkill* skill = &*s;
+        CMBaseSkill* skill = s.get();
         
         if (typeid(T) == typeid(*skill)) {
             return *((T*)skill);
@@ -44,11 +54,11 @@ namespace cmengine
     }
 
     template <class T>
-    T CMInstantiateSource<T>::InstantiateHero(MapKey key)
+    T CMInstantiateSourceTemplate<T>::InstantiateHero(MapKey key)
     {
         CreateHeroFun f = CMSourceManager::GetCreateHeroFunWithKey(key);
         HeroSprite s = f();
-        CMHeroSprite* hero = &*s;
+        CMHeroSprite* hero = s.get();
         
         if (typeid(T) == typeid(*hero)) {
             return *((T*)hero);

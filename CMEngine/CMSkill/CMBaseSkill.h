@@ -15,6 +15,7 @@
 
 #include <string>
 #include <functional>
+#include <iostream>
 
 namespace cmengine
 {
@@ -25,18 +26,20 @@ namespace cmengine
     class CMBaseSkill
     {
     public:
-        CMBaseSkill (std::string name_, SkillLogicFun logicFun_) 
+        CMBaseSkill(std::string name_, SkillLogicFun logicFun_) 
             : name(name_), logicFun(logicFun_) {}
         virtual ~CMBaseSkill () {}
     
         // 获取技能名称
         std::string GetName() const {return name;}
         // 执行技能逻辑
-        void Cast() {logicFun(this);}
+        virtual void Cast() {
+            std::cout << "CMBaseSkill" << std::endl;
+            logicFun(this);}
 
     public:
         CMBaseSprite* caster = nullptr;             // 施法者
-        CMSkillDelegate* delegate = nullptr;        // 协议对象
+        CMSkillDelegate** delegate = nullptr;       // 协议对象
 
     private:
         std::string name;           // 技能名称

@@ -84,6 +84,17 @@ namespace cmengine
     }
 
     // 装配的技能列表
+    CMBaseSkill* CMBaseSprite::GetSkillWithIndex(int index)
+    {
+        return nullptr;
+
+        // if (index >= (int)skillVec.size()) return nullptr;
+        // 
+        // std::vector<CMBaseSkill>::iterator it = skillVec.begin() + index;
+        // 
+        // return (CMBaseSkill*)(&*it);
+    }
+
     void CMBaseSprite::SetSkillVec(std::vector<int> vec)
     {
         skillVec.clear();
@@ -91,11 +102,11 @@ namespace cmengine
         std::vector<int>::iterator it;
         for(it=vec.begin(); it!=vec.end(); it++)
         {
-            CMBaseSkill skill = CMInstantiateSource<CMBaseSkill>::InstantiateSkill(1);
-            skill.caster = this;
-            skill.delegate = skillDelegate;
+            BaseSkill skill = CMInstantiateSource::InstantiateSkill(*it);
+            skill->caster = this;
+            skill->delegate = &skillDelegate;
 
-            skillVec.push_back(skill);
+            // skillVec.push_back(*skill);
         }
     }
 
