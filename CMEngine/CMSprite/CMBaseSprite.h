@@ -12,8 +12,6 @@
 #define CMBASESPRITE_H
 
 #include "../CMGeneral/CMGeneralSpriteType.h"
-#include "../CMSkill/CMBaseSkill.h"
-#include "../CMGeneral/CMGeneralTypedef.h"
 #include "ComponentsOfSprite/CMSpriteGrowthRate.h"
 #include "ComponentsOfSprite/CMSpriteBaseAttribute.h"
 
@@ -50,6 +48,9 @@ namespace cmengine
 
         // 获取当前属性
         CMSpriteBaseAttribute GetCurrentAttribute() const {return currentAttribute;}
+
+        // 角色状态
+        SpriteStateType GetStateType() const {return stateType;}
 
         // 获得治疗
         void ObtainHeal(int point);

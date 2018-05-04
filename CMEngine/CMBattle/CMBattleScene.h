@@ -12,7 +12,7 @@
 #define CMBATTLESCENE_H
 
 #include "../CMSprite/CMBaseSprite.h"
-#include "../CMSourceManager/CMInstantiateSource.h"
+#include "../CMSkill/CMBaseSkill.h"
 #include <vector>
 
 namespace cmengine
@@ -29,15 +29,12 @@ namespace cmengine
         std::vector<CMBaseSprite*> GetFirstTeam() const {return firstTeam;}
         std::vector<CMBaseSprite*> GetSecondTeam() const {return secondTeam;}
 
-        void SkillCast()
-        {
-            CMBaseSprite *sp = firstTeam[0]; 
-            BaseSkill sk = CMInstantiateSource::InstantiateSkill(sp->skillVec[0]);
-            CMBaseSkill* skill = sk.get();
-            skill->caster = sp;
-            skill->delegate = this;
-            skill->Cast();
-        }
+        // 战斗开始
+        void Start(); 
+
+    private:
+        // 行动阶段
+        void ActionStage(CMBaseSprite* sprite);
 
     private:
         std::vector<CMBaseSprite*> firstTeam;

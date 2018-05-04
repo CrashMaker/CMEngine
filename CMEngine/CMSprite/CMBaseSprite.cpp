@@ -9,7 +9,6 @@
 ================================================================*/
 
 #include "CMBaseSprite.h"
-#include "../CMSourceManager/CMInstantiateSource.h"
 #include <iostream>
 
 #define MaxPoint     9999       // 伤害和治疗的最高数值

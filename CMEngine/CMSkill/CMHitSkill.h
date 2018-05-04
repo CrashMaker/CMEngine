@@ -46,6 +46,12 @@ namespace cmengine
             }
         }
 
+        // 打击类型
+        SkillAttackType GetAttackType() const {return attackType;}
+
+        // 伤害类型
+        SkillDamageType GetDamageType() const {return damageType;}
+
     public:
         float mulReviseValue = 1;       // 乘数修正值
         int addReviseValue = 0;         // 加数修正值
