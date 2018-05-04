@@ -41,7 +41,7 @@ HeroSprite Warrior()
     HeroSprite hero(new CMHeroSprite("Warrior", growthRate));
 
     // 设置技能
-    hero->SetSkillVec({1, 2});
+    hero->skillVec = {1, 2};
 
     return hero;
 }
@@ -60,7 +60,7 @@ HeroSprite Mage()
     HeroSprite hero(new CMHeroSprite("Mage", growthRate));
 
     // 设置技能
-    hero->SetSkillVec({1, 2});
+    hero->skillVec = {1, 2};
 
     return hero;
 }

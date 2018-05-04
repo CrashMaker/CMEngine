@@ -28,8 +28,7 @@ namespace cmengine
     
         virtual void Cast() 
         {
-            std::cout << "CMHitSkill" << std::endl;
-            Obtain(*delegate);
+            Obtain(delegate);
             if (target) {
                 CMBaseSkill::Cast();
                 // 打击公式

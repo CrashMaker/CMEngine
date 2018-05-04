@@ -83,33 +83,6 @@ namespace cmengine
         SetHealthPoint(currentAttribute.GetHealth());
     }
 
-    // 装配的技能列表
-    CMBaseSkill* CMBaseSprite::GetSkillWithIndex(int index)
-    {
-        return nullptr;
-
-        // if (index >= (int)skillVec.size()) return nullptr;
-        // 
-        // std::vector<CMBaseSkill>::iterator it = skillVec.begin() + index;
-        // 
-        // return (CMBaseSkill*)(&*it);
-    }
-
-    void CMBaseSprite::SetSkillVec(std::vector<int> vec)
-    {
-        skillVec.clear();
-
-        std::vector<int>::iterator it;
-        for(it=vec.begin(); it!=vec.end(); it++)
-        {
-            BaseSkill skill = CMInstantiateSource::InstantiateSkill(*it);
-            skill->caster = this;
-            skill->delegate = &skillDelegate;
-
-            // skillVec.push_back(*skill);
-        }
-    }
-
     // 获得治疗
     void CMBaseSprite::ObtainHeal(int point)
     {

@@ -27,13 +27,11 @@ int main()
     
     // 模拟战斗
     CMBaseSprite* hero_1 = battleScene.GetFirstTeam()[0];
-    CMBaseSkill* skill_1 = hero_1->GetSkillWithIndex(0);
-    skill_1->Cast();
-    
-    // CMBaseSprite* hero_2 = battleScene.GetSecondTeam()[0];
-    // CMBaseSkill* skill_2 = hero_2->GetSkillWithIndex(1);
-    // 
-    // hero_2->PrintAttribute();
+    CMBaseSprite* hero_2 = battleScene.GetSecondTeam()[0];
+
+    hero_2->PrintAttribute();
+    battleScene.SkillCast();
+    hero_2->PrintAttribute();
 
     return 0;
 }
