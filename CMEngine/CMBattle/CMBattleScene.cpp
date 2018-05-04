@@ -15,14 +15,6 @@
 
 namespace cmengine
 {
-    /* ==========实现的协议========== */
-
-    // 选取目标
-    CMBaseSprite* CMBattleScene::ObtainTarget()
-    {
-        return secondTeam[0];
-    }
-
     /* ==========战斗阶段控制========== */
 
     // 战斗开始
@@ -48,5 +40,13 @@ namespace cmengine
         skill->caster = sprite;
         skill->delegate = this;
         skill->Cast(); 
+    }
+
+    /* ==========实现的协议========== */
+
+    // 选取目标
+    CMBaseSprite* CMBattleScene::ObtainTarget()
+    {
+        return secondTeam[0];
     }
 }
