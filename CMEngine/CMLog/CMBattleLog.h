@@ -12,18 +12,21 @@
 #define CMBATTLELOG_H
 
 #include <string>
+#include <iostream>
 
 namespace cmengine
 {
     class CMBattleLog
     {
-    private:
-        std::string log;
-
     public:
-        CMBattleLog(std::string log_) : log(log_) {}
-
-        std::string GetLog() const {return log;}
+        virtual ~CMBattleLog() {}
+    
+        void PushLog(std::string log)
+        {
+            std::cout << log << std::endl;
+        }
+    private:
+        
     };
 }
 

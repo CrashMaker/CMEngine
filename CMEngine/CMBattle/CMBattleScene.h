@@ -13,6 +13,7 @@
 
 #include "../CMSprite/CMBaseSprite.h"
 #include "../CMSkill/CMBaseSkill.h"
+#include "../CMLog/CMBattleLog.h"
 #include <vector>
 
 namespace cmengine
@@ -30,15 +31,21 @@ namespace cmengine
         std::vector<CMBaseSprite*> GetSecondTeam() const {return secondTeam;}
 
         // 战斗开始
-        void Start(); 
+        void Start(CMBattleLog* battleLog_ = nullptr); 
 
     private:
         // 行动阶段
         void ActionStage(CMBaseSprite* sprite);
 
+        // 记录战斗日志
+        void SaveBattleLog(std::string log) {if (battleLog) {battleLog->PushLog(log);}}
+
     private:
         std::vector<CMBaseSprite*> firstTeam;
         std::vector<CMBaseSprite*> secondTeam;
+
+        // 战斗日志
+        CMBattleLog* battleLog = nullptr;
     };
 }
 

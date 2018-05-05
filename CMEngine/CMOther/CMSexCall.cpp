@@ -9,7 +9,6 @@
 ================================================================*/
 
 #include "CMSexCall.h"
-#include "../CMLog/CMBattleNote.h"
 
 namespace cmengine
 {

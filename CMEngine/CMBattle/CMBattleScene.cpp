@@ -18,8 +18,10 @@ namespace cmengine
     /* ==========战斗阶段控制========== */
 
     // 战斗开始
-    void CMBattleScene::Start()
+    void CMBattleScene::Start(CMBattleLog* battleLog_)
     {
+        battleLog = battleLog_;
+
         bool action = true;
 
         while(action) {
@@ -29,7 +31,7 @@ namespace cmengine
             action = !(sprite->GetStateType() == SpriteStateTypeDead);
         }        
 
-        std::cout << "战斗结束" << std::endl;
+        SaveBattleLog("战斗结束");
     }
 
     // 行动阶段
