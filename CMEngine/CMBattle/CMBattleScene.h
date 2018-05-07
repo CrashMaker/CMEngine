@@ -18,6 +18,14 @@
 
 namespace cmengine
 {
+    enum BattleStateType {
+        BattleStateTypeBattleNotStart,  // 战斗未开始
+        BattleStateTypeBattleing,       // 战斗中
+        BattleStateTypeFirstTeamWin,    // 一号队伍获胜
+        BattleStateTypeSecondTeamWin,   // 二号队伍获胜
+        BattleStateTypeDraw             // 平局
+    };
+
     class CMBattleScene : public CMSkillDelegate 
     {
     public:
@@ -36,9 +44,10 @@ namespace cmengine
     private:
         // 行动阶段
         void ActionStage(CMBaseSprite* sprite);
-
         // 记录战斗日志
         void SaveBattleLog(std::string log) {if (battleLog) {battleLog->PushLog(log);}}
+        // 判断战斗结果
+        bool JudgeBattleResult();
 
     private:
         std::vector<CMBaseSprite*> firstTeam;
@@ -46,6 +55,8 @@ namespace cmengine
 
         // 战斗日志
         CMBattleLog* battleLog = nullptr;
+        // 战斗状态
+        BattleStateType battleStateType = BattleStateTypeBattleNotStart;
     };
 }
 
