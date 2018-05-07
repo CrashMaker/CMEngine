@@ -83,18 +83,12 @@ namespace cmengine
     // 行动阶段
     void CMBattleScene::ActionStage(CMBaseSprite* sprite)
     {
-        BaseSkill sk = CMInstantiateSource::InstantiateSkill(sprite->skillVec[0]);
+        int skillIndex = battleChoose.ChooseSkillIndexFromSprite(sprite);
+        BaseSkill sk = CMInstantiateSource::InstantiateSkill(skillIndex);
         CMBaseSkill* skill = sk.get();
         skill->caster = sprite;
-        skill->delegate = this;
+        skill->delegate = &battleChoose;
         skill->Cast(); 
     }
 
-    /* ==========实现的协议========== */
-
-    // 选取目标
-    CMBaseSprite* CMBattleScene::ObtainTarget()
-    {
-        return secondTeam[0];
-    }
 }

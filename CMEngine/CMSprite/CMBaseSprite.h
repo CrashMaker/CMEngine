@@ -56,6 +56,10 @@ namespace cmengine
         // 角色状态
         SpriteStateType GetStateType() const {return stateType;}
 
+        // 装配的技能列表
+        std::vector<int> GetSkillList() const {return skillList;}
+        void SetSkillList(std::vector<int> skillList_) {skillList = skillList_;}
+
         // 获得治疗
         void ObtainHeal(int point);
 
@@ -64,10 +68,6 @@ namespace cmengine
 
         // 打印状态
         void PrintAttribute() const;
-
-    public:
-        // 装配的技能列表
-        std::vector<int> skillVec;
 
     private:
         void SetHealthPoint(int hp);
@@ -88,6 +88,8 @@ namespace cmengine
         int healthPoint;
         // 角色状态
         SpriteStateType stateType;
+        // 装配的技能列表
+        std::vector<int> skillList;
     };
 }
 
