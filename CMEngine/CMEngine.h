@@ -23,8 +23,6 @@
 
 #include "CMBattle/CMBattleScene.h"
 
-#include "CMLog/CMBattleLog.h"
-
 namespace cmengine
 {
     // 需要实现的函数

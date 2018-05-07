@@ -13,7 +13,7 @@
 
 #include "../CMSprite/CMBaseSprite.h"
 #include "../CMSkill/CMBaseSkill.h"
-#include "../CMLog/CMBattleLog.h"
+#include "CMBattleLog.h"
 #include <vector>
 
 namespace cmengine
