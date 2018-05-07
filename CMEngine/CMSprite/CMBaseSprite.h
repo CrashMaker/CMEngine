@@ -11,7 +11,6 @@
 #ifndef CMBASESPRITE_H
 #define CMBASESPRITE_H
 
-#include "../CMGeneral/CMGeneralSpriteType.h"
 #include "ComponentsOfSprite/CMSpriteGrowthRate.h"
 #include "ComponentsOfSprite/CMSpriteBaseAttribute.h"
 
@@ -23,6 +22,11 @@
 
 namespace cmengine
 {
+    enum SpriteStateType {
+        SpriteStateTypeLife,        // 生存 
+        SpriteStateTypeDead,        // 死亡
+    };
+    
     class CMBaseSkill;
 
     class CMBaseSprite

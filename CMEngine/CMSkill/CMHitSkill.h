@@ -14,15 +14,24 @@
 #include "CMBaseSkill.h"
 #include "ComponentsOfSkill/CMSkillTarget.h"
 #include "../CMSprite/CMBaseSprite.h"
-#include "../CMGeneral/CMGeneralSkillType.h"
 
 namespace cmengine
 {
+    enum HitSkillAttackType { 
+        HitSkillAttackTypeMelee,        // 近战
+        HitSkillAttackTypeRemote,       // 远程
+    };
+
+    enum HitSkillDamageType {
+        HitSkillDamageTypePhysical,     // 物理伤害
+        HitSkillDamageTypeMagic,        // 魔法伤害
+    };
+    
     class CMHitSkill : public CMBaseSkill, public CMSkillTarget
     {
     public:
         CMHitSkill(std::string name_, SkillLogicFun logicFun_, 
-                SkillAttackType attackType_, SkillDamageType damageType_) 
+                HitSkillAttackType attackType_, HitSkillDamageType damageType_) 
             : CMBaseSkill(name_, logicFun_), attackType(attackType_), damageType(damageType_) {}
         virtual ~CMHitSkill() {}
     
@@ -34,10 +43,10 @@ namespace cmengine
                 // 打击公式
                 int attackPoint = 0;
                 int defensePoint = 0;
-                if (SkillDamageTypePhysical == damageType) {
+                if (HitSkillDamageTypePhysical == damageType) {
                     attackPoint = caster->GetCurrentAttribute().GetAttack();
                     defensePoint = target->GetCurrentAttribute().GetDefense();
-                } else if (SkillDamageTypeMagic == damageType) {
+                } else if (HitSkillDamageTypeMagic == damageType) {
                     attackPoint = caster->GetCurrentAttribute().GetMagicAtk();
                     defensePoint = target->GetCurrentAttribute().GetMagicDef();
                 }
@@ -47,18 +56,18 @@ namespace cmengine
         }
 
         // 打击类型
-        SkillAttackType GetAttackType() const {return attackType;}
+        HitSkillAttackType GetAttackType() const {return attackType;}
 
         // 伤害类型
-        SkillDamageType GetDamageType() const {return damageType;}
+        HitSkillDamageType GetDamageType() const {return damageType;}
 
     public:
         float mulReviseValue = 1;       // 乘数修正值
         int addReviseValue = 0;         // 加数修正值
 
     private:
-        SkillAttackType attackType;     // 打击类型
-        SkillDamageType damageType;     // 伤害类型
+        HitSkillAttackType attackType;     // 打击类型
+        HitSkillDamageType damageType;     // 伤害类型
     };
 }
 

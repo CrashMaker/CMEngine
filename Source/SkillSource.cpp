@@ -34,7 +34,7 @@ BaseSkill Hit()
     };
 
     BaseSkill skill(new CMHitSkill("Hit", logicFun, 
-                SkillAttackTypeMelee, SkillDamageTypePhysical));
+                HitSkillAttackTypeMelee, HitSkillDamageTypePhysical));
 
     return skill;
 }

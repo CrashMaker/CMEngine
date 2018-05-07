@@ -21,9 +21,9 @@ namespace cmengine
     void CMBattleScene::Start(CMBattleLog* battleLog_)
     {
         battleLog = battleLog_;
+        SaveBattleLog("战斗开始");
 
         bool action = true;
-
         while(action) {
             ActionStage(firstTeam[0]);
             
