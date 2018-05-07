@@ -39,11 +39,20 @@ namespace cmengine
         return sprite->GetSkillList()[result];
     }
 
+    /* ==========私有方法========== */
+
+    // 根据施法者获取指定的队伍
+    std::vector<CMBaseSprite*> CMBattleChoose::GetTeamWithCaster(CMBaseSprite* sprite, BattleChooseTeam chooseTeam)
+    {
+
+    }
+
     /* ==========实现的协议========== */
 
     // 选取目标
-    CMBaseSprite* CMBattleChoose::ObtainTarget()
+    CMBaseSprite* CMBattleChoose::ObtainTarget(CMBaseSprite* caster)
     {
+        
         return secondTeam[0];
     }
 }

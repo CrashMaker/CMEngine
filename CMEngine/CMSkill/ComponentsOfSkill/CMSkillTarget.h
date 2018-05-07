@@ -27,12 +27,12 @@ namespace cmengine
 
     protected:
         // 执行选取操作
-        void Obtain(CMSkillDelegate* delegate)
+        void Obtain(CMSkillDelegate* delegate, CMBaseSprite* caster)
         {
             target = nullptr;
             if (!delegate) return;
 
-            target = delegate->ObtainTarget();
+            target = delegate->ObtainTarget(caster);
         }
         
     protected:

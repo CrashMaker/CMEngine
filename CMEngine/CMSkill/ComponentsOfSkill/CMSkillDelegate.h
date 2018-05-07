@@ -19,7 +19,7 @@ namespace cmengine
     {
     public:
         // 单体选择目标
-        virtual CMBaseSprite* ObtainTarget() = 0;
+        virtual CMBaseSprite* ObtainTarget(CMBaseSprite* caster) = 0;
     };
 }
 

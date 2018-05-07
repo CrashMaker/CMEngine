@@ -19,6 +19,12 @@ namespace cmengine
 {
     class CMBaseSprite;
 
+    enum BattleChooseTeam {
+        BattleChooseTeamOfSelf,           // 自身队伍
+        BattleChooseTeamOfAnother,        // 对方队伍
+        BattleChooseTeamOfAll             // 双方队伍
+    };
+
     class CMBattleChoose : public CMSkillDelegate
     {
     public:
@@ -26,10 +32,14 @@ namespace cmengine
             : firstTeam(firstTeam_), secondTeam(secondTeam_) {}
         virtual ~CMBattleChoose() {}
 
-        virtual CMBaseSprite* ObtainTarget();
+        virtual CMBaseSprite* ObtainTarget(CMBaseSprite* caster);
     
         // 选择角色的技能，返回技能编号
         int ChooseSkillIndexFromSprite(CMBaseSprite* sprite);
+
+    private:
+        // 根据施法者获取指定的队伍
+        std::vector<CMBaseSprite*> GetTeamWithCaster(CMBaseSprite* sprite, BattleChooseTeam chooseTeam);
 
     private:
         std::vector<CMBaseSprite*> firstTeam;
