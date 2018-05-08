@@ -24,20 +24,15 @@ namespace cmengine
             : CMBaseSkill(name_, logicFun_) {}
         virtual ~CMHealSkill() {}
     
-        virtual std::string Cast() 
+        virtual void Cast() 
         {
-            std::string result;
             Obtain(delegate, caster);
             if (target) {
-                result = CMBaseSkill::Cast();
-                result += "，目标"+target->GetName();
                 CMBaseSkill::Cast();
                 // 治疗公式
                 int point = healPoint;
                 target->ObtainHeal(point);
             }
-
-            return result;
         }
 
     public:

@@ -13,6 +13,7 @@
 
 #include "CMBattleLog.h"
 #include "CMBattleChoose.h"
+#include "../CMSprite/ComponentsOfSprite/CMSpriteDelegate.h"
 #include <vector>
 
 namespace cmengine
@@ -25,17 +26,25 @@ namespace cmengine
         BattleStateTypeDraw             // 平局
     };
 
-    class CMBattleScene 
+    class CMBattleScene : public CMSpriteDelegate
     {
     public:
         CMBattleScene(std::vector<CMBaseSprite*> firstTeam_, std::vector<CMBaseSprite*> secondTeam_) 
-            : firstTeam(firstTeam_), secondTeam(secondTeam_), battleChoose(firstTeam_, secondTeam_) {}
+            : firstTeam(firstTeam_), secondTeam(secondTeam_), battleChoose(firstTeam_, secondTeam_) {
+                SetupSpriteDelegate(firstTeam);
+                SetupSpriteDelegate(secondTeam);
+            }
         virtual ~CMBattleScene() {}
+
+        virtual void SpriteHasDamage(CMBaseSprite* sprite, int point);
+        virtual void SpriteHasHeal(CMBaseSprite* sprite, int point);
     
         // 战斗开始
         void Start(CMBattleLog* battleLog_ = nullptr); 
 
     private:
+        // 给SpriteDelegate赋值
+        void SetupSpriteDelegate(std::vector<CMBaseSprite*> team);
         // 行动阶段
         void ActionStage(CMBaseSprite* sprite);
         // 记录战斗日志

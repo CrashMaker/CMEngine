@@ -93,6 +93,10 @@ namespace cmengine
 
         int hp = healthPoint + point;
         SetHealthPoint(hp);
+
+        if (delegate) {
+            delegate->SpriteHasHeal(this, point);
+        }
     }
 
     // 受到伤害
@@ -106,6 +110,10 @@ namespace cmengine
 
         int hp = healthPoint - point;
         SetHealthPoint(hp);
+
+        if (delegate) {
+            delegate->SpriteHasDamage(this, point);
+        }
     }
 
     // 打印状态

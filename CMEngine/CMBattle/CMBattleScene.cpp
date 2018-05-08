@@ -15,6 +15,14 @@
 
 namespace cmengine
 {
+    // 给SpriteDelegate赋值
+    void CMBattleScene::SetupSpriteDelegate(std::vector<CMBaseSprite*> team)
+    {
+        for (CMBaseSprite* sprite : team) {
+            sprite->delegate = this;
+        }
+    }
+
     // 判断战斗结果
     bool CMBattleScene::JudgeBattleResult()
     {
@@ -88,7 +96,22 @@ namespace cmengine
         CMBaseSkill* skill = sk.get();
         skill->caster = sprite;
         skill->delegate = &battleChoose;
-        std::string log = skill->Cast();
+        skill->Cast();
+    }
+
+    /* ==========实现的协议========== */
+
+    // 角色受到伤害
+    void CMBattleScene::SpriteHasDamage(CMBaseSprite* sprite, int point)
+    {
+        std::string log = sprite->GetName() + "受到" + std::to_string(point) + "点伤害";
+        SaveBattleLog(log);
+    }
+
+    // 角色受到治疗
+    void CMBattleScene::SpriteHasHeal(CMBaseSprite* sprite, int point)
+    {
+        std::string log = sprite->GetName() + "恢复" + std::to_string(point) + "点生命值";
         SaveBattleLog(log);
     }
 }

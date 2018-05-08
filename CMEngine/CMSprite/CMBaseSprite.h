@@ -13,6 +13,7 @@
 
 #include "ComponentsOfSprite/CMSpriteGrowthRate.h"
 #include "ComponentsOfSprite/CMSpriteBaseAttribute.h"
+#include "ComponentsOfSprite/CMSpriteDelegate.h"
 
 #include <string>
 #include <vector>
@@ -68,6 +69,9 @@ namespace cmengine
 
         // 打印状态
         void PrintAttribute() const;
+
+    public:
+        CMSpriteDelegate* delegate = nullptr;       // 协议对象
 
     private:
         void SetHealthPoint(int hp);
