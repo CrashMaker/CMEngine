@@ -90,5 +90,4 @@ namespace cmengine
         skill->delegate = &battleChoose;
         skill->Cast(); 
     }
-
 }

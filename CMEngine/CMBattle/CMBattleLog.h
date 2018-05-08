@@ -23,7 +23,7 @@ namespace cmengine
     
         void PushLog(std::string log)
         {
-            std::cout << log << std::endl;
+            std::cout << "战斗日志：" << log << std::endl;
         }
     private:
         
