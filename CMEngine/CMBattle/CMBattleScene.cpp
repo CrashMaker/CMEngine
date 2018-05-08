@@ -88,6 +88,7 @@ namespace cmengine
         CMBaseSkill* skill = sk.get();
         skill->caster = sprite;
         skill->delegate = &battleChoose;
-        skill->Cast(); 
+        std::string log = skill->Cast();
+        SaveBattleLog(log);
     }
 }

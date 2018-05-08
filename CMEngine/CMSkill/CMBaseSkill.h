@@ -12,6 +12,7 @@
 #define CMBASESKILL_H
 
 #include "ComponentsOfSkill/CMSkillDelegate.h"
+#include "../CMSprite/CMBaseSprite.h"
 
 #include <string>
 #include <functional>
@@ -19,7 +20,6 @@
 namespace cmengine
 {
     class CMBaseSkill;
-    class CMBaseSprite;
     typedef std::function<void(CMBaseSkill* skill)> SkillLogicFun;
     
     class CMBaseSkill
@@ -32,7 +32,11 @@ namespace cmengine
         // 获取技能名称
         std::string GetName() const {return name;}
         // 执行技能逻辑
-        virtual void Cast() {logicFun(this);}
+        virtual std::string Cast() {
+            logicFun(this);
+            std::string result = caster->GetName() + "使用技能" + name;
+            return result;
+        }
 
     public:
         CMBaseSprite* caster = nullptr;             // 施法者

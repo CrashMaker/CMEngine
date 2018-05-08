@@ -35,11 +35,13 @@ namespace cmengine
             : CMBaseSkill(name_, logicFun_), attackType(attackType_), damageType(damageType_) {}
         virtual ~CMHitSkill() {}
     
-        virtual void Cast() 
+        virtual std::string Cast() 
         {
+            std::string result;
             Obtain(delegate, caster);
             if (target) {
-                CMBaseSkill::Cast();
+                result = CMBaseSkill::Cast();
+                result += "，目标"+target->GetName();
                 // 打击公式
                 int attackPoint = 0;
                 int defensePoint = 0;
@@ -53,6 +55,8 @@ namespace cmengine
                 int point = (attackPoint + addReviseValue - defensePoint) * mulReviseValue;
                 target->ObtainDamage(point);
             }
+
+            return result;
         }
 
         // 打击类型
