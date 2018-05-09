@@ -38,7 +38,9 @@ namespace cmengine
 
         virtual void SpriteHasDamage(CMBaseSprite* sprite, int point);
         virtual void SpriteHasHeal(CMBaseSprite* sprite, int point);
-        virtual CMBaseSprite* ObtainTarget(CMBaseSprite* caster);
+        virtual void SpriteHasStateTypeChange(CMBaseSprite* sprite, int stateType);
+
+        virtual CMBaseSprite* SkillObtainTarget(CMBaseSprite* caster);
         virtual void SkillHasCast(CMBaseSkill* skill);
         virtual void SkillHasCastWithTarget(CMBaseSkill* skill, CMSkillTarget* target);
     
@@ -51,7 +53,11 @@ namespace cmengine
         // 行动阶段
         void ActionStage(CMBaseSprite* sprite);
         // 记录战斗日志
-        void SaveBattleLog(std::string log) {if (battleLog) {battleLog->PushLog(log);}}
+        void SaveBattleLog(std::string log) {
+            if (battleLog && log.size() > 0) {
+                battleLog->PushLog(log);
+            }
+        }
         // 判断战斗结果
         bool JudgeBattleResult();
 

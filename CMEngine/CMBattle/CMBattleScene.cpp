@@ -116,10 +116,24 @@ namespace cmengine
         SaveBattleLog(log);
     }
 
+    // 角色状态改变
+    void CMBattleScene::SpriteHasStateTypeChange(CMBaseSprite* sprite, int stateType)
+    {
+        SpriteStateType type = (SpriteStateType)stateType;
+
+        std::string log;
+        if (SpriteStateTypeLife == type) {
+            log = sprite->GetName() + "复活";
+        } else if (SpriteStateTypeDead == type) {
+            log = sprite->GetName() + "死亡";
+        }
+        SaveBattleLog(log);
+    }
+
     /* ==========实现的协议CMSkillDelegate========== */
     
     // 选取目标
-    CMBaseSprite* CMBattleScene::ObtainTarget(CMBaseSprite* caster)
+    CMBaseSprite* CMBattleScene::SkillObtainTarget(CMBaseSprite* caster)
     {
         return battleChoose.ObtainTarget(caster);
     }

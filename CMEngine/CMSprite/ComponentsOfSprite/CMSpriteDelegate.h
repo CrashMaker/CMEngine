@@ -22,6 +22,8 @@ namespace cmengine
         virtual void SpriteHasDamage(CMBaseSprite* sprite, int point) = 0;
         // 角色受到治疗
         virtual void SpriteHasHeal(CMBaseSprite* sprite, int point) = 0;
+        // 角色状态改变
+        virtual void SpriteHasStateTypeChange(CMBaseSprite* sprite, int stateType) = 0;
     };
 }
 

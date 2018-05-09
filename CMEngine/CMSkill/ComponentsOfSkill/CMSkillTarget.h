@@ -32,7 +32,7 @@ namespace cmengine
             target = nullptr;
             if (!delegate) return;
 
-            target = delegate->ObtainTarget(caster);
+            target = delegate->SkillObtainTarget(caster);
         }
         
     protected:

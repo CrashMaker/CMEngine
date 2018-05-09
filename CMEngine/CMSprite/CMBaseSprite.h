@@ -67,6 +67,9 @@ namespace cmengine
         // 受到伤害
         void ObtainDamage(int point);
 
+        // 设置角色状态
+        void SetupStateType(SpriteStateType stateType_);
+
         // 打印状态
         void PrintAttribute() const;
 

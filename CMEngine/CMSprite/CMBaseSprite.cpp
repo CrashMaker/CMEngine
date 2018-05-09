@@ -43,7 +43,7 @@ namespace cmengine
 
             // 当生命值为0时，角色进入Dead状态
             if (0 == healthPoint) {
-                stateType = SpriteStateTypeDead;
+                SetupStateType(SpriteStateTypeDead);
             }
         }
     }
@@ -91,12 +91,12 @@ namespace cmengine
             point = MaxPoint;
         }
 
-        int hp = healthPoint + point;
-        SetHealthPoint(hp);
-
         if (delegate) {
             delegate->SpriteHasHeal(this, point);
         }
+        
+        int hp = healthPoint + point;
+        SetHealthPoint(hp);
     }
 
     // 受到伤害
@@ -108,11 +108,20 @@ namespace cmengine
             point = MaxPoint;
         }
 
-        int hp = healthPoint - point;
-        SetHealthPoint(hp);
-
         if (delegate) {
             delegate->SpriteHasDamage(this, point);
+        }
+
+        int hp = healthPoint - point;
+        SetHealthPoint(hp);
+    }
+
+    // 设置角色状态
+    void CMBaseSprite::SetupStateType(SpriteStateType stateType_)
+    {
+        stateType = stateType_;
+        if (delegate) {
+            delegate->SpriteHasStateTypeChange(this, stateType);
         }
     }
 

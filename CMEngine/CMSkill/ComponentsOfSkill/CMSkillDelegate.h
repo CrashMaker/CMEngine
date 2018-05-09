@@ -21,7 +21,7 @@ namespace cmengine
     {
     public:
         // 单体选择目标
-        virtual CMBaseSprite* ObtainTarget(CMBaseSprite* caster) = 0;
+        virtual CMBaseSprite* SkillObtainTarget(CMBaseSprite* caster) = 0;
         // 技能施放
         virtual void SkillHasCast(CMBaseSkill* skill) = 0;
         // 技能施放，有目标 
