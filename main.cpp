@@ -25,7 +25,6 @@ int main()
     h_2.SetLevel(10);
 
     CMBattleLog battleLog;
-
     CMBattleScene battleScene = CMBattleScene({&h_1}, {&h_2});
     battleScene.Start(&battleLog);
     

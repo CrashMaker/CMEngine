@@ -13,6 +13,7 @@
 
 #include "CMBattleLog.h"
 #include "CMBattleChoose.h"
+#include "CMBattleQueue.h"
 #include "../CMSprite/CMBaseSprite.h"
 #include "../CMSkill/CMBaseSkill.h"
 
@@ -30,7 +31,8 @@ namespace cmengine
     {
     public:
         CMBattleScene(std::vector<CMBaseSprite*> firstTeam_, std::vector<CMBaseSprite*> secondTeam_) 
-            : firstTeam(firstTeam_), secondTeam(secondTeam_), battleChoose(firstTeam_, secondTeam_) {
+            : firstTeam(firstTeam_), secondTeam(secondTeam_), battleChoose(firstTeam_, secondTeam_), 
+              battleQueue(firstTeam_, secondTeam_) {
                 SetupSpriteDelegate(firstTeam);
                 SetupSpriteDelegate(secondTeam);
             }
@@ -65,6 +67,7 @@ namespace cmengine
         std::vector<CMBaseSprite*> firstTeam;       // 一号队伍
         std::vector<CMBaseSprite*> secondTeam;      // 二号队伍
         CMBattleChoose battleChoose;                // 选择控制
+        CMBattleQueue battleQueue;                  // 战斗队列
 
         // 战斗日志
         CMBattleLog* battleLog = nullptr;

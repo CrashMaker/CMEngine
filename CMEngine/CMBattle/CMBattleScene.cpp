@@ -81,9 +81,15 @@ namespace cmengine
 
         bool action = true;
         while(action) {
-            ActionStage(firstTeam[0]);
+            // 回合开始，获取行动的角色
+            CMBaseSprite *sprite = firstTeam[0];
+            SaveBattleLog(sprite->GetName() + "的回合开始");
+            // 行动阶段
+            ActionStage(sprite);
             // 判断战斗结果
             action = JudgeBattleResult();
+            // 回合结束
+            SaveBattleLog(sprite->GetName() + "的回合结束");
         }
 
         SaveBattleLog("战斗结束");
@@ -91,7 +97,7 @@ namespace cmengine
 
     // 行动阶段
     void CMBattleScene::ActionStage(CMBaseSprite* sprite)
-    {
+    {   
         int skillIndex = battleChoose.ChooseSkillIndexFromSprite(sprite);
         BaseSkill sk = CMInstantiateSource::InstantiateSkill(skillIndex);
         CMBaseSkill* skill = sk.get();
