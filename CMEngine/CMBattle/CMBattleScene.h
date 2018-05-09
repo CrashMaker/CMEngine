@@ -13,8 +13,8 @@
 
 #include "CMBattleLog.h"
 #include "CMBattleChoose.h"
-#include "../CMSprite/ComponentsOfSprite/CMSpriteDelegate.h"
-#include <vector>
+#include "../CMSprite/CMBaseSprite.h"
+#include "../CMSkill/CMBaseSkill.h"
 
 namespace cmengine
 {
@@ -26,7 +26,7 @@ namespace cmengine
         BattleStateTypeDraw             // 平局
     };
 
-    class CMBattleScene : public CMSpriteDelegate
+    class CMBattleScene : public CMSpriteDelegate, public CMSkillDelegate
     {
     public:
         CMBattleScene(std::vector<CMBaseSprite*> firstTeam_, std::vector<CMBaseSprite*> secondTeam_) 
@@ -38,6 +38,9 @@ namespace cmengine
 
         virtual void SpriteHasDamage(CMBaseSprite* sprite, int point);
         virtual void SpriteHasHeal(CMBaseSprite* sprite, int point);
+        virtual CMBaseSprite* ObtainTarget(CMBaseSprite* caster);
+        virtual void SkillHasCast(CMBaseSkill* skill);
+        virtual void SkillHasCastWithTarget(CMBaseSkill* skill, CMSkillTarget* target);
     
         // 战斗开始
         void Start(CMBattleLog* battleLog_ = nullptr); 

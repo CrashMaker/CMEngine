@@ -10,6 +10,7 @@
 
 #include "CMBattleScene.h"
 #include "../CMSourceManager/CMInstantiateSource.h"
+#include "../CMSkill/ComponentsOfSkill/CMSkillTarget.h"
 
 #include <iostream>
 
@@ -95,11 +96,11 @@ namespace cmengine
         BaseSkill sk = CMInstantiateSource::InstantiateSkill(skillIndex);
         CMBaseSkill* skill = sk.get();
         skill->caster = sprite;
-        skill->delegate = &battleChoose;
+        skill->delegate = this;
         skill->Cast();
     }
 
-    /* ==========实现的协议========== */
+    /* ==========实现的协议CMSpriteDelegate========== */
 
     // 角色受到伤害
     void CMBattleScene::SpriteHasDamage(CMBaseSprite* sprite, int point)
@@ -112,6 +113,28 @@ namespace cmengine
     void CMBattleScene::SpriteHasHeal(CMBaseSprite* sprite, int point)
     {
         std::string log = sprite->GetName() + "恢复" + std::to_string(point) + "点生命值";
+        SaveBattleLog(log);
+    }
+
+    /* ==========实现的协议CMSkillDelegate========== */
+    
+    // 选取目标
+    CMBaseSprite* CMBattleScene::ObtainTarget(CMBaseSprite* caster)
+    {
+        return battleChoose.ObtainTarget(caster);
+    }
+
+    void CMBattleScene::SkillHasCast(CMBaseSkill* skill)
+    {
+        std::string log = skill->caster->GetName() + "使用技能" + skill->GetName();
+        SaveBattleLog(log);
+    }
+
+    void CMBattleScene::SkillHasCastWithTarget(CMBaseSkill* skill, CMSkillTarget* target)
+    {
+        std::string log = skill->caster->GetName() 
+            + "对" + target->GetTarget()->GetName()
+            + "使用技能" + skill->GetName();
         SaveBattleLog(log);
     }
 }

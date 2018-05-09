@@ -28,7 +28,8 @@ namespace cmengine
         {
             Obtain(delegate, caster);
             if (target) {
-                CMBaseSkill::Cast();
+                logicFun(this);
+                if (delegate) delegate->SkillHasCastWithTarget(this, this);
                 // 治疗公式
                 int point = healPoint;
                 target->ObtainHeal(point);

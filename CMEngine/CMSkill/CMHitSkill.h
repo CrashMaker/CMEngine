@@ -39,7 +39,8 @@ namespace cmengine
         {
             Obtain(delegate, caster);
             if (target) {
-                CMBaseSkill::Cast();
+                logicFun(this);
+                if (delegate) delegate->SkillHasCastWithTarget(this, this);
                 // 打击公式
                 int attackPoint = 0;
                 int defensePoint = 0;
