@@ -22,7 +22,7 @@ int main()
     CMHeroSprite h_1 = CMInstantiateSourceTemplate<CMHeroSprite>::InstantiateHero(1);
     h_1.SetLevel(10);
     CMHeroSprite h_2 = CMInstantiateSourceTemplate<CMHeroSprite>::InstantiateHero(2);
-    h_2.SetLevel(10);
+    h_2.SetLevel(8);
 
     CMBattleLog battleLog;
     CMBattleScene battleScene = CMBattleScene({&h_1}, {&h_2});

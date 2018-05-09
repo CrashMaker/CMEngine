@@ -38,6 +38,7 @@ namespace cmengine
         std::vector<CMBaseSprite*> firstTeam;
         std::vector<CMBaseSprite*> secondTeam;
         std::vector<CMBaseSprite*> battleTeam;
+        std::vector<CMBaseSprite*> spriteQueue;
     };
 }
 

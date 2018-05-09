@@ -82,7 +82,7 @@ namespace cmengine
         bool action = true;
         while(action) {
             // 回合开始，获取行动的角色
-            CMBaseSprite *sprite = firstTeam[0];
+            CMBaseSprite *sprite = battleQueue.GetActionSprite();
             SaveBattleLog(sprite->GetName() + "的回合开始");
             // 行动阶段
             ActionStage(sprite);

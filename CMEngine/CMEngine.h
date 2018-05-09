@@ -23,6 +23,9 @@
 
 #include "CMBattle/CMBattleScene.h"
 
+#include "CMGeneral/CMGeneralRandom.h"
+#include "CMGeneral/CMGeneralTypedef.h"
+
 namespace cmengine
 {
     // 需要实现的函数
