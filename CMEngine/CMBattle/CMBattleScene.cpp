@@ -155,17 +155,9 @@ namespace cmengine
     }
 
     // 角色状态改变
-    void CMBattleScene::SpriteHasStateTypeChange(CMBaseSprite* sprite, int stateType)
+    void CMBattleScene::SpriteHasStateTypeChange(CMBaseSprite* sprite)
     {
-        SpriteStateType type = (SpriteStateType)stateType;
-
-        std::string log;
-        if (SpriteStateTypeLife == type) {
-            log = sprite->GetName() + "复活";
-        } else if (SpriteStateTypeDead == type) {
-            log = sprite->GetName() + "死亡";
-        }
-        battleLog.PushLog(log);
+        battleLog.PushLogWithSpriteStateTypeChange(sprite);
     }
 
     /* ==========实现的协议CMSkillDelegate========== */
@@ -183,7 +175,7 @@ namespace cmengine
 
     void CMBattleScene::SkillWillCast(CMBaseSkill* skill)
     {
-        battleLog.PushLogWithSkill(skill); 
+        battleLog.PushLogWithSkillCast(skill); 
     }
 
     void CMBattleScene::SkillHasCast(CMBaseSkill* skill)

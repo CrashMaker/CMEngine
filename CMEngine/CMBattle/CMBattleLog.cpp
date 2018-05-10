@@ -11,6 +11,7 @@
 #include "CMBattleLog.h"
 #include "../CMSkill/CMHealSkill.h"
 #include "../CMSkill/CMHitSkill.h"
+#include "../CMSprite/CMBaseSprite.h"
 
 namespace cmengine
 {
@@ -36,8 +37,9 @@ namespace cmengine
             std::cout << "战斗日志：" << log << std::endl;
         }
     }
+
     // 根据技能释放添加日志
-    void CMBattleLog::PushLogWithSkill(CMBaseSkill* skill)
+    void CMBattleLog::PushLogWithSkillCast(CMBaseSkill* skill)
     {
         std::string log = "";
         
@@ -49,6 +51,20 @@ namespace cmengine
             log = CreateLogWithSkillTarget(sk, skill->caster->GetName(), skill->GetName());
         } else {
             log = skill->caster->GetName() + "使用技能" + skill->GetName();
+        }
+
+        PushLog(log);
+    }
+
+    // 根据角色状态变化打印日志
+    void CMBattleLog::PushLogWithSpriteStateTypeChange(CMBaseSprite* sprite)
+    {
+        std::string log = "";
+
+        if(SpriteStateTypeLife == sprite->GetStateType()) {
+            log = sprite->GetName() + "复活";
+        } else if(SpriteStateTypeDead == sprite->GetStateType()) {
+            log = sprite->GetName() + "死亡";
         }
 
         PushLog(log);

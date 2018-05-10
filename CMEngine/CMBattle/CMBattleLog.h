@@ -18,6 +18,7 @@ namespace cmengine
 {
     class CMBaseSkill;
     class CMSkillTarget;
+    class CMBaseSprite;
 
     class CMBattleLog
     {
@@ -27,8 +28,9 @@ namespace cmengine
         // 添加日志
         void PushLog(std::string log);
         // 根据技能释放添加日志
-        void PushLogWithSkill(CMBaseSkill* skill);
-
+        void PushLogWithSkillCast(CMBaseSkill* skill);
+        // 根据角色状态变化打印日志
+        void PushLogWithSpriteStateTypeChange(CMBaseSprite* sprite);
     private:
         // 有目标的技能打印的战斗日志
         std::string CreateLogWithSkillTarget(CMSkillTarget* target, 

@@ -121,7 +121,7 @@ namespace cmengine
     {
         stateType = stateType_;
         if (delegate) {
-            delegate->SpriteHasStateTypeChange(this, stateType);
+            delegate->SpriteHasStateTypeChange(this);
         }
     }
 

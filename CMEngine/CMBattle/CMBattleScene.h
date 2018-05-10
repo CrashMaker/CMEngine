@@ -41,7 +41,7 @@ namespace cmengine
 
         virtual void SpriteHasDamage(CMBaseSprite* sprite, int point);
         virtual void SpriteHasHeal(CMBaseSprite* sprite, int point);
-        virtual void SpriteHasStateTypeChange(CMBaseSprite* sprite, int stateType);
+        virtual void SpriteHasStateTypeChange(CMBaseSprite* sprite);
 
         virtual CMBaseSprite* SkillObtainTarget(CMBaseSprite* caster);
         virtual void SkillPrepareCast(CMBaseSkill* skill);
