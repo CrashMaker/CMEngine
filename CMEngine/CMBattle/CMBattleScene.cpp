@@ -90,8 +90,10 @@ namespace cmengine
     {
         battleLog = battleLog_;
         battleStateType = BattleStateTypeBattleing;
-        SaveBattleLog("战斗开始");
 
+        // 战斗开始
+        BattleBegan();
+        // 回合阶段
         bool action = true;
         while(action) {
             // 回合开始，获取行动的角色
@@ -104,8 +106,20 @@ namespace cmengine
             // 回合结束
             SaveBattleLog(sprite->GetName() + "的回合结束");
         }
+        // 战斗结束
+        BattleEnd();
+    }
 
-        SaveBattleLog("战斗结束");
+    // 战斗开始
+    void CMBattleScene::BattleBegan()
+    {
+        SaveBattleLog("战斗开始");
+    }
+
+    // 战斗结束
+    void CMBattleScene::BattleEnd()
+    {
+         SaveBattleLog("战斗结束");
     }
 
     // 行动阶段

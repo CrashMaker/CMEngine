@@ -66,6 +66,10 @@ namespace cmengine
         // 有目标的技能打印的战斗日志
         std::string CreateSkillCastLogWithTarget(CMSkillTarget* target, 
                 std::string casterName, std::string skillName);
+        // 战斗开始
+        void BattleBegan();
+        // 战斗结束
+        void BattleEnd();
 
     private:
         std::vector<CMBaseSprite*> firstTeam;       // 一号队伍
