@@ -22,10 +22,12 @@ namespace cmengine
     public:
         // 单体选择目标
         virtual CMBaseSprite* SkillObtainTarget(CMBaseSprite* caster) = 0;
-        // 技能施放
+        // 技能正式释放前预备阶段
+        virtual void SkillPrepareCast(CMBaseSkill* skill) = 0;
+        // 技能准备被施放
+        virtual void SkillWillCast(CMBaseSkill* skill) = 0;
+        // 技能已经被施放
         virtual void SkillHasCast(CMBaseSkill* skill) = 0;
-        // 技能施放，有目标 
-        virtual void SkillHasCastWithTarget(CMBaseSkill* skill, CMSkillTarget* target) = 0;
     };
 }
 

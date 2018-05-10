@@ -43,8 +43,9 @@ namespace cmengine
         virtual void SpriteHasStateTypeChange(CMBaseSprite* sprite, int stateType);
 
         virtual CMBaseSprite* SkillObtainTarget(CMBaseSprite* caster);
+        virtual void SkillPrepareCast(CMBaseSkill* skill);
+        virtual void SkillWillCast(CMBaseSkill* skill);
         virtual void SkillHasCast(CMBaseSkill* skill);
-        virtual void SkillHasCastWithTarget(CMBaseSkill* skill, CMSkillTarget* target);
     
         // 战斗开始
         void Start(CMBattleLog* battleLog_ = nullptr); 
@@ -62,6 +63,9 @@ namespace cmengine
         }
         // 判断战斗结果
         bool JudgeBattleResult();
+        // 有目标的技能打印的战斗日志
+        std::string CreateSkillCastLogWithTarget(CMSkillTarget* target, 
+                std::string casterName, std::string skillName);
 
     private:
         std::vector<CMBaseSprite*> firstTeam;       // 一号队伍

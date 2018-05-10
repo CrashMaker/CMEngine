@@ -31,15 +31,26 @@ namespace cmengine
     
         // 获取技能名称
         std::string GetName() const {return name;}
-        // 执行技能逻辑
-        virtual void Cast() {
-            logicFun(this);
+        // 执行
+        void Cast() {
+            if (delegate) delegate->SkillPrepareCast(this);
+            Prepare();
+            if (delegate) delegate->SkillWillCast(this);
+            CastLogic(); 
             if (delegate) delegate->SkillHasCast(this);
         }
 
     public:
         CMBaseSprite* caster = nullptr;             // 施法者
         CMSkillDelegate* delegate = nullptr;        // 协议对象
+
+    protected:
+        // 执行技能逻辑前的准备工作
+        virtual void Prepare() {}
+        // 执行技能逻辑
+        virtual void CastLogic() {
+            logicFun(this);
+        }
 
     protected:
         std::string name;           // 技能名称

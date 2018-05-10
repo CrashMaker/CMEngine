@@ -11,6 +11,8 @@
 #include "CMBattleScene.h"
 #include "../CMSourceManager/CMInstantiateSource.h"
 #include "../CMSkill/ComponentsOfSkill/CMSkillTarget.h"
+#include "../CMSkill/CMHealSkill.h"
+#include "../CMSkill/CMHitSkill.h"
 
 #include <iostream>
 
@@ -22,6 +24,17 @@ namespace cmengine
         for (CMBaseSprite* sprite : team) {
             sprite->delegate = this;
         }
+    }
+
+    // 有目标的技能打印的战斗日志
+    std::string CMBattleScene::CreateSkillCastLogWithTarget(CMSkillTarget* target, 
+            std::string casterName, std::string skillName)
+    {
+        std::string log = casterName 
+            + "对" + target->GetTarget()->GetName()
+            + "使用技能" + skillName;
+
+        return log;
     }
 
     // 判断战斗结果
@@ -82,7 +95,7 @@ namespace cmengine
         bool action = true;
         while(action) {
             // 回合开始，获取行动的角色
-            CMBaseSprite *sprite = battleQueue.GetActionSprite();
+            CMBaseSprite* sprite = battleQueue.GetActionSprite();
             SaveBattleLog(sprite->GetName() + "的回合开始");
             // 行动阶段
             ActionStage(sprite);
@@ -144,17 +157,30 @@ namespace cmengine
         return battleChoose.ObtainTarget(caster);
     }
 
-    void CMBattleScene::SkillHasCast(CMBaseSkill* skill)
+    void CMBattleScene::SkillPrepareCast(CMBaseSkill* skill)
     {
-        std::string log = skill->caster->GetName() + "使用技能" + skill->GetName();
+        skill->GetName();
+    }
+
+    void CMBattleScene::SkillWillCast(CMBaseSkill* skill)
+    {
+        std::string log = "";
+        
+        if (typeid(CMHitSkill) == typeid(*skill)) {
+            CMHitSkill* sk = (CMHitSkill*)skill;
+            log = CreateSkillCastLogWithTarget(sk, skill->caster->GetName(), skill->GetName());
+        } else if (typeid(CMHealSkill) == typeid(*skill)) {
+            CMHealSkill* sk = (CMHealSkill*)skill;
+            log = CreateSkillCastLogWithTarget(sk, skill->caster->GetName(), skill->GetName());
+        } else {
+            log = skill->caster->GetName() + "使用技能" + skill->GetName();
+        }
+
         SaveBattleLog(log);
     }
 
-    void CMBattleScene::SkillHasCastWithTarget(CMBaseSkill* skill, CMSkillTarget* target)
+    void CMBattleScene::SkillHasCast(CMBaseSkill* skill)
     {
-        std::string log = skill->caster->GetName() 
-            + "对" + target->GetTarget()->GetName()
-            + "使用技能" + skill->GetName();
-        SaveBattleLog(log);
+        skill->GetName();
     }
 }

@@ -35,27 +35,6 @@ namespace cmengine
             : CMBaseSkill(name_, logicFun_), attackType(attackType_), damageType(damageType_) {}
         virtual ~CMHitSkill() {}
     
-        virtual void Cast() 
-        {
-            Obtain(delegate, caster);
-            if (target) {
-                logicFun(this);
-                if (delegate) delegate->SkillHasCastWithTarget(this, this);
-                // 打击公式
-                int attackPoint = 0;
-                int defensePoint = 0;
-                if (HitSkillDamageTypePhysical == damageType) {
-                    attackPoint = caster->GetCurrentAttribute().GetAttack();
-                    defensePoint = target->GetCurrentAttribute().GetDefense();
-                } else if (HitSkillDamageTypeMagic == damageType) {
-                    attackPoint = caster->GetCurrentAttribute().GetMagicAtk();
-                    defensePoint = target->GetCurrentAttribute().GetMagicDef();
-                }
-                int point = (attackPoint + addReviseValue - defensePoint) * mulReviseValue;
-                target->ObtainDamage(point);
-            }
-        }
-
         // 打击类型
         HitSkillAttackType GetAttackType() const {return attackType;}
 
@@ -65,6 +44,30 @@ namespace cmengine
     public:
         float mulReviseValue = 1;       // 乘数修正值
         int addReviseValue = 0;         // 加数修正值
+
+    private:
+        // 执行技能逻辑前的准备工作
+        virtual void Prepare()
+        {
+            Obtain(delegate, caster);
+        }
+        // 执行技能逻辑
+        virtual void CastLogic() 
+        {
+            CMBaseSkill::CastLogic();
+            // 打击公式
+            int attackPoint = 0;
+            int defensePoint = 0;
+            if (HitSkillDamageTypePhysical == damageType) {
+                attackPoint = caster->GetCurrentAttribute().GetAttack();
+                defensePoint = target->GetCurrentAttribute().GetDefense();
+            } else if (HitSkillDamageTypeMagic == damageType) {
+                attackPoint = caster->GetCurrentAttribute().GetMagicAtk();
+                defensePoint = target->GetCurrentAttribute().GetMagicDef();
+            }
+            int point = (attackPoint + addReviseValue - defensePoint) * mulReviseValue;
+            target->ObtainDamage(point);
+        }
 
     private:
         HitSkillAttackType attackType;     // 打击类型
