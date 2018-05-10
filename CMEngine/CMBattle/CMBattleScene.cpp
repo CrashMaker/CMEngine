@@ -18,6 +18,8 @@
 
 namespace cmengine
 {
+    /* ==========私有函数========== */
+    
     // 给SpriteDelegate赋值
     void CMBattleScene::SetupSpriteDelegate(std::vector<CMBaseSprite*> team)
     {
@@ -26,19 +28,72 @@ namespace cmengine
         }
     }
 
-    // 有目标的技能打印的战斗日志
-    std::string CMBattleScene::CreateSkillCastLogWithTarget(CMSkillTarget* target, 
-            std::string casterName, std::string skillName)
-    {
-        std::string log = casterName 
-            + "对" + target->GetTarget()->GetName()
-            + "使用技能" + skillName;
+    /* ==========公有函数========== */
 
-        return log;
+    // 战斗开始
+    void CMBattleScene::Battle()
+    {
+        BattleBegan();
+        BattleRound();
+        BattleEnd();
     }
 
-    // 判断战斗结果
-    bool CMBattleScene::JudgeBattleResult()
+    /* ==========战斗中的各个阶段========== */
+    
+    // 战斗开始阶段
+    void CMBattleScene::BattleBegan()
+    {
+        battleStateType = BattleStateTypeBattleing;
+        battleLog.PushLog("战斗开始");
+    }
+
+    // 战斗回合阶段
+    void CMBattleScene::BattleRound()
+    {
+        bool action = true;
+        while(action) {
+            CMBaseSprite* sprite = RoundBegan();
+            RoundAction(sprite);
+            RoundEnd(sprite);
+            action = RoundJudgeResult();
+        }
+    }
+
+    // 战斗结束阶段
+    void CMBattleScene::BattleEnd()
+    {
+        battleLog.PushLog("战斗结束");
+    }
+
+    /* ==========回合中的各个步骤========== */
+
+    // 回合开始步骤
+    CMBaseSprite* CMBattleScene::RoundBegan()
+    {
+        CMBaseSprite* sprite = battleQueue.GetActionSprite();
+        battleLog.PushLog(sprite->GetName() + "的回合开始");
+        return sprite;
+    }
+
+    // 回合行动步骤
+    void CMBattleScene::RoundAction(CMBaseSprite* sprite)
+    {   
+        int skillIndex = battleChoose.ChooseSkillIndexFromSprite(sprite);
+        BaseSkill sk = CMInstantiateSource::InstantiateSkill(skillIndex);
+        CMBaseSkill* skill = sk.get();
+        skill->caster = sprite;
+        skill->delegate = this;
+        skill->Cast();
+    }
+
+    // 回合结束步骤
+    void CMBattleScene::RoundEnd(CMBaseSprite* sprite)
+    {
+        battleLog.PushLog(sprite->GetName() + "的回合结束");
+    }
+    
+    // 判断战斗结果步骤
+    bool CMBattleScene::RoundJudgeResult()
     {
         // 一号队伍是否全部死亡
         bool firstTeamAllDead = true;
@@ -63,17 +118,17 @@ namespace cmengine
         // 判断结果
         if (!firstTeamAllDead && secondTeamAllDead) {
             // 一号队伍胜利，战斗结束
-            SaveBattleLog("一号队伍胜利");
+            battleLog.PushLog("一号队伍胜利");
             battleStateType = BattleStateTypeFirstTeamWin;
             return false;
         } else if (firstTeamAllDead && !secondTeamAllDead) {
             // 二号队伍胜利，战斗结束
-            SaveBattleLog("二号队伍胜利");
+            battleLog.PushLog("二号队伍胜利");
             battleStateType = BattleStateTypeSecondTeamWin;
             return false;
         } else if (firstTeamAllDead && secondTeamAllDead) {
             // 平局，战斗结束
-            SaveBattleLog("平局");
+            battleLog.PushLog("平局");
             battleStateType = BattleStateTypeDraw;
             return false;
         } else {
@@ -83,70 +138,20 @@ namespace cmengine
         }
     }
 
-    /* ==========战斗阶段控制========== */
-
-    // 战斗开始
-    void CMBattleScene::Start(CMBattleLog* battleLog_)
-    {
-        battleLog = battleLog_;
-        battleStateType = BattleStateTypeBattleing;
-
-        // 战斗开始
-        BattleBegan();
-        // 回合阶段
-        bool action = true;
-        while(action) {
-            // 回合开始，获取行动的角色
-            CMBaseSprite* sprite = battleQueue.GetActionSprite();
-            SaveBattleLog(sprite->GetName() + "的回合开始");
-            // 行动阶段
-            ActionStage(sprite);
-            // 判断战斗结果
-            action = JudgeBattleResult();
-            // 回合结束
-            SaveBattleLog(sprite->GetName() + "的回合结束");
-        }
-        // 战斗结束
-        BattleEnd();
-    }
-
-    // 战斗开始
-    void CMBattleScene::BattleBegan()
-    {
-        SaveBattleLog("战斗开始");
-    }
-
-    // 战斗结束
-    void CMBattleScene::BattleEnd()
-    {
-         SaveBattleLog("战斗结束");
-    }
-
-    // 行动阶段
-    void CMBattleScene::ActionStage(CMBaseSprite* sprite)
-    {   
-        int skillIndex = battleChoose.ChooseSkillIndexFromSprite(sprite);
-        BaseSkill sk = CMInstantiateSource::InstantiateSkill(skillIndex);
-        CMBaseSkill* skill = sk.get();
-        skill->caster = sprite;
-        skill->delegate = this;
-        skill->Cast();
-    }
-
     /* ==========实现的协议CMSpriteDelegate========== */
 
     // 角色受到伤害
     void CMBattleScene::SpriteHasDamage(CMBaseSprite* sprite, int point)
     {
         std::string log = sprite->GetName() + "受到" + std::to_string(point) + "点伤害";
-        SaveBattleLog(log);
+        battleLog.PushLog(log);
     }
 
     // 角色受到治疗
     void CMBattleScene::SpriteHasHeal(CMBaseSprite* sprite, int point)
     {
         std::string log = sprite->GetName() + "恢复" + std::to_string(point) + "点生命值";
-        SaveBattleLog(log);
+        battleLog.PushLog(log);
     }
 
     // 角色状态改变
@@ -160,7 +165,7 @@ namespace cmengine
         } else if (SpriteStateTypeDead == type) {
             log = sprite->GetName() + "死亡";
         }
-        SaveBattleLog(log);
+        battleLog.PushLog(log);
     }
 
     /* ==========实现的协议CMSkillDelegate========== */
@@ -178,19 +183,7 @@ namespace cmengine
 
     void CMBattleScene::SkillWillCast(CMBaseSkill* skill)
     {
-        std::string log = "";
-        
-        if (typeid(CMHitSkill) == typeid(*skill)) {
-            CMHitSkill* sk = (CMHitSkill*)skill;
-            log = CreateSkillCastLogWithTarget(sk, skill->caster->GetName(), skill->GetName());
-        } else if (typeid(CMHealSkill) == typeid(*skill)) {
-            CMHealSkill* sk = (CMHealSkill*)skill;
-            log = CreateSkillCastLogWithTarget(sk, skill->caster->GetName(), skill->GetName());
-        } else {
-            log = skill->caster->GetName() + "使用技能" + skill->GetName();
-        }
-
-        SaveBattleLog(log);
+        battleLog.PushLogWithSkill(skill); 
     }
 
     void CMBattleScene::SkillHasCast(CMBaseSkill* skill)

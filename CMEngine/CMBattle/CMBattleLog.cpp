@@ -9,8 +9,48 @@
 ================================================================*/
 
 #include "CMBattleLog.h"
+#include "../CMSkill/CMHealSkill.h"
+#include "../CMSkill/CMHitSkill.h"
 
 namespace cmengine
 {
+    /* ==========私有函数========== */
+    
+    // 有目标的技能打印的战斗日志
+    std::string CMBattleLog::CreateLogWithSkillTarget(CMSkillTarget* target, 
+            std::string casterName, std::string skillName)
+    {
+        std::string log = casterName 
+            + "对" + target->GetTarget()->GetName()
+            + "使用技能" + skillName;
 
+        return log;
+    }
+
+    /* ==========公有函数========== */
+
+    // 添加日志
+    void CMBattleLog::PushLog(std::string log)
+    {
+        if (log.size() > 0) {
+            std::cout << "战斗日志：" << log << std::endl;
+        }
+    }
+    // 根据技能释放添加日志
+    void CMBattleLog::PushLogWithSkill(CMBaseSkill* skill)
+    {
+        std::string log = "";
+        
+        if (typeid(CMHitSkill) == typeid(*skill)) {
+            CMHitSkill* sk = (CMHitSkill*)skill;
+            log = CreateLogWithSkillTarget(sk, skill->caster->GetName(), skill->GetName());
+        } else if (typeid(CMHealSkill) == typeid(*skill)) {
+            CMHealSkill* sk = (CMHealSkill*)skill;
+            log = CreateLogWithSkillTarget(sk, skill->caster->GetName(), skill->GetName());
+        } else {
+            log = skill->caster->GetName() + "使用技能" + skill->GetName();
+        }
+
+        PushLog(log);
+    }
 }

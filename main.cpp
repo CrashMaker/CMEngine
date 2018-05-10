@@ -14,9 +14,8 @@ int main()
     CMHeroSprite h_2 = CMInstantiateSourceTemplate<CMHeroSprite>::InstantiateHero(2);
     h_2.SetLevel(8);
 
-    CMBattleLog battleLog;
     CMBattleScene battleScene = CMBattleScene({&h_1}, {&h_2});
-    battleScene.Start(&battleLog);
+    battleScene.Battle();
     
     return 0;
 }

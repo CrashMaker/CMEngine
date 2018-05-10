@@ -35,6 +35,7 @@ namespace cmengine
               battleQueue(firstTeam_, secondTeam_) {
                 SetupSpriteDelegate(firstTeam);
                 SetupSpriteDelegate(secondTeam);
+                battleStateType = BattleStateTypeBattleNotStart;
             }
         virtual ~CMBattleScene() {}
 
@@ -48,39 +49,39 @@ namespace cmengine
         virtual void SkillHasCast(CMBaseSkill* skill);
     
         // 战斗开始
-        void Start(CMBattleLog* battleLog_ = nullptr); 
+        void Battle(); 
 
     private:
         // 给SpriteDelegate赋值
         void SetupSpriteDelegate(std::vector<CMBaseSprite*> team);
-        // 行动阶段
-        void ActionStage(CMBaseSprite* sprite);
-        // 记录战斗日志
-        void SaveBattleLog(std::string log) {
-            if (battleLog && log.size() > 0) {
-                battleLog->PushLog(log);
-            }
-        }
-        // 判断战斗结果
-        bool JudgeBattleResult();
-        // 有目标的技能打印的战斗日志
-        std::string CreateSkillCastLogWithTarget(CMSkillTarget* target, 
-                std::string casterName, std::string skillName);
-        // 战斗开始
+
+    private:
+        /* 战斗中的各个阶段 */
+        // 战斗开始阶段
         void BattleBegan();
-        // 战斗结束
+        // 战斗回合阶段
+        void BattleRound();
+        // 战斗结束阶段
         void BattleEnd();
+
+    private:
+        /* 回合中的各个步骤 */
+        // 回合开始步骤
+        CMBaseSprite* RoundBegan();
+        // 回合行动步骤
+        void RoundAction(CMBaseSprite* sprite);
+        // 回合结束步骤
+        void RoundEnd(CMBaseSprite* sprite);
+        // 判断战斗结果步骤
+        bool RoundJudgeResult();
 
     private:
         std::vector<CMBaseSprite*> firstTeam;       // 一号队伍
         std::vector<CMBaseSprite*> secondTeam;      // 二号队伍
         CMBattleChoose battleChoose;                // 选择控制
         CMBattleQueue battleQueue;                  // 战斗队列
-
-        // 战斗日志
-        CMBattleLog* battleLog = nullptr;
-        // 战斗状态
-        BattleStateType battleStateType = BattleStateTypeBattleNotStart;
+        CMBattleLog battleLog;                      // 战斗日志
+        BattleStateType battleStateType;            // 战斗状态
     };
 }
 

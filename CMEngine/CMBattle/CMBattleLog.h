@@ -16,17 +16,23 @@
 
 namespace cmengine
 {
+    class CMBaseSkill;
+    class CMSkillTarget;
+
     class CMBattleLog
     {
     public:
         virtual ~CMBattleLog() {}
     
-        void PushLog(std::string log)
-        {
-            std::cout << "战斗日志：" << log << std::endl;
-        }
+        // 添加日志
+        void PushLog(std::string log);
+        // 根据技能释放添加日志
+        void PushLogWithSkill(CMBaseSkill* skill);
+
     private:
-        
+        // 有目标的技能打印的战斗日志
+        std::string CreateLogWithSkillTarget(CMSkillTarget* target, 
+                std::string casterName, std::string skillName);
     };
 }
 
