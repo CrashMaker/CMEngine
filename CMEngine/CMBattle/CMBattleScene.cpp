@@ -162,22 +162,25 @@ namespace cmengine
 
     /* ==========实现的协议CMSkillDelegate========== */
     
-    // 选取目标
+    // 单体选择目标
     CMBaseSprite* CMBattleScene::SkillObtainTarget(CMBaseSprite* caster)
     {
         return battleChoose.ObtainTarget(caster);
     }
 
+    // 技能正式释放前预备阶段
     void CMBattleScene::SkillPrepareCast(CMBaseSkill* skill)
     {
         skill->GetName();
     }
 
+    // 技能准备被施放
     void CMBattleScene::SkillWillCast(CMBaseSkill* skill)
     {
         battleLog.PushLogWithSkillCast(skill); 
     }
 
+    // 技能已经被施放
     void CMBattleScene::SkillHasCast(CMBaseSkill* skill)
     {
         skill->GetName();
