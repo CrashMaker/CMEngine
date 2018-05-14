@@ -14,7 +14,7 @@
 
 namespace cmengine
 {
-    // 选择角色的技能，返回技能编号
+    // 选择角色的技能，返回技能下标
     int CMBattleChoose::ChooseSkillIndexFromSprite(CMBaseSprite* sprite)
     {
         int result = 0;

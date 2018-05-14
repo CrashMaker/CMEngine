@@ -30,7 +30,7 @@ namespace cmengine
             : firstTeam(firstTeam_), secondTeam(secondTeam_) {}
         virtual ~CMBattleChoose() {}
 
-        // 选择角色的技能，返回技能编号
+        // 选择角色的技能，返回技能下标
         int ChooseSkillIndexFromSprite(CMBaseSprite* sprite);
         // 选择技能的目标
         CMBaseSprite* ObtainTarget(CMBaseSprite* caster);
