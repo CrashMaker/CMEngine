@@ -23,7 +23,7 @@
 
 namespace cmengine
 {
-    enum SpriteStateType {
+    enum struct SpriteStateType {
         SpriteStateTypeLife,        // 生存 
         SpriteStateTypeDead,        // 死亡
     };
@@ -36,7 +36,7 @@ namespace cmengine
         CMBaseSprite (std::string name_, CMSpriteGrowthRate growthRate_) 
             : name(name_), growthRate(growthRate_) 
         {
-            stateType = SpriteStateTypeLife;
+            stateType = SpriteStateType::SpriteStateTypeLife;
             SetLevel(MinLevel);
         }
         virtual ~CMBaseSprite () {}

@@ -43,7 +43,7 @@ namespace cmengine
     // 战斗开始阶段
     void CMBattleScene::BattleBegan()
     {
-        battleStateType = BattleStateTypeBattleing;
+        battleStateType = BattleStateType::BattleStateTypeBattleing;
         battleLog.PushLog("战斗开始");
     }
 
@@ -99,7 +99,7 @@ namespace cmengine
         bool firstTeamAllDead = true;
         for (int i=0; i<(int)firstTeam.size(); i++) {
             CMBaseSprite* sprite = firstTeam[i];
-            if (sprite->GetStateType() == SpriteStateTypeLife) {
+            if (sprite->GetStateType() == SpriteStateType::SpriteStateTypeLife) {
                 firstTeamAllDead = false;
                 break;
             }
@@ -109,7 +109,7 @@ namespace cmengine
         bool secondTeamAllDead = true;
         for (int i=0; i<(int)secondTeam.size(); i++) {
             CMBaseSprite* sprite = secondTeam[i];
-            if (sprite->GetStateType() == SpriteStateTypeLife) {
+            if (sprite->GetStateType() == SpriteStateType::SpriteStateTypeLife) {
                 secondTeamAllDead = false;
                 break;
             }
@@ -119,21 +119,21 @@ namespace cmengine
         if (!firstTeamAllDead && secondTeamAllDead) {
             // 一号队伍胜利，战斗结束
             battleLog.PushLog("一号队伍胜利");
-            battleStateType = BattleStateTypeFirstTeamWin;
+            battleStateType = BattleStateType::BattleStateTypeFirstTeamWin;
             return false;
         } else if (firstTeamAllDead && !secondTeamAllDead) {
             // 二号队伍胜利，战斗结束
             battleLog.PushLog("二号队伍胜利");
-            battleStateType = BattleStateTypeSecondTeamWin;
+            battleStateType = BattleStateType::BattleStateTypeSecondTeamWin;
             return false;
         } else if (firstTeamAllDead && secondTeamAllDead) {
             // 平局，战斗结束
             battleLog.PushLog("平局");
-            battleStateType = BattleStateTypeDraw;
+            battleStateType = BattleStateType::BattleStateTypeDraw;
             return false;
         } else {
             // 未分胜负，战斗继续
-            battleStateType = BattleStateTypeBattleing;
+            battleStateType = BattleStateType::BattleStateTypeBattleing;
             return true;
         }
     }

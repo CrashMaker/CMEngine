@@ -17,12 +17,12 @@
 
 namespace cmengine
 {
-    enum HitSkillAttackType { 
+    enum struct HitSkillAttackType { 
         HitSkillAttackTypeMelee,        // 近战
         HitSkillAttackTypeRemote,       // 远程
     };
 
-    enum HitSkillDamageType {
+    enum struct HitSkillDamageType {
         HitSkillDamageTypePhysical,     // 物理伤害
         HitSkillDamageTypeMagic,        // 魔法伤害
     };
@@ -58,10 +58,10 @@ namespace cmengine
             // 打击公式
             int attackPoint = 0;
             int defensePoint = 0;
-            if (HitSkillDamageTypePhysical == damageType) {
+            if (HitSkillDamageType::HitSkillDamageTypePhysical == damageType) {
                 attackPoint = caster->GetCurrentAttribute().GetAttack();
                 defensePoint = target->GetCurrentAttribute().GetDefense();
-            } else if (HitSkillDamageTypeMagic == damageType) {
+            } else if (HitSkillDamageType::HitSkillDamageTypeMagic == damageType) {
                 attackPoint = caster->GetCurrentAttribute().GetMagicAtk();
                 defensePoint = target->GetCurrentAttribute().GetMagicDef();
             }

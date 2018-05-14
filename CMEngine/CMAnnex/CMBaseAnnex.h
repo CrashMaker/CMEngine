@@ -11,13 +11,15 @@
 #ifndef CMBASEANNEX_H
 #define CMBASEANNEX_H
 
+#include <iostream>
+
 namespace cmengine
 {
     class CMBaseAnnex
     {
     public:
         virtual ~CMBaseAnnex() {}
-    
+
     private:
         /* data */
     };

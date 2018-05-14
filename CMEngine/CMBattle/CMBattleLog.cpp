@@ -61,9 +61,9 @@ namespace cmengine
     {
         std::string log = "";
 
-        if(SpriteStateTypeLife == sprite->GetStateType()) {
+        if(SpriteStateType::SpriteStateTypeLife == sprite->GetStateType()) {
             log = sprite->GetName() + "复活";
-        } else if(SpriteStateTypeDead == sprite->GetStateType()) {
+        } else if(SpriteStateType::SpriteStateTypeDead == sprite->GetStateType()) {
             log = sprite->GetName() + "死亡";
         }
 

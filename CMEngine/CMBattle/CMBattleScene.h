@@ -19,7 +19,7 @@
 
 namespace cmengine
 {
-    enum BattleStateType {
+    enum struct BattleStateType {
         BattleStateTypeBattleNotStart,  // 战斗未开始
         BattleStateTypeBattleing,       // 战斗中
         BattleStateTypeFirstTeamWin,    // 一号队伍获胜
@@ -35,7 +35,7 @@ namespace cmengine
               battleQueue(firstTeam_, secondTeam_) {
                 SetupSpriteDelegate(firstTeam);
                 SetupSpriteDelegate(secondTeam);
-                battleStateType = BattleStateTypeBattleNotStart;
+                battleStateType = BattleStateType::BattleStateTypeBattleNotStart;
             }
         virtual ~CMBattleScene() {}
 

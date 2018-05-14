@@ -17,7 +17,7 @@ namespace cmengine
 {
     class CMBaseSprite;
 
-    enum BattleChooseTeam {
+    enum struct BattleChooseTeam {
         BattleChooseTeamOfSelf,           // 自身队伍
         BattleChooseTeamOfAnother,        // 对方队伍
         BattleChooseTeamOfAll             // 双方队伍

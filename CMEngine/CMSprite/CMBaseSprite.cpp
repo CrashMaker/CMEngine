@@ -32,7 +32,7 @@ namespace cmengine
     void CMBaseSprite::SetHealthPoint(int hp)
     {
         // 当角色为life状态时，生命值才可以被改变
-        if (SpriteStateTypeLife == stateType) {
+        if (SpriteStateType::SpriteStateTypeLife == stateType) {
             if (hp < 0) {
                 healthPoint = 0;
             } else if (hp > currentAttribute.GetHealth()) {
@@ -43,7 +43,7 @@ namespace cmengine
 
             // 当生命值为0时，角色进入Dead状态
             if (0 == healthPoint) {
-                SetupStateType(SpriteStateTypeDead);
+                SetupStateType(SpriteStateType::SpriteStateTypeDead);
             }
         }
     }

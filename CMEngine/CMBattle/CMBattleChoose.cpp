@@ -47,7 +47,7 @@ namespace cmengine
         std::vector<CMBaseSprite*> allTeam;
         allTeam.insert(allTeam.end(), firstTeam.begin(), firstTeam.end());
         allTeam.insert(allTeam.end(), secondTeam.begin(), secondTeam.end());
-        if (BattleChooseTeamOfAll == chooseTeam) {return allTeam;}
+        if (BattleChooseTeam::BattleChooseTeamOfAll == chooseTeam) {return allTeam;}
 
         std::vector<CMBaseSprite*> selfTeam;
         std::vector<CMBaseSprite*> anotherTeam;
@@ -66,9 +66,9 @@ namespace cmengine
             anotherTeam = firstTeam;
         }
 
-        if (BattleChooseTeamOfSelf == chooseTeam) {
+        if (BattleChooseTeam::BattleChooseTeamOfSelf == chooseTeam) {
             return selfTeam;
-        } else if (BattleChooseTeamOfAnother == chooseTeam) {
+        } else if (BattleChooseTeam::BattleChooseTeamOfAnother == chooseTeam) {
             return anotherTeam;
         } else {
             return allTeam;
@@ -80,7 +80,7 @@ namespace cmengine
     // 选取目标
     CMBaseSprite* CMBattleChoose::ObtainTarget(CMBaseSprite* caster)
     {
-        std::vector<CMBaseSprite*> targetTeam = GetTeamWithCaster(caster, BattleChooseTeamOfAnother);
+        std::vector<CMBaseSprite*> targetTeam = GetTeamWithCaster(caster, BattleChooseTeam::BattleChooseTeamOfAnother);
         int result = 0;
         bool action = true;
         do {
