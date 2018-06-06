@@ -17,26 +17,14 @@ namespace cmengine
     // 选择角色的技能，返回技能下标
     int CMBattleChoose::ChooseSkillIndexFromSprite(CMBaseSprite* sprite)
     {
-        int result = 0;
-        bool action = true;
-        do {
-            std::cout << "选择技能：";
-            for (int i = 0; i < (int)sprite->GetSkillList().size(); ++i) {
-                BaseSkill sk = CMInstantiateSource::InstantiateSkill(sprite->GetSkillList()[i]);
-                std::cout << i+1 << "." << sk->GetName() << " "; 
-            }
-            std::cout << std::endl;
-            
-            std::cin >> result;
-            result -= 1;
-            if (result >= 0 && result < (int)sprite->GetSkillList().size()) {
-                action = false;
-            } else {
-                std::cout << "输入错误，请重新选择" << std::endl;
-            }
-        } while(action);
+        std::vector<std::string> vec;
+        for (int i = 0; i < (int)sprite->GetSkillList().size(); ++i) {
+            BaseSkill sk = CMInstantiateSource::InstantiateSkill(sprite->GetSkillList()[i]);
+            vec.push_back(sk->GetName());
+        }
+        int index = SelectIndexWithVector(vec, "选择技能：");
         
-        return sprite->GetSkillList()[result];
+        return sprite->GetSkillList()[index];
     }
 
     /* ==========私有方法========== */
@@ -75,31 +63,50 @@ namespace cmengine
         }
     }
 
+    // 根据数组选择下标
+    int CMBattleChoose::SelectIndexWithVector(std::vector<std::string> vec, std::string tipText)
+    {
+        int result = 0;
+        bool action = true;
+
+        do {
+            std::cout << tipText;
+            for (int i = 0; i < (int)vec.size(); ++i) {
+                std::cout << i+1 << "." << vec[i] << " "; 
+            }
+            std::cout << std::endl;
+
+            std::cin >> result;
+
+            if (std::cin.fail()) {
+                exit(0);
+            }
+
+            result -= 1;
+            if (result >= 0 && result < (int)vec.size()) {
+                action = false;
+            } else {
+                std::cout << "输入错误，请重新输入" << std::endl;
+            }
+        } while(action);
+        
+        return result;
+    }
+
     /* ==========实现的协议========== */
 
     // 选取目标
     CMBaseSprite* CMBattleChoose::ObtainTarget(CMBaseSprite* caster)
     {
         std::vector<CMBaseSprite*> targetTeam = GetTeamWithCaster(caster, BattleChooseTeam::BattleChooseTeamOfAnother);
-        int result = 0;
-        bool action = true;
-        do {
-            std::cout << "选择目标：";
-            for (int i = 0; i < (int)targetTeam.size(); ++i) {
-                CMBaseSprite* sp = targetTeam[i];
-                std::cout << i+1 << "." << sp->GetName() << " "; 
-            }
-            std::cout << std::endl;
-            
-            std::cin >> result;
-            result -= 1;
-            if (result >= 0 && result < (int)targetTeam.size()) {
-                action = false;
-            } else {
-                std::cout << "输入错误，请重新选择" << std::endl;
-            }
-        } while(action);
+
+        std::vector<std::string> vec;
+        for (int i = 0; i < (int)targetTeam.size(); ++i) {
+            CMBaseSprite* sp = targetTeam[i];
+            vec.push_back(sp->GetName());
+        }
+        int index = SelectIndexWithVector(vec, "选择目标：");
         
-        return targetTeam[result];
+        return targetTeam[index];
     }
 }

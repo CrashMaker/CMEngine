@@ -38,6 +38,8 @@ namespace cmengine
     private:
         // 根据施法者获取指定的队伍
         std::vector<CMBaseSprite*> GetTeamWithCaster(CMBaseSprite* sprite, BattleChooseTeam chooseTeam);
+        // 根据数组选择下标
+        int SelectIndexWithVector(std::vector<std::string> vec, std::string tipText);
 
     private:
         std::vector<CMBaseSprite*> firstTeam;
