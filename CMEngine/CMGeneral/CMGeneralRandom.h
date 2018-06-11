@@ -11,15 +11,11 @@
 #ifndef CMGENERALRANDOM_H
 #define CMGENERALRANDOM_H
 
-#include <functional>
-
 namespace cmengine
 {
     class CMGeneralRandom
     {
     public:
-        // 有0~100的概率调用函数func，默认概率50
-        static void CallFunctionWithRandom(std::function<void(void)> func, int probability = 50);
         // 有0~100的概率返回true，默认概率50
         static bool ReturnTrueWithRandom(int probability = 50); 
     };

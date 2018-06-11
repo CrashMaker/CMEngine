@@ -28,17 +28,8 @@ CreateHeroFunMap cmengine::GetHeroSourceForCMEngine()
 
 // 英雄列表
 HeroSprite Warrior()
-{
-    float attackGrow = 1.0f;
-    float defenseGrow = 1.0f;
-    float magicAtkGrow = 1.0f;
-    float magicDefGrow = 1.0f;
-    float healthGrow = 1.0f;
-    float manaGrow = 1.0f;
-    float speedGrow = 1.0f;
- 
-    CMSpriteGrowthRate growthRate(attackGrow, defenseGrow, magicAtkGrow, 
-            magicDefGrow, healthGrow, manaGrow, speedGrow);
+{ 
+    CMGrowthRateAttribute growthRate;
     HeroSprite hero(new CMHeroSprite("Warrior", growthRate));
 
     // 设置技能
@@ -49,16 +40,7 @@ HeroSprite Warrior()
 
 HeroSprite Mage()
 {
-    float attackGrow = 1.0f;
-    float defenseGrow = 1.0f;
-    float magicAtkGrow = 1.0f;
-    float magicDefGrow = 1.0f;
-    float healthGrow = 1.0f;
-    float manaGrow = 1.0f;
-    float speedGrow = 1.0f;
- 
-    CMSpriteGrowthRate growthRate(attackGrow, defenseGrow, magicAtkGrow, 
-            magicDefGrow, healthGrow, manaGrow, speedGrow);
+    CMGrowthRateAttribute growthRate;
     HeroSprite hero(new CMHeroSprite("Mage", growthRate));
 
     // 设置技能

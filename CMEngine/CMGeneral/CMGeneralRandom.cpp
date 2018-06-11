@@ -13,17 +13,6 @@
 
 namespace cmengine
 {
-    // 有0~100的概率调用函数func，默认概率50
-    void CMGeneralRandom::CallFunctionWithRandom(std::function<void(void)> func, int probability)
-    {
-        std::default_random_engine e(time(0));
-        std::uniform_int_distribution<unsigned> u(1, 100);
-        int random = u(e);
-        if (probability >= random) {
-            func();
-        }
-    }
-
     // 有0~100的概率返回true，默认概率50
     bool CMGeneralRandom::ReturnTrueWithRandom(int probability)
     {

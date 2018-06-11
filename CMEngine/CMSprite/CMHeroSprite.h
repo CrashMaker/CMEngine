@@ -18,7 +18,7 @@ namespace cmengine
     class CMHeroSprite : public CMBaseSprite
     {
     public:
-        CMHeroSprite (std::string name, CMSpriteGrowthRate growthRate) 
+        CMHeroSprite (std::string name, CMGrowthRateAttribute growthRate) 
             : CMBaseSprite(name, growthRate) {}
         virtual ~CMHeroSprite () {}
     

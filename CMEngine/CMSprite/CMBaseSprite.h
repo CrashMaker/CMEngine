@@ -11,8 +11,8 @@
 #ifndef CMBASESPRITE_H
 #define CMBASESPRITE_H
 
-#include "ComponentsOfSprite/CMSpriteGrowthRate.h"
-#include "ComponentsOfSprite/CMSpriteBaseAttribute.h"
+#include "../CMAttribute/CMGrowthRateAttribute.h"
+#include "../CMAttribute/CMBasicAttribute.h"
 #include "ComponentsOfSprite/CMSpriteDelegate.h"
 
 #include <string>
@@ -33,7 +33,7 @@ namespace cmengine
     class CMBaseSprite
     {
     public:
-        CMBaseSprite (std::string name_, CMSpriteGrowthRate growthRate_) 
+        CMBaseSprite (std::string name_, CMGrowthRateAttribute growthRate_) 
             : name(name_), growthRate(growthRate_) 
         {
             stateType = SpriteStateType::SpriteStateTypeLife;
@@ -49,10 +49,10 @@ namespace cmengine
         void SetLevel(int lv);
 
         // 获取固有属性
-        CMSpriteBaseAttribute GetInnateAttribute() const {return innateAttribute;}
+        CMBasicAttribute GetInnateAttribute() const {return innateAttribute;}
 
         // 获取当前属性
-        CMSpriteBaseAttribute GetCurrentAttribute() const {return currentAttribute;}
+        CMBasicAttribute GetCurrentAttribute() const {return currentAttribute;}
 
         // 角色状态
         SpriteStateType GetStateType() const {return stateType;}
@@ -84,12 +84,12 @@ namespace cmengine
 
     private:
         std::string name;
-        CMSpriteGrowthRate growthRate;
+        CMGrowthRateAttribute growthRate;
 
         // 固有属性，只会因为等级变化而改变。
-        CMSpriteBaseAttribute innateAttribute;
-        // 当前属性，会随着固有属性、装备或附加状态而改变。
-        CMSpriteBaseAttribute currentAttribute;
+        CMBasicAttribute innateAttribute;
+        // 当前属性，会随着固有属性、装备或附加属性而改变。
+        CMBasicAttribute currentAttribute;
         // 等级
         int level;
         // 当前生命值，无法高于最大生命值，当为0时，角色进入死亡状态。
