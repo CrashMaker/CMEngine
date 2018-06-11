@@ -48,6 +48,20 @@ namespace cmengine
         }
     }
 
+    void CMBaseSprite::SetManaPoint(int mp)
+    {
+        // 当角色为life状态时，魔法值才可以被改变
+        if (SpriteStateType::SpriteStateTypeLife == stateType) {
+            if (mp < 0) {
+                manaPoint = 0;
+            } else if (mp > currentAttribute.GetMana()) {
+                manaPoint = currentAttribute.GetMana();
+            } else {
+                manaPoint = mp;
+            }
+        }
+    }
+
     void CMBaseSprite::SetupInnateAttribute()
     {
         // 重置属性

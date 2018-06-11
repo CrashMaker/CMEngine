@@ -78,6 +78,7 @@ namespace cmengine
 
     private:
         void SetHealthPoint(int hp);
+        void SetManaPoint(int mp);
         void SetupInnateAttribute();
         void SetupCurrentAttribute();
 
@@ -93,6 +94,8 @@ namespace cmengine
         int level;
         // 当前生命值，无法高于最大生命值，当为0时，角色进入死亡状态。
         int healthPoint;
+        // 当前魔法值，无法高于最大魔法
+        int manaPoint;
         // 角色状态
         SpriteStateType stateType;
         // 装配的技能列表
