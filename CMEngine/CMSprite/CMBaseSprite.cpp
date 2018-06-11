@@ -67,6 +67,9 @@ namespace cmengine
         // 设置生命值
         int health = innateAttribute.GetHealth() + growthRate.GetHealthWithLevel(level);
         innateAttribute.SetHealth(health);
+        // 设置魔法值
+        int mana = innateAttribute.GetMana() + growthRate.GetManaWithLevel(level);
+        innateAttribute.SetMana(mana);
         // 设置速度
         int speed = innateAttribute.GetSpeed() + growthRate.GetSpeedWithLevel(level);
         innateAttribute.SetSpeed(speed);
@@ -138,6 +141,7 @@ namespace cmengine
         cout << "magicAtk:" << currentAttribute.GetMagicAtk() << endl;
         cout << "magicDef:" << currentAttribute.GetMagicDef() << endl;
         cout << "health:" << currentAttribute.GetHealth() << endl;
+        cout << "mana:" << currentAttribute.GetMana() << endl;
         cout << "speed:" << currentAttribute.GetSpeed() << endl << endl;
     }
 }

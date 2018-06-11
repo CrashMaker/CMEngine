@@ -34,10 +34,11 @@ HeroSprite Warrior()
     float magicAtkGrow = 1.0f;
     float magicDefGrow = 1.0f;
     float healthGrow = 1.0f;
+    float manaGrow = 1.0f;
     float speedGrow = 1.0f;
  
     CMSpriteGrowthRate growthRate(attackGrow, defenseGrow, magicAtkGrow, 
-            magicDefGrow, healthGrow, speedGrow);
+            magicDefGrow, healthGrow, manaGrow, speedGrow);
     HeroSprite hero(new CMHeroSprite("Warrior", growthRate));
 
     // 设置技能
@@ -53,10 +54,11 @@ HeroSprite Mage()
     float magicAtkGrow = 1.0f;
     float magicDefGrow = 1.0f;
     float healthGrow = 1.0f;
+    float manaGrow = 1.0f;
     float speedGrow = 1.0f;
  
     CMSpriteGrowthRate growthRate(attackGrow, defenseGrow, magicAtkGrow, 
-            magicDefGrow, healthGrow, speedGrow);
+            magicDefGrow, healthGrow, manaGrow, speedGrow);
     HeroSprite hero(new CMHeroSprite("Mage", growthRate));
 
     // 设置技能

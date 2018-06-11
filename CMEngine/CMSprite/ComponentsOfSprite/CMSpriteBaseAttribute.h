@@ -15,7 +15,8 @@
 #define MaxDefense    999     // 最高防御力
 #define MaxMagicAtk   999     // 最高魔法攻击力
 #define MaxMagicDef   999     // 最高魔法防御力
-#define MaxHealth     9999    // 最高生命
+#define MaxHealth     9999    // 最高生命值
+#define MaxMana       9999    // 最高魔法值
 #define MaxSpeed      999     // 最高速度
 
 #define MinAttribute  0       // 最小值 
@@ -36,6 +37,7 @@ namespace cmengine
             magicAtk = 1;
             magicDef = 1;
             health = 1;
+            mana = 1;
             speed = 1;
         }
 
@@ -44,6 +46,7 @@ namespace cmengine
         int GetMagicAtk() const {return magicAtk;}
         int GetMagicDef() const {return magicDef;}
         int GetHealth() const {return health;}
+        int GetMana() const {return mana;}
         int GetSpeed() const {return speed;}
         
         void SetAttack(int atk) {attack = GetCorrectNum(atk, MaxAttack);}
@@ -51,6 +54,7 @@ namespace cmengine
         void SetMagicAtk(int mAtk) {magicAtk = GetCorrectNum(mAtk, MaxMagicAtk);}
         void SetMagicDef(int mDef) {magicDef = GetCorrectNum(mDef, MaxMagicDef);}
         void SetHealth(int hl) {health = GetCorrectNum(hl, MaxHealth);}
+        void SetMana(int ma) {mana = GetCorrectNum(ma, MaxMana);}
         void SetSpeed(int sp) {speed = GetCorrectNum(sp, MaxSpeed);}
 
     private:
@@ -59,6 +63,7 @@ namespace cmengine
         int magicAtk;
         int magicDef;
         int health;
+        int mana;
         int speed;
 
         int GetCorrectNum(int num, int maxNum)
