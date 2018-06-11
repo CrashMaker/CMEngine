@@ -15,13 +15,22 @@
 
 namespace cmengine
 {
+    class CMBaseSprite;
+
     class CMBaseAnnex
     {
     public:
+        CMBaseAnnex(std::string name_) : name(name_) {}
         virtual ~CMBaseAnnex() {}
 
+        std::string GetName() {return name;}
+        CMBaseSprite* GetHost() {return host;}
+        // 装配到Sprite上
+        virtual void equip(CMBaseSprite* sprite) {host = sprite;}
+
     private:
-        /* data */
+        std::string name;
+        CMBaseSprite* host;     // 宿主
     };
 }
 

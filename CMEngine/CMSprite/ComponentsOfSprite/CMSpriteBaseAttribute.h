@@ -28,7 +28,7 @@ namespace cmengine
     public:
         CMSpriteBaseAttribute() 
             : attack(1), defense(1), magicAtk(1),
-              magicDef(1), health(1), speed(1) {}
+              magicDef(1), health(1), mana(1), speed(1) {}
 
         void Reset() 
         {
