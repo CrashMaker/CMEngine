@@ -22,7 +22,7 @@
 #define MaxSpeed      999     // 最高速度
 
 #define MinAttribute        0       // 最小属性值
-#define DefaultAttribute    1       // 默认属性值
+#define DefaultAttribute    0       // 默认属性值
 
 namespace cmengine
 {
@@ -54,6 +54,10 @@ namespace cmengine
         void SetHealth(int hl) {health = CMGeneralFunction::GetRangeOfValue(hl, MinAttribute, MaxHealth);}
         void SetMana(int ma) {mana = CMGeneralFunction::GetRangeOfValue(ma, MinAttribute, MaxMana);}
         void SetSpeed(int sp) {speed = CMGeneralFunction::GetRangeOfValue(sp, MinAttribute, MaxSpeed);}
+
+        // 重载加减号
+        CMBasicAttribute operator+(const CMBasicAttribute &sttri); 
+        CMBasicAttribute operator-(const CMBasicAttribute &sttri); 
 
     private:
         void SetupDefaultValue() {

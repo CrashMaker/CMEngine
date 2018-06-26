@@ -21,6 +21,9 @@ namespace cmengine
         CMHeroSprite (std::string name, CMGrowthRateAttribute growthRate) 
             : CMBaseSprite(name, growthRate) {}
         virtual ~CMHeroSprite () {}
+
+        // 装备
+        void Equip();
     
     private:
         /* data */
