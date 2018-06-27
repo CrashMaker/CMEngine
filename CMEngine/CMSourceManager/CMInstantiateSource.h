@@ -26,6 +26,7 @@ namespace cmengine
     public:
         static BaseSkill InstantiateSkill(MapKey key);
         static HeroSprite InstantiateHero(MapKey key);
+        static Equipment InstantiateEquipment(MapKey key);
     };
 
 

@@ -19,7 +19,6 @@ namespace cmengine
     class CMAttributeAnnex : public CMBaseAnnex
     {
     public:
-        CMAttributeAnnex(std::string name_) : CMBaseAnnex(name_) {}
         virtual ~CMAttributeAnnex() {}
     
         CMBasicAttribute GetAttribute() {return attribute;}

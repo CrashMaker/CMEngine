@@ -23,9 +23,13 @@ namespace cmengine
 
         static void LoadHero(const CreateHeroFunMap &map);
         static CreateHeroFun GetCreateHeroFunWithKey(MapKey key);
+
+        static void LoadEquipment(const CreateEquipmentFunMap &map);
+        static CreateEquipmentFun GetCreateEquipmentFunWithKey(MapKey key);
     private:
         static CreateSkillFunMap skillSource; 
         static CreateHeroFunMap heroSource;
+        static CreateEquipmentFunMap equipmentSource;
     };
 }
 

@@ -15,6 +15,7 @@ namespace cmengine
 {
     CreateSkillFunMap CMSourceManager::skillSource;
     CreateHeroFunMap CMSourceManager::heroSource;
+    CreateEquipmentFunMap CMSourceManager::equipmentSource;
 
     void CMSourceManager::LoadSkill(const CreateSkillFunMap &map)
     {
@@ -48,6 +49,24 @@ namespace cmengine
             return it->second;
         } else {
             std::cout << "No create hero function in map!" << std::endl;
+            throw 0;
+        }
+    }
+
+    void CMSourceManager::LoadEquipment(const CreateEquipmentFunMap &map)
+    {
+        CMSourceManager::equipmentSource = map;
+    }
+
+    CreateEquipmentFun CMSourceManager::GetCreateEquipmentFunWithKey(MapKey key)
+    {
+        CreateEquipmentFunMap::iterator it;
+
+        it = CMSourceManager::equipmentSource.find(key);
+        if (it != CMSourceManager::equipmentSource.end()) {
+            return it->second;
+        } else {
+            std::cout << "No create equipment function in map!" << std::endl;
             throw 0;
         }
     }

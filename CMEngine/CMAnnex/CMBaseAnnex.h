@@ -20,13 +20,10 @@ namespace cmengine
     class CMBaseAnnex
     {
     public:
-        CMBaseAnnex(std::string name_) : name(name_) {}
         virtual ~CMBaseAnnex() {}
 
-        std::string GetName() {return name;}
-
     private:
-        std::string name;
+
     };
 }
 

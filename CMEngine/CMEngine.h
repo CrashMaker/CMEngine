@@ -26,16 +26,20 @@
 #include "CMGeneral/CMGeneralRandom.h"
 #include "CMGeneral/CMGeneralTypedef.h"
 
+#include "CMEquipment/CMEquipment.h"
+
 namespace cmengine
 {
     // 需要实现的函数
     CreateSkillFunMap GetSkillSourceForCMEngine();
     CreateHeroFunMap GetHeroSourceForCMEngine();
+    CreateEquipmentFunMap GetEquipSourceForCMEngine();
 
     inline void CMEngineRun()
     {
         CMSourceManager::LoadSkill(GetSkillSourceForCMEngine());
         CMSourceManager::LoadHero(GetHeroSourceForCMEngine());
+        CMSourceManager::LoadEquipment(GetEquipSourceForCMEngine());
     }
 }
 

@@ -23,4 +23,11 @@ namespace cmengine
         CreateHeroFun f = CMSourceManager::GetCreateHeroFunWithKey(key);
         return f();
     }
+
+    Equipment CMInstantiateSource::InstantiateEquipment(MapKey key)
+    {
+        CreateEquipmentFun f = CMSourceManager::GetCreateEquipmentFunWithKey(key);
+
+        return f();
+    }
 }

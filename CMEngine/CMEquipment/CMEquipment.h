@@ -15,11 +15,13 @@ namespace cmengine
     class CMEquipment
     {
     public:
+        CMEquipment(std::string name_, CMAttributeAnnex annex) : name(name_), attributeAnnex(annex) {}
         virtual ~CMEquipment() {}
 
         CMAttributeAnnex GetAttributeAnnex() {return attributeAnnex;}
     
     private:
+        std::string name;
         CMAttributeAnnex attributeAnnex;
     };
 }
