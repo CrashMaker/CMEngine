@@ -14,19 +14,12 @@
 #include "CMSourceManager/CMSourceManager.h"
 #include "CMSourceManager/CMInstantiateSource.h"
 
-#include "CMSprite/CMBaseSprite.h"
 #include "CMSprite/CMHeroSprite.h"
 
-#include "CMSkill/CMBaseSkill.h"
 #include "CMSkill/CMHealSkill.h"
 #include "CMSkill/CMHitSkill.h"
 
 #include "CMBattle/CMBattleScene.h"
-
-#include "CMGeneral/CMGeneralRandom.h"
-#include "CMGeneral/CMGeneralTypedef.h"
-
-#include "CMEquipment/CMEquipment.h"
 
 namespace cmengine
 {

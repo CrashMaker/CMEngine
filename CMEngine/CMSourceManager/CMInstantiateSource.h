@@ -15,6 +15,7 @@
 #include "../CMSkill/CMBaseSkill.h"
 #include "../CMSprite/CMBaseSprite.h"
 #include "../CMSprite/CMHeroSprite.h"
+#include "../CMEquipment/CMEquipment.h"
 #include <iostream>
 #include <memory>
 
@@ -31,40 +32,58 @@ namespace cmengine
 
 
     // 泛类初始化
+    enum struct InstantiateType
+    {
+        Skill, 
+        Hero, 
+        Equipment
+    };
+
     template <class T>
     class CMInstantiateSourceTemplate
     {
     public:
-        static T InstantiateSkill(MapKey key);
-        static T InstantiateHero(MapKey key);
+        static T Instantiate(InstantiateType type, MapKey key);
     };
 
     template <class T>
-    T CMInstantiateSourceTemplate<T>::InstantiateSkill(MapKey key)
+    T CMInstantiateSourceTemplate<T>::Instantiate(InstantiateType type, MapKey key)
     {
-        CreateSkillFun f = CMSourceManager::GetCreateSkillFunWithKey(key);
-        BaseSkill s = f();
-        CMBaseSkill* skill = s.get();
-        
-        if (typeid(T) == typeid(*skill)) {
-            return *((T*)skill);
-        } else {
-            std::cout << "Instantiate skill error!" << std::endl;
-            throw 0;
-        }
-    }
+        if (InstantiateType::Skill == type) {
+            CreateSkillFun f = CMSourceManager::GetCreateSkillFunWithKey(key);
+            BaseSkill s = f();
+            CMBaseSkill* t = s.get();
 
-    template <class T>
-    T CMInstantiateSourceTemplate<T>::InstantiateHero(MapKey key)
-    {
-        CreateHeroFun f = CMSourceManager::GetCreateHeroFunWithKey(key);
-        HeroSprite s = f();
-        CMHeroSprite* hero = s.get();
-        
-        if (typeid(T) == typeid(*hero)) {
-            return *((T*)hero);
+            if (typeid(T) == typeid(*t)) {
+                return *((T*)t);
+            } else {
+                std::cout << "Instantiate error!" << std::endl;
+                throw 0;
+            }
+        } else if (InstantiateType::Hero == type) {
+            CreateHeroFun f = CMSourceManager::GetCreateHeroFunWithKey(key);
+            HeroSprite s = f();
+            CMHeroSprite* t = s.get();
+
+            if (typeid(T) == typeid(*t)) {
+                return *((T*)t);
+            } else {
+                std::cout << "Instantiate error!" << std::endl;
+                throw 0;
+            }
+        } else if (InstantiateType::Equipment == type) {
+            CreateEquipmentFun f = CMSourceManager::GetCreateEquipmentFunWithKey(key);
+            Equipment s = f();
+            CMEquipment* t = s.get();
+
+            if (typeid(T) == typeid(*t)) {
+                return *((T*)t);
+            } else {
+                std::cout << "Instantiate error!" << std::endl;
+                throw 0;
+            }
         } else {
-            std::cout << "Instantiate hero error!" << std::endl;
+            std::cout << "No InstantiateType!" << std::endl;
             throw 0;
         }
     }
