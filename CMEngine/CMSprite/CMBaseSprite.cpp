@@ -26,7 +26,7 @@ namespace cmengine
             level = lv;
         }
 
-        SetupInnateAttribute();
+        ResetInnateAttribute();
     }
 
     void CMBaseSprite::SetHealthPoint(int hp)
@@ -62,7 +62,7 @@ namespace cmengine
         }
     }
 
-    void CMBaseSprite::SetupInnateAttribute()
+    void CMBaseSprite::ResetInnateAttribute()
     {
         // 重置属性
         innateAttribute.Reset();
@@ -88,10 +88,10 @@ namespace cmengine
         int speed = innateAttribute.GetSpeed() + growthRate.GetSpeedWithLevel(level);
         innateAttribute.SetSpeed(speed);
 
-        SetupCurrentAttribute();
+        ResetCurrentAttribute();
     }
 
-    void CMBaseSprite::SetupCurrentAttribute()
+    void CMBaseSprite::ResetCurrentAttribute()
     {
         currentAttribute = innateAttribute;
 
@@ -142,14 +142,25 @@ namespace cmengine
         }
     }
 
+    // 添加附加属性
+    void CMBaseSprite::AddAnnex(CMBaseAnnex* annex)
+    {
+        std::shared_ptr<CMBaseAnnex> p(annex);
+        annexList.push_back(p);
+
+        // 实现附加属性
+        annex->DePend(this);
+    }
+
     // 打印状态
     void CMBaseSprite::PrintAttribute() const
     {
         using namespace std;
 
+        cout << "====================" << endl;
         cout << "name:" << name << endl;
         cout << "level:" << level << endl;
-        cout << "HP:" << healthPoint << endl << endl;
+        cout << "HP:" << healthPoint << endl;
         cout << "attack:" << currentAttribute.GetAttack() << endl;
         cout << "defense:" << currentAttribute.GetDefense() << endl;
         cout << "magicAtk:" << currentAttribute.GetMagicAtk() << endl;
@@ -157,5 +168,6 @@ namespace cmengine
         cout << "health:" << currentAttribute.GetHealth() << endl;
         cout << "mana:" << currentAttribute.GetMana() << endl;
         cout << "speed:" << currentAttribute.GetSpeed() << endl << endl;
+        cout << "====================" << endl;
     }
 }

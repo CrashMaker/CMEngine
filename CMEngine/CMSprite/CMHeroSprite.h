@@ -15,6 +15,8 @@
 
 namespace cmengine
 {
+    class CMEquipment;
+
     class CMHeroSprite : public CMBaseSprite
     {
     public:
@@ -23,7 +25,7 @@ namespace cmengine
         virtual ~CMHeroSprite () {}
 
         // 装备
-        void Equip();
+        void Equip(const CMEquipment& eq);
     
     private:
         /* data */

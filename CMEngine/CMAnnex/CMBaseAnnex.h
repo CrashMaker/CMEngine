@@ -22,7 +22,8 @@ namespace cmengine
     public:
         virtual ~CMBaseAnnex() {}
 
-    private:
+        // 依附，执行逻辑
+        virtual void DePend(CMBaseSprite* sp) = 0;
 
     };
 }

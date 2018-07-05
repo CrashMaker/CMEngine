@@ -30,7 +30,7 @@ CreateEquipmentFunMap cmengine::GetEquipSourceForCMEngine()
 cmengine::Equipment Sword()
 {
     CMBasicAttribute attri;
-    attri.SetAttack(10);
+    attri.SetAttack(12);
     CMAttributeAnnex annex;
     annex.SetAttribute(attri);
 
@@ -42,7 +42,7 @@ cmengine::Equipment Sword()
 cmengine::Equipment Armor()
 {
     CMBasicAttribute attri;
-    attri.SetDefense(10);
+    attri.SetDefense(4);
     CMAttributeAnnex annex;
     annex.SetAttribute(attri);
 

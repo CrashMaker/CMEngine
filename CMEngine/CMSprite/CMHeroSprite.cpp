@@ -9,11 +9,13 @@
 ================================================================*/
 
 #include "CMHeroSprite.h"
+#include "../CMEquipment/CMEquipment.h"
 
 namespace cmengine
 {
-    void CMHeroSprite::Equip()
+    void CMHeroSprite::Equip(const CMEquipment& eq)
     {
-
+        CMAttributeAnnex attr = eq.GetAttributeAnnex();
+        AddAnnex(&attr);
     }
 }

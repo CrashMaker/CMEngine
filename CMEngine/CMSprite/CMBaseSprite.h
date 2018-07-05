@@ -13,6 +13,7 @@
 
 #include "../CMAttribute/CMGrowthRateAttribute.h"
 #include "../CMAttribute/CMBasicAttribute.h"
+#include "../CMAnnex/CMBaseAnnex.h"
 #include "ComponentsOfSprite/CMSpriteDelegate.h"
 
 #include <string>
@@ -32,6 +33,9 @@ namespace cmengine
 
     class CMBaseSprite
     {
+    public:
+        friend class CMAttributeAnnex;
+
     public:
         CMBaseSprite (std::string name_, CMGrowthRateAttribute growthRate_) 
             : name(name_), growthRate(growthRate_) 
@@ -76,11 +80,15 @@ namespace cmengine
     public:
         CMSpriteDelegate* delegate = nullptr;       // 协议对象
 
+    protected:
+        // 添加附加属性
+        void AddAnnex(CMBaseAnnex* annex);
+
     private:
         void SetHealthPoint(int hp);
         void SetManaPoint(int mp);
-        void SetupInnateAttribute();
-        void SetupCurrentAttribute();
+        void ResetInnateAttribute();
+        void ResetCurrentAttribute();
 
     private:
         std::string name;
@@ -100,6 +108,8 @@ namespace cmengine
         SpriteStateType stateType;
         // 装配的技能列表
         std::vector<int> skillList;
+        // 附加属性列表
+        std::vector<std::shared_ptr<CMBaseAnnex>> annexList;
     };
 }
 

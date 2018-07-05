@@ -20,7 +20,12 @@ namespace cmengine
     {
     public:
         virtual ~CMAttributeAnnex() {}
-    
+
+        // 依附，执行逻辑
+        virtual void DePend(CMBaseSprite* sp) {
+            sp->currentAttribute = sp->currentAttribute + attribute;
+        }
+
         CMBasicAttribute GetAttribute() {return attribute;}
 
         void SetAttribute(const CMBasicAttribute& attri) {attribute = attri;}

@@ -18,7 +18,8 @@ namespace cmengine
         CMEquipment(std::string name_, CMAttributeAnnex annex) : name(name_), attributeAnnex(annex) {}
         virtual ~CMEquipment() {}
 
-        CMAttributeAnnex GetAttributeAnnex() {return attributeAnnex;}
+        std::string GetName() const {return name;}
+        CMAttributeAnnex GetAttributeAnnex() const {return attributeAnnex;}
     
     private:
         std::string name;
